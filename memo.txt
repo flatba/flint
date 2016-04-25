@@ -1,0 +1,13 @@
+<h1>トップ画面</h1>
+
+<%= link_to 'facebookログイン',user_omniauth_authorize_path(:facebook) %>
+
+<p><%= link_to 'ユーザー情報編集', edit_user_registration_path %></p>
+<p><%= link_to 'ログアウト', destroy_user_session_path, :method => :delete %></p>
+<p><%= link_to '新規ユーザ登録', new_user_registration_path %></p>
+<p><%= link_to 'Home', "/" %></p>
+
+
+
+
+<%= link_to "マッチング一覧", :controller => "flint", :action => "showMatch", :current => current_user.id %>

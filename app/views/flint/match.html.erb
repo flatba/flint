@@ -1,0 +1,13 @@
+<h1>マッチ一覧</h1>
+
+<ul>
+<% @matches.each do |match| %>
+	<li>UserLikesテーブルの
+		<%= link_to match.id, :controller => "messages", :action => "show", :id => match.id, :current => current_user.id %>番目のレコードでは、
+		
+		USER_ID:3とマッチしています。
+	</li>
+<% end %>
+</ul>
+
+<%= link_to 'Top', "/" %></br>

@@ -1,0 +1,27 @@
+<h1>メッセージ</h1>
+
+<%= link_to 'Top', "/" %></br>
+
+<hr>
+
+
+<!-- メッセージ表示 -->
+<h1><%= @messages.count %></h1>
+
+<% @messages.each do |message| %>
+	<ul style="list-style:none;">
+		<li><%= message.id %> : <%= message.created_at %></li>
+		<li><%= message.body %></li>
+	</ul>
+<% end %>
+
+<hr>
+
+<!-- メッセージ入力欄 -->
+
+<%= form_tag({action: 'create', controller: 'messages'},{method: 'post'}) do %>
+	<input type="text" name="user_like"></input>
+	<input type="text" name="body"></input>
+	<input type="submit" value="send"></input>
+<% end %>
+

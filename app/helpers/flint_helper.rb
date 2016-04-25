@@ -1,0 +1,2 @@
+module FlintHelper
+end

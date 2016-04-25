@@ -1,0 +1,40 @@
+<CENTER>
+<h1>Flint Top</h1>
+
+  <p>現在ログイン中のユーザのUserID. (<%= current_user.id %>)</p>
+<div class="footer">
+    <p><%= link_to "[マッチング一覧]", :controller => "flint", :action => "match", :current => current_user.id, method: :post %>
+  <!-- <li><% if @age %><%= @age %><% end %></li>
+  <a href="http://localhost:3000/?age='a'">パラメータつきりんく</a> -->
+  <!-- </ul> -->
+  <%= link_to '[Edit]', edit_user_registration_path %>
+  <%= link_to '[Top]', "/" %>
+  <%= link_to '[Logout]', destroy_user_session_path, :method => :delete %></p>
+</div>
+  
+
+  <ul>
+    <% @user.each do |user| %>
+    <div class="row">
+      <div class="col-xs-12 col-md-offset-3 col-md-6" style="background-color: white;">
+        <div class="thumbnail">
+
+          <img src= "https://graph.facebook.com/<%= user.uid %>/picture?type=large" alt="...">
+
+          <div class="caption">
+            <h4><%= user.name %></h4>
+            <p>User ID:<%= user.id %> Age:<%= user.age_range %> Gender:<%= user.gender %></p>
+
+              <!-- ❌の時 -->
+              <p class = "btn btn-default"><a href="#" role="button">✕</a></p>
+              <!-- ⭕️の時 -->
+              <p class = "btn btn-default"><%= link_to "◯", :controller => "flint", :action => "addLike", :u_id => current_user.id, :l_id => user.id, :method => :post %></p>
+            
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</ul>
+</CENTER>
