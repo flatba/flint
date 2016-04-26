@@ -35,6 +35,20 @@
     <%= f.label :image %><br>
     <%= f.text_field :image %>
   </div>
+  <div class="field">
+    <%= f.label :comment %><br>
+    <%= f.text_area :comment %>
+  </div>
+
+  <% if current_user.gender == "male" %>
+    <label><%= f.radio_button :payment, "0" %>奢るよ！</label>
+    <label><%= f.radio_button :payment, "1" %>一緒に行こう！</label>
+  <% end %>
+  
+
+  <div class="field">
+    <%= hidden_field_tag 'restaurant[user_id]', current_user.id %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
