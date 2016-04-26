@@ -5,7 +5,7 @@
 	<li>UserLikesテーブルの
 		<%= link_to match.id, :controller => "messages", :action => "show", :id => match.id, :current => current_user.id %>番目のレコードでは、
 		
-		USER_ID:3とマッチしています。
+		USER_ID:<%= current_user.id %>とマッチしています。
 	</li>
 <% end %>
 </ul>
