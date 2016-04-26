@@ -14,16 +14,16 @@
 
 
   <ul>
-    <% @user.each do |user| %>
+    <% @candidates.each do |candidate| %>
     <div class="row">
       <div class="col-xs-12 col-md-offset-3 col-md-6" style="background-color: white;">
         <div class="thumbnail">
 
-          <img src= "https://graph.facebook.com/<%= user.uid %>/picture?type=large" alt="...">
+          <img src= "https://graph.facebook.com/<%= candidate.user.uid %>/picture?type=large" alt="...">
 
           <div class="caption">
-            <h4><%= user.name %></h4>
-            <p>User ID:<%= user.id %> Age:<%= user.age_range %> Gender:<%= user.gender %></p>
+            <h4><%= candidate.user.name %></h4>
+            <p>User ID:<%= user.id %> Age:<%= candidate.user.age_range %> Gender:<%= candidate.user.gender %></p>
 
               <!-- ❌の時 -->
               <p class = "btn btn-default"><a href="#" role="button">✕</a></p>

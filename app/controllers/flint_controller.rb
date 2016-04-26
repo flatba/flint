@@ -5,6 +5,18 @@ class FlintController < ApplicationController
 	def index
 		@user = User.all
         @matches = UserLike.where(:user_id => current_user.id, :matching => 1)
+        if current_user.gender = "male"
+            #異性のid一覧を取得
+            gender_like_id = User.select(:id).where(:gender => "famale")
+        elsif current_user.gender = "famale"
+            gender_like_id = User.select(:id).where(:gender => "male")
+        else
+            render :text => "Something Wrong."
+        end
+        #ログインユーザーが、既にselectしている異性レストランid一覧を取得
+        selected_gender_restraunt_id = UserLike.select(:restaurant_id).where(:user_id => current_user.id, :like_id => gender_like_id)
+        #selectされていない異性レストラン一覧を取得
+        @candidates = Restaurant.where.not(:id => selected_gender_restraunt_id).where.not(:user_id => current_user.id)
     end
 
     def new
