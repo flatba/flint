@@ -7,6 +7,7 @@ class CreateRestaurants < ActiveRecord::Migration
       t.float :star
       t.string :area
       t.string :image
+      t.text :comment
 
       t.timestamps null: false
     end

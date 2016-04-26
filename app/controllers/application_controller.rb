@@ -25,6 +25,11 @@ class ApplicationController < ActionController::Base
 	    # devise_parameter_sanitizer.for(:account_update) << :sex
     end
 
+# ログイン後のリダイレクト先の設定
+  def after_sign_in_path_for(resource)
+    new_restaurant_path
+  end
+
 
 
 end

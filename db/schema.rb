@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20160424060312) do
     t.float    "star"
     t.string   "area"
     t.string   "image"
+    t.text     "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
