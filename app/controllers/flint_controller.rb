@@ -34,14 +34,25 @@ class FlintController < ApplicationController
 		# 属性を設定してモデルオブジェクトを生成
 		# @user_like = UserLike.new(:user_id => 25 , :like_id => 28)
 		# params変更
-        @match = UserLike.where(:user_id => current_user.id, :like_id => params[:u_id])
+
+
+        #今回は、addlikeがrestaurantについておされるので、以下をしらべる
+            # like_idがcurrent_userで
+            # user_idが押した相手で
+            # restaurant_idの店
+        @match = UserLike.where(:user_id => params[:l_id], :like_id => current_user.id, :restaurant_id => params[:restaurant_id]).where.not(:matching => 0)
 
         if @match.exists?
-            @match.first.matching = 1
+            #すでに押されていて1:片方のみのいいねなら普通にマッチ
+            if @match.first.matching == 1
+                @match.first.update(:matching => 3)
+            elsif @match.first.matching == 2
+                @match.first.update(:matching => 4)
+            end
             @match.first.save
             redirect_to root_path
         else
-    		@user_like = UserLike.new(:user_id => current_user.id, :like_id => params[:l_id])
+    		@user_like = UserLike.new(:user_id => current_user.id, :like_id => params[:l_id], :restaurant_id => params[:restaurant_id], :matching => params[:matching])
     		if @user_like.save
 
       		else
@@ -57,18 +68,3 @@ class FlintController < ApplicationController
   end
 
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
