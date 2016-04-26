@@ -16,21 +16,7 @@ class User < ActiveRecord::Base
 
   belongs_to :restaurant
 
-  # self.find_for_oauthを定義 callback後のユーザー登録で、取得した情報を参照する。
-  # def self.find_for_oauth(auth)
-  #   user = User.where(uid: auth.uid, provider: auth.provider).first
-
-  #   unless user
-  #     user = User.create(
-  #       uid:      auth.uid,
-  #       provider: auth.provider,
-  #       email:    User.dummy_email(auth),
-  #       password: Devise.friendly_token[0, 20]
-  #     )
-  #   end
-  #   user
-  # end
-
+  # Facebookから情報を取得する
   def self.find_for_oauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
@@ -42,11 +28,10 @@ class User < ActiveRecord::Base
     end
   end
 
-  # FBログイン時のバリデーション設定
-  validates :password, presence: false, on: :facebook_login
+  # バリデーション設定
+  validates :password, presence: false, on: :facebook_login #Facebookログイン時
+  validates :name, presence: true, length: { maximum: 50 } # Userテーブルのnameカラム
 
-  # Userテーブルのnameカラムのバリデーション設定
-  validates :name, presence: true, length: { maximum: 50 }
 
   private
   # まだuserでない場合はダミーメール作成しユーザー情報を保存
