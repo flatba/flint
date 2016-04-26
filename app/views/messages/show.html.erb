@@ -6,7 +6,7 @@
 
 
 <!-- メッセージ表示 -->
-<h1><%= @messages.count %></h1>
+<!-- <h1><%= @messages.count %></h1> -->
 
 <% @messages.each do |message| %>
 	<ul style="list-style:none;">
@@ -19,7 +19,6 @@
 
 <!-- メッセージ入力欄 -->
 <%= form_tag({action: 'create', controller: 'messages'},{method: 'post'}) do %>
-	<input type="text" name="user_like"></input>
 	<input type="text" name="body"></input>
 	<input type="submit" value="send"></input>
 <% end %>

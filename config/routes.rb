@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+  root "flint#index"
+
+  resources :messages
   resources :restaurants
+
   # deviseの設定
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   
@@ -9,18 +13,6 @@ Rails.application.routes.draw do
   get 'match/:id' => 'flint#showMessage'
   post 'messages/:id/' => 'messages#create'
 
-
-  # メイン画面の設定
-  root "flint#index"
-
-  resources :messages
-
-
- #  # Devise Controllerのルート設定 
- #  devise_for :users, :controllers => {:registrations => 'users/registrations',
- # :sessions => 'users/sessions'}
-
- # devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

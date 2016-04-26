@@ -10,6 +10,8 @@ class RestaurantsController < ApplicationController
   # GET /restaurants/1
   # GET /restaurants/1.json
   def show
+    
+
   end
 
   # GET /restaurants/new
@@ -42,12 +44,11 @@ class RestaurantsController < ApplicationController
       end
   end
 
-
   # DELETE /restaurants/1
   # DELETE /restaurants/1.json
   def destroy
     @restaurant.destroy
-    redirect_to root_path
+    redirect_to restaurants_path
   end
 
   private
@@ -58,6 +59,6 @@ class RestaurantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_params
-      params.require(:restaurant).permit(:name, :category, :price, :star, :area, :image)
+      params.require(:restaurant).permit(:name, :category, :price, :star, :area, :image, :comment, :user_id, :payment)
     end
 end
