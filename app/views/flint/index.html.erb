@@ -21,6 +21,20 @@
         <div class="thumbnail">
           <img src="<%= candidate.image %>" alt="...">
         </div>
+        <ul>
+          <li><%= candidate.name %></li>
+          <li><%= candidate.category %></li>
+          <li><%= candidate.price %></li>
+          <li><%= candidate.star %></li>
+          <li><%= candidate.area %></li>
+          <li><%= candidate.user.name %></li>
+          <li><%= candidate.user.age_range %></li>
+          <li><%= candidate.user.thumb %></li>
+          <li><%= candidate.comment %></li>
+          <% if current_user.gender == "male" %>
+          <li><%= candidate.payment %></li>
+          <% end %>
+        </ul>
         <% if current_user.gender == "male" %>
 
           <p class = "btn btn-default"><%= link_to "☓", :controller => "flint", :action => "addLike", :l_id => candidate.user_id, :matching => 0,:restaurant_id => candidate.id, :matching => 0, :method => :post %></p>

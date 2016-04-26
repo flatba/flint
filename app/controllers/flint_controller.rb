@@ -3,10 +3,8 @@ class FlintController < ApplicationController
 	# helper_method :addLike
 
 	def index
-
         #既にchoiceしているのに表示されていないかチェック
         #2.view側に表示の細かいロジックをかく
-
         @matches = UserLike.where(:user_id => current_user.id, :matching => 1)
         if current_user.gender = "male"
             #異性のid一覧を取得
@@ -21,7 +19,6 @@ class FlintController < ApplicationController
         selected_gender_restraunt_id = UserLike.select(:restaurant_id).where(:user_id => current_user.id, :like_id => gender_like_id)
         #selectされていない異性レストラン一覧を取得
         @candidates = Restaurant.where.not(:id => selected_gender_restraunt_id).where.not(:user_id => current_user.id)
-
     end
 
     def new
