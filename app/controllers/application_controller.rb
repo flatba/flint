@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   # name フィールドを許可する strong parameters の設定
   before_filter :configure_permitted_parameters, if: :devise_controller?
-  
+
   protected
     def configure_permitted_parameters
     	# sign_upのときに、usernameも許可する
