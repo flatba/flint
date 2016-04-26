@@ -3,8 +3,6 @@ class FlintController < ApplicationController
 	# helper_method :addLike
 
 	def index
-        #既にchoiceしているのに表示されていないかチェック
-        #2.view側に表示の細かいロジックをかく
         @matches = UserLike.where(:user_id => current_user.id, :matching => 1)
         if current_user.gender = "male"
             #異性のid一覧を取得
