@@ -18,12 +18,16 @@ class ApplicationController < ActionController::Base
 	    devise_parameter_sanitizer.for(:sign_up) << :name
 	    devise_parameter_sanitizer.for(:sign_up) << :age_range
 	    devise_parameter_sanitizer.for(:sign_up) << :gender
-
-      # account_updateのときに、usernameも許可する
-	    # devise_parameter_sanitizer.for(:account_update) << :name
-	    # devise_parameter_sanitizer.for(:account_update) << :age
-	    # devise_parameter_sanitizer.for(:account_update) << :sex
     end
+
+  # ログイン後のリダイレクト先の設定
+  def after_sign_in_path_for(resource)
+    if Restaurant.where(:user_id => current_user.id).count > 0
+      root_path
+    else
+      new_restaurant_path
+    end
+  end
 
 
 

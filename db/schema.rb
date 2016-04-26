@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160424060312) do
+ActiveRecord::Schema.define(version: 20160426013706) do
 
   create_table "messages", force: :cascade do |t|
     t.integer  "user_like_id"
@@ -29,17 +29,25 @@ ActiveRecord::Schema.define(version: 20160424060312) do
     t.float    "star"
     t.string   "area"
     t.string   "image"
+    t.string   "comment"
+    t.integer  "user_id"
+    t.integer  "payment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "restaurants", ["user_id"], name: "index_restaurants_on_user_id"
 
   create_table "user_likes", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "like_id"
     t.integer  "matching"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "restraunt_id"
   end
+
+  add_index "user_likes", ["restraunt_id"], name: "index_user_likes_on_restraunt_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -55,7 +63,6 @@ ActiveRecord::Schema.define(version: 20160424060312) do
     t.string   "name",                   default: "", null: false
     t.string   "gender"
     t.integer  "age_range"
-    t.integer  "restaurant_id"
     t.string   "thumb"
     t.string   "password"
     t.string   "uid"
@@ -66,6 +73,5 @@ ActiveRecord::Schema.define(version: 20160424060312) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["restaurant_id"], name: "index_users_on_restaurant_id"
 
 end

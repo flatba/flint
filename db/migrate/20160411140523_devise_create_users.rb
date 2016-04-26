@@ -1,4 +1,4 @@
-  class DeviseCreateUsers < ActiveRecord::Migration
+class DeviseCreateUsers < ActiveRecord::Migration
   def change
     create_table(:users) do |t|
       ## Database authenticatable
@@ -34,7 +34,7 @@
       t.string :name
       t.string :gender
       t.integer :age_range
-      t.references :restaurant, index: true, foreign_key: true
+      
       t.string :thumb
 
       ## Facebook認証
