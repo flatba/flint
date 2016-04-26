@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160426083424) do
+ActiveRecord::Schema.define(version: 20160426091317) do
 
   create_table "messages", force: :cascade do |t|
     t.integer  "user_like_id"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20160426083424) do
     t.integer  "payment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "url"
   end
 
   add_index "restaurants", ["user_id"], name: "index_restaurants_on_user_id"
