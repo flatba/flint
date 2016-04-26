@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160424060312) do
+ActiveRecord::Schema.define(version: 20160426013706) do
 
   create_table "messages", force: :cascade do |t|
     t.integer  "user_like_id"
@@ -37,9 +37,12 @@ ActiveRecord::Schema.define(version: 20160424060312) do
     t.integer  "user_id"
     t.integer  "like_id"
     t.integer  "matching"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "restraunt_id"
   end
+
+  add_index "user_likes", ["restraunt_id"], name: "index_user_likes_on_restraunt_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

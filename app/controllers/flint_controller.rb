@@ -4,11 +4,11 @@ class FlintController < ApplicationController
 
 	def index
 		@user = User.all
-        @matches = UserLike.where(:user_id => params[:current], :matching => 1)
+        @matches = UserLike.where(:user_id => current_user.id, :matching => 1)
     end
 
     def new
-    	@user_like = UserLike.new	
+    	@user_like = UserLike.new
     end
 
     def addLike # like側のuser_idとlikeされる側のuser_idをデータベース（user_like）に入れる
@@ -36,7 +36,7 @@ class FlintController < ApplicationController
 
   #ログイン中ユーザーのマッチした一覧を表示
   def match
-    @matches = UserLike.where(:user_id => params[:current], :matching => 1)
+    @matches = UserLike.where(:user_id => current_user.id, :matching => 1)
   end
 
 end

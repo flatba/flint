@@ -11,7 +11,7 @@
   <%= link_to '[Top]', "/" %>
   <%= link_to '[Logout]', destroy_user_session_path, :method => :delete %></p>
 </div>
-  
+
 
   <ul>
     <% @user.each do |user| %>
@@ -29,7 +29,7 @@
               <p class = "btn btn-default"><a href="#" role="button">✕</a></p>
               <!-- ⭕️の時 -->
               <p class = "btn btn-default"><%= link_to "◯", :controller => "flint", :action => "addLike", :u_id => current_user.id, :l_id => user.id, :method => :post %></p>
-            
+
           </p>
         </div>
       </div>
