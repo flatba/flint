@@ -4,40 +4,23 @@
 <%= link_to '[Top]', "/" %>
 
 <table>
-  <thead>
-    <tr>
- <!--      <th>Name</th>
-      <th>Category</th>
-      <th>Price</th>
-      <th>Star</th>
-      <th>Area</th>
-      <th>Image</th>
-      <th>Comment</th>
-      <th>User_id</th>
-      <th>Payment</th> -->
-      <th>食べログURL</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
   <tbody>
     <% @restaurants.each do |restaurant| %>
-      <tr>
-        <td><%= restaurant.name %></td>
-        <td><%= restaurant.category %></td>
-        <td><%= restaurant.price %></td>
-        <td><%= restaurant.star %></td>
-        <td><%= restaurant.area %></td>
-        <td><%= restaurant.image %></td>
-        <td><%= restaurant.comment %></td>
-        <td><%= restaurant.user_id %></td>
-        <td><%= restaurant.payment %></td>
-        <td><%= restaurant.url %></td>
-        <td><%= link_to 'Show', restaurant %></td>
-        <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
-        <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
-      </tr>
+      <ul>
+        <li>name:<%= restaurant.name %></li>
+        <li>category:<%= restaurant.category %></li>
+        <li>price:<%= restaurant.price %></li>
+        <li>star:<%= restaurant.star %></li>
+        <li>area:<%= restaurant.area %></li>
+        <li>image:<%= restaurant.image %></li>
+        <li>Comment:<%= restaurant.comment %></li>
+        <li>User_id:<%= restaurant.user_id %></li>
+        <li>Payment:<%= restaurant.payment %></li>
+        <li>食べログURL:<%= restaurant.url %></li>
+        <li><%= link_to 'Show', restaurant %>
+        <%= link_to 'Edit', edit_restaurant_path(restaurant) %>
+        <%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </ul>
     <% end %>
   </tbody>
 </table>
