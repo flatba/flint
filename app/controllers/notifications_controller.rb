@@ -6,7 +6,7 @@ class NotificationsController < ApplicationController
       #current_userに関わるuserlikesをとってきて
       #時系列順に並べて@notificationsにいれる
       #view側でmatchingのstatusをみてif分岐する
-      @notifications = Userlike.where(:like_id => current_user.id)
+      @notifications = Userike.where(:like_id => current_user.id).where.not(:matching => 0)
 
 
   end

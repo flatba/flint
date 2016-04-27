@@ -1,17 +1,33 @@
 <% if current_user.gender == "male" %>
   <% @notifications.each do |notification| %>
     <% if notification.matching == 1 %>
+      <img src="<%= notification.like.thumb %>" />
+      <p><%= notification.like.name %>さんがあなたと食事にいきたがっています！<p>
     <% elsif notification.matching == 2 %>
+      <img src="<%= notification.like.thumb %>" />
+      <p><%= notification.like.name %>さんがあなたと食事にいきたがっています！<p>
     <% elsif notification.matching == 3 %>
+      <img src="<%= notification.like.thumb %>" />
+      <p><%= notification.like.name %>さんと[ワリカン]でマッチしました！<p>
     <% elsif notification.matching == 4 %>
+      <img src="<%= notification.like.thumb %>" />
+      <p><%= notification.like.name %>さんと[おごる]でマッチしました！<p>
     <% end %>
   <% end %>
 <% elsif current_user.gender == "famale" %>
   <% @notifications.each do |notification| %>
     <% if notification.matching == 1 %>
+      <img src="<%= notification.like.thumb %>" />
+      <p><%= notification.like.name %>さんがあなたと食事にいきたがっています！<p>
     <% elsif notification.matching == 2 %>
+      <img src="<%= notification.like.thumb %>" />
+      <p><%= notification.like.name %>さんがあなたを食事にご招待しています！（おごってもらえるチャンスかも？）<p>
     <% elsif notification.matching == 3 %>
+      <img src="<%= notification.like.thumb %>" />
+      <p><%= notification.like.name %>さんオススメのレストラン<%= notification.name %>とマッチしました！<p>
     <% elsif notification.matching == 4 %>
+      <img src="<%= notification.like.thumb %>" />
+      <p><%= notification.like.name %>さんオススメのレストラン<%= notification.name %>とマッチしました！おごってもらえるチャンス♡<p>
     <% end %>
   <% end %>
 <% end %>

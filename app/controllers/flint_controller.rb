@@ -2,10 +2,6 @@ class FlintController < ApplicationController
 	before_action :sign_in_required
 	# helper_method :addLike
 
-	def index
-    before_action :sign_in_required
-    # helper_method :addLike
-
     def index
         if current_user.gender = "male"
             #異性のid一覧を取得
@@ -56,18 +52,3 @@ class FlintController < ApplicationController
   end
 
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
