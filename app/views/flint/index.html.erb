@@ -7,13 +7,10 @@
   <!-- <li><% if @age %><%= @age %><% end %></li>
   <a href="http://localhost:3000/?age='a'">パラメータつきりんく</a> -->
   <!-- </ul> -->
-  <%= link_to '[Edit]', edit_user_registration_path %>
-  <%= link_to '[Top]', "/" %>
-  <%= link_to '[Logout]', destroy_user_session_path, :method => :delete %></p>
   <%= link_to '[Restaurants]', restaurants_path %>
-  <%= link_to '[ユーザ詳細ページ]', show_path %></br>
+  <%= link_to '[カレントユーザ情報]', user_path %>
+  <%= link_to '[Logout]', destroy_user_session_path, :method => :delete %></br>
 </div>
-
 
   <ul>
     <% @candidates.each do |candidate| %>
@@ -21,6 +18,9 @@
       <div class="col-xs-12 col-md-offset-3 col-md-6" style="background-color: white;">
         <div class="thumbnail">
           <img src="<%= candidate.image %>" alt="...">
+          <%= link_to '[もっと見る]', :controller => "flint", :action => "show", :id => candidate.user_id %>
+          
+
         </div>
         <% if current_user.gender == "male" %>
 
@@ -38,4 +38,5 @@
     </div>
   <% end %>
 </ul>
+<%= link_to '[Top]', "/" %><%= link_to '[Logout]', destroy_user_session_path, :method => :delete %>
 </CENTER>
