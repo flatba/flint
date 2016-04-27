@@ -6,13 +6,14 @@ Rails.application.routes.draw do
 
   # deviseの設定
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  
+
   # メソッドの呼び出し
   get 'addLike' => 'flint#addLike'
   get 'match' => 'flint#match'
   get 'match/:id' => 'flint#showMessage'
   post 'messages/:id/' => 'messages#create'
 
+  get 'notification' => 'notifications#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

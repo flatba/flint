@@ -1,0 +1,17 @@
+<% if current_user.gender == "male" %>
+  <% @notifications.each do |notification| %>
+    <% if notification.matching == 1 %>
+    <% elsif notification.matching == 2 %>
+    <% elsif notification.matching == 3 %>
+    <% elsif notification.matching == 4 %>
+    <% end %>
+  <% end %>
+<% elsif current_user.gender == "famale" %>
+  <% @notifications.each do |notification| %>
+    <% if notification.matching == 1 %>
+    <% elsif notification.matching == 2 %>
+    <% elsif notification.matching == 3 %>
+    <% elsif notification.matching == 4 %>
+    <% end %>
+  <% end %>
+<% end %>
