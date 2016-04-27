@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
-
   ## user_likeテーブル
   # A:user -> B:user_like(user_id)
   has_many :user_likes, class_name: "UserLike", foreign_key: :user_id
@@ -23,6 +22,7 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]
       user.name = auth.info.name   # assuming the user model has a name
       user.gender = auth.extra.raw_info.gender
+      user.thumb = "https://graph.facebook.com/"+auth.uid.to_s+"/picture?type=large"
       user.age_range = auth.extra.raw_info.age_range.min.last
       # user.image = auth.info.image # assuming the user model has an image
     end
