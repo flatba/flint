@@ -5,16 +5,16 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   ## user_likeテーブル
-  # A:user -> B:user_like(user_id) 
+  # A:user -> B:user_like(user_id)
   has_many :user_likes, class_name: "UserLike", foreign_key: :user_id
-  # A:user -> C:user_like(user_id) 
+  # A:user -> C:user_like(user_id)
   has_many :likes, through: "user_likes"
   # C:user -> B:user_like(like_id)
   has_many :user_likers, class_name: "UserLike", foreign_key: :like_id
-  # C:user -> A:user_like(user_id) 
+  # C:user -> A:user_like(user_id)
   has_many :likers, through: "user_likers"
 
-  belongs_to :restaurant
+  has_many :restaurants
 
   # Facebookから情報を取得する
   def self.find_for_oauth(auth)
