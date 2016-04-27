@@ -3,10 +3,10 @@ class FlintController < ApplicationController
 	# helper_method :addLike
 
 	def index
-        if current_user.gender = "male"
+        if current_user.gender == "male"
             #異性のid一覧を取得
             gender_like_id = User.select(:id).where(:gender => "female")
-        elsif current_user.gender = "female"
+        elsif current_user.gender == "female"
             #異性のid一覧を取得
             gender_like_id = User.select(:id).where(:gender => "male")
         else

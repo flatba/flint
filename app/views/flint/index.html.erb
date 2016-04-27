@@ -1,7 +1,7 @@
 <CENTER>
 <h1>Flint Top</h1>
 
-  <p>現在ログイン中のユーザのUser. (<%= current_user.id %>, <%= current_user.name %>, <%= current_user.gender %>)</p>
+  <p>現在ログイン中のユーザのUser. (<%= current_user.id %>, <%= current_user.name %>, <%= current_user.gender %>, <%= current_user.age_range %>)</p>
   <p><%= link_to '通知', notification_path %></p>
 <div class="footer">
     <p><%= link_to "[マッチング一覧]", :controller => "flint", :action => "match", :current => current_user.id, method: :post %>
