@@ -11,13 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160426091317) do
+ActiveRecord::Schema.define(version: 20160427102340) do
 
   create_table "messages", force: :cascade do |t|
     t.integer  "user_like_id"
     t.text     "body"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "sender"
+    t.integer  "receiver"
   end
 
   add_index "messages", ["user_like_id"], name: "index_messages_on_user_like_id"

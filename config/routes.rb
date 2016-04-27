@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   root "flint#index"
 
-  resources :messages
   resources :restaurants
+
+  ###!!! このルートは本来はオカシイ。production版では修正が必要 !!!!###
+  resources :messages
 
   # deviseの設定
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
@@ -10,8 +12,7 @@ Rails.application.routes.draw do
   # メソッドの呼び出し
   get 'addLike' => 'flint#addLike'
   get 'match' => 'flint#match'
-  get 'match/:id' => 'flint#showMessage'
-  post 'messages/:id/' => 'messages#create'
+
   get 'user' => 'flint#user'
   get 'show' => 'flint#show'
 

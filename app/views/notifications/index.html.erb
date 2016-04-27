@@ -3,48 +3,63 @@
   <% @notifications.each do |notification| %>
     <% if notification.matching == 1 %>
       <img src="<%= notification.like.thumb %>" />
-      <p><%= notification.liker.name %>さんがあなたと食事にいきたがっています！<p>
+      <%= link_to notification.liker.name+"さんがあなたと食事にいきたがっています！",message_path(notification.id) %>
+
     <% elsif notification.matching == 2 %>
+
       <img src="<%= notification.like.thumb %>" />
-      <p><%= notification.liker.name %>さんがあなたと食事にいきたがっています！<p>
+      <%= link_to notification.liker.name+"さんがあなたと食事にいきたがっています！",message_path(notification.id) %>
+
     <% elsif notification.matching == 3 %>
+
       <img src="<%= notification.like.thumb %>" />
       <% if notification.messages.count == 0 %>
-        <p><%= notification.liker.name %>さんと[ワリカン]でマッチしました！<p>
+        <%= link_to notification.liker.name+"さんと[ワリカン]でマッチしました！",message_path(notification.id) %>
       <% else %>
-        <p><%= notification.messages.last %><p>
+        <%= link_to notification.messages.last,message_path(notification.id) %>
       <% end %>
+
     <% elsif notification.matching == 4 %>
+
       <img src="<%= notification.like.thumb %>" />
       <% if notification.messages.count == 0 %>
-        <p><%= notification.liker.name %>さんと[おごる]でマッチしました！<p>
+        <%= link_to notification.liker.name+"さんと[おごる]でマッチしました！",message_path(notification.id) %>
       <% else %>
-        <p><%= notification.messages.last %><p>
+        <%= link_to notification.messages.last,message_path(notification.id) %>
       <% end %>
+
     <% end %>
   <% end %>
+
 <% elsif current_user.gender == "female" %>
   <% @notifications.each do |notification| %>
+
     <% if notification.matching == 1 %>
       <img src="<%= notification.like.thumb %>" />
-      <p><%= notification.liker.name %>さんがあなたと食事にいきたがっています！<p>
+      <%= link_to notification.liker.name+"さんがあなたと食事にいきたがっています！",message_path(notification.id) %>
+
     <% elsif notification.matching == 2 %>
       <img src="<%= notification.like.thumb %>" />
-      <p><%= notification.liker.name %>さんがあなたを食事にご招待しています！（おごってもらえるチャンスかも？）<p>
+      <%= link_to notification.liker.name+"さんがあなたを食事にご招待しています！（おごってもらえるチャンスかも？）",message_path(notification.id) %>
+
     <% elsif notification.matching == 3 %>
-      <img src="<%= notification.like.thumb %>" />
+      <
+      img src="<%= notification.like.thumb %>" />
       <% if notification.messages.count == 0 %>
-        <p><%= notification.liker.name %>さんオススメのレストラン<%= notification.name %>とマッチしました！<p>
+        <%= link_to notification.liker.name+"さんオススメのレストラン"+notification.name+"とマッチしました！",message_path(notification.id) %>
       <% else %>
-        <p><%= notification.messages.last %><p>
+        <p><%= link_to notification.messages.last,message_path(notification.id) %>
       <% end %>
+
     <% elsif notification.matching == 4 %>
+
       <img src="<%= notification.like.thumb %>" />
       <% if notification.messages.count == 0 %>
-        <p><%= notification.liker.name %>さんオススメのレストラン<%= notification.name %>とマッチしました！おごってもらえるチャンス♡<p>
+        <%= link_to notification.liker.name+"さんオススメのレストラン"+notification.name+"とマッチしました！おごってもらえるチャンス♡",message_path(notification.id) %>
       <% else %>
-        <p><%= notification.messages.last %><p>
+        <%= link_to notification.messages.last,message_path(notification.id) %>
       <% end %>
+
     <% end %>
   <% end %>
 <% end %>

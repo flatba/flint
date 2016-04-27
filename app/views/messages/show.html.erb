@@ -18,8 +18,9 @@
 <hr>
 
 <!-- メッセージ入力欄 -->
-<%= form_tag({action: 'create', controller: 'messages'},{method: 'post'}) do %>
+<%= form_tag(messages_path(), method: 'post') do %>
 	<input type="text" name="body"></input>
-	<input type="submit" value="send"></input>
+	<input name="id" type="hidden" value="<%= @userlike.id %>" />
+  <input type="submit" value="send"></input>
 <% end %>
 

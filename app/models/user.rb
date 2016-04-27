@@ -13,6 +13,16 @@ class User < ActiveRecord::Base
   # C:user -> A:user_like(user_id)
   has_many :likers, through: "user_likers"
 
+  ## user_likeテーブル
+  # A:user -> B:user_like(user_id)
+  has_many :sender, class_name: "Message", foreign_key: :sender_id
+  # A:user -> C:user_like(user_id)
+  # has_many :likes, through: "user_likes"
+  # C:user -> B:user_like(like_id)
+  has_many :receiver, class_name: "Message", foreign_key: :receiver_id
+  # C:user -> A:user_like(user_id)
+  has_many :likers, through: "user_likers"
+
   has_many :restaurants
 
   # Facebookから情報を取得する
