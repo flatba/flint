@@ -3,18 +3,17 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
-
   ## user_likeテーブル
-  # A:user -> B:user_like(user_id) 
+  # A:user -> B:user_like(user_id)
   has_many :user_likes, class_name: "UserLike", foreign_key: :user_id
-  # A:user -> C:user_like(user_id) 
+  # A:user -> C:user_like(user_id)
   has_many :likes, through: "user_likes"
   # C:user -> B:user_like(like_id)
   has_many :user_likers, class_name: "UserLike", foreign_key: :like_id
-  # C:user -> A:user_like(user_id) 
+  # C:user -> A:user_like(user_id)
   has_many :likers, through: "user_likers"
 
-  belongs_to :restaurant
+  has_many :restaurants
 
   # Facebookから情報を取得する
   def self.find_for_oauth(auth)
@@ -23,6 +22,7 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]
       user.name = auth.info.name   # assuming the user model has a name
       user.gender = auth.extra.raw_info.gender
+      user.thumb = "https://graph.facebook.com/"+auth.uid.to_s+"/picture?type=large"
       user.age_range = auth.extra.raw_info.age_range.min.last
       # user.image = auth.info.image # assuming the user model has an image
     end

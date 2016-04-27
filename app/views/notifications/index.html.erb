@@ -1,0 +1,51 @@
+<h1><%= @notifications.first.id %></h1>
+
+<% if current_user.gender == "male" %>
+  <% @notifications.each do |notification| %>
+    <% if notification.matching == 1 %>
+      <img src="<%= notification.like.thumb %>" />
+      <p><%= notification.liker.name %>さんがあなたと食事にいきたがっています！<p>
+    <% elsif notification.matching == 2 %>
+      <img src="<%= notification.like.thumb %>" />
+      <p><%= notification.liker.name %>さんがあなたと食事にいきたがっています！<p>
+    <% elsif notification.matching == 3 %>
+      <img src="<%= notification.like.thumb %>" />
+      <% if notification.messages.count == 0 %>
+        <p><%= notification.liker.name %>さんと[ワリカン]でマッチしました！<p>
+      <% else %>
+        <p><%= notification.messages.last %><p>
+      <% end %>
+    <% elsif notification.matching == 4 %>
+      <img src="<%= notification.like.thumb %>" />
+      <% if notification.messages.count == 0 %>
+        <p><%= notification.liker.name %>さんと[おごる]でマッチしました！<p>
+      <% else %>
+        <p><%= notification.messages.last %><p>
+      <% end %>
+    <% end %>
+  <% end %>
+<% elsif current_user.gender == "female" %>
+  <% @notifications.each do |notification| %>
+    <% if notification.matching == 1 %>
+      <img src="<%= notification.like.thumb %>" />
+      <p><%= notification.liker.name %>さんがあなたと食事にいきたがっています！<p>
+    <% elsif notification.matching == 2 %>
+      <img src="<%= notification.like.thumb %>" />
+      <p><%= notification.liker.name %>さんがあなたを食事にご招待しています！（おごってもらえるチャンスかも？）<p>
+    <% elsif notification.matching == 3 %>
+      <img src="<%= notification.like.thumb %>" />
+      <% if notification.messages.count == 0 %>
+        <p><%= notification.liker.name %>さんオススメのレストラン<%= notification.name %>とマッチしました！<p>
+      <% else %>
+        <p><%= notification.messages.last %><p>
+      <% end %>
+    <% elsif notification.matching == 4 %>
+      <img src="<%= notification.like.thumb %>" />
+      <% if notification.messages.count == 0 %>
+        <p><%= notification.liker.name %>さんオススメのレストラン<%= notification.name %>とマッチしました！おごってもらえるチャンス♡<p>
+      <% else %>
+        <p><%= notification.messages.last %><p>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
