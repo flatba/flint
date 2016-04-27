@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'match' => 'flint#match'
   get 'match/:id' => 'flint#showMessage'
   post 'messages/:id/' => 'messages#create'
+  get 'show' => 'flint#show'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
