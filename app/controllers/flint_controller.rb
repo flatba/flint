@@ -29,8 +29,6 @@ class FlintController < ApplicationController
     end
 
     def show
-        # render template: "flint/index"
-        # @current_users = User.where(:user => current_user.id)
     end
 
     def addLike # like側のuser_idとlikeされる側のuser_idをデータベース（user_like）に入れる
