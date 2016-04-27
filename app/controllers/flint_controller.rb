@@ -1,7 +1,6 @@
 class FlintController < ApplicationController
 	before_action :sign_in_required
 	# helper_method :addLike
-
     def index
         if current_user.gender = "male"
             #異性のid一覧を取得
@@ -21,6 +20,11 @@ class FlintController < ApplicationController
 
     def new
     	@user_like = UserLike.new
+    end
+
+    def show
+        # render template: "flint/index"
+        # @current_users = User.where(:user => current_user.id)
     end
 
     def addLike # like側のuser_idとlikeされる側のuser_idをデータベース（user_like）に入れる

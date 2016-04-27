@@ -1,0 +1,11 @@
+<h1>ユーザ詳細ページ</h1>
+<%= link_to '[Top]', "/" %></br>
+
+
+<p><img src= "https://graph.facebook.com/<%= current_user.uid %>/picture?type=large" alt="..."></p>
+<p><%= current_user.name %></p>
+<p><%= current_user.gender %></p>
+<p><%= current_user.age_range %></p>
+<p>UserID.<%= current_user.id %></p>
+
+
