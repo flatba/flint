@@ -21,7 +21,6 @@ class FlintController < ApplicationController
         # #selectされていない異性レストラン一覧を取得
         # @candidates = Restaurant.where.not(:id => selected_gender_restraunt_id).where.not(:user_id => current_user.id)
         @candidates = Restaurant.all
-
     end
 
     def new
