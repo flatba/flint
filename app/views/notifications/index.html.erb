@@ -14,7 +14,7 @@
       <p><%= notification.like.name %>さんと[おごる]でマッチしました！<p>
     <% end %>
   <% end %>
-<% elsif current_user.gender == "famale" %>
+<% elsif current_user.gender == "female" %>
   <% @notifications.each do |notification| %>
     <% if notification.matching == 1 %>
       <img src="<%= notification.like.thumb %>" />

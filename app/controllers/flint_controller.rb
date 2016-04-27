@@ -5,8 +5,8 @@ class FlintController < ApplicationController
 	def index
         if current_user.gender = "male"
             #異性のid一覧を取得
-            gender_like_id = User.select(:id).where(:gender => "famale")
-        elsif current_user.gender = "famale"
+            gender_like_id = User.select(:id).where(:gender => "female")
+        elsif current_user.gender = "female"
             #異性のid一覧を取得
             gender_like_id = User.select(:id).where(:gender => "male")
         else

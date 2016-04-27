@@ -45,7 +45,7 @@
 
           <p class = "btn btn-default"><%= link_to "おごる！", :controller => "flint", :action => "addLike", :l_id => candidate.user_id, :restaurant_id => candidate.id, :matching => 2, :method => :post %></p>
 
-        <% elsif current_user.gender == "famale" %>
+        <% elsif current_user.gender == "female" %>
           <p class = "btn btn-default"><%= link_to "☓", :controller => "flint", :action => "addLike", :l_id => candidate.user_id, :restaurant_id => candidate.id, :matching => 0, :method => :post %></p>
 
           <p class = "btn btn-default"><%= link_to "◯", :controller => "flint", :action => "addLike", :l_id => candidate.user_id, :restaurant_id => candidate.id, :matching => 1, :method => :post %></p>
