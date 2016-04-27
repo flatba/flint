@@ -1,0 +1,35 @@
+<center>
+<h1>ログインしているユーザの詳細ページ</h1>
+<%= link_to '[Top]', "/" %>
+<%= link_to '[Edit]', edit_user_registration_path %></br>
+
+<!-- ユーザ情報 -->
+<ul>
+  <div class="row">
+    <div class="col-xs-12 col-md-offset-3 col-md-6" style="background-color: white;">
+      <div class="thumbnail">
+        <img src= "https://graph.facebook.com/<%= current_user.uid %>/picture?type=large" alt="...">
+        <p><strong><%= current_user.name %></strong> , <%= current_user.age_range %>, <%= current_user.gender %> , UserID <%= current_user.id %></p>
+        <!-- レストラン情報 -->
+        <ul style="list-style:none;">
+          <% @current_user_candidates.each do |candidate| %>
+            <li><img src="<%= candidate.image %>" alt="..."></li>
+            <li>店舗名：<%= candidate.name %></li>
+            <li>カテゴリ：<%= candidate.category %></li>
+            <li>価格帯：<%= candidate.price %>~</li>
+            <li>評価：<%= candidate.star %></li>
+            <li>エリア：<%= candidate.area %></li>
+            <li>payment:：
+              <% if candidate.payment == 0 %>
+                奢るよ！
+              <% elsif candidate.payment == 1 %>
+                割り勘で！
+              <% end %></li>
+            <li>一言コメント：<%= candidate.comment %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</ul>
+</center>
