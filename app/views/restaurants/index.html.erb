@@ -1,30 +1,56 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Restaurants</h1>
-<%= link_to '[Top]', "/" %>
+<%= link_to '[Top]', "/" %><br/>
 
+<% @restaurants.each do |restaurant| %>
 <table>
   <tbody>
-    <% @restaurants.each do |restaurant| %>
-      <ul>
-        <li>name:<%= restaurant.name %></li>
-        <li>category:<%= restaurant.category %></li>
-        <li>price:<%= restaurant.price %></li>
-        <li>star:<%= restaurant.star %></li>
-        <li>area:<%= restaurant.area %></li>
-        <li>image:<%= restaurant.image %></li>
-        <li>Comment:<%= restaurant.comment %></li>
-        <li>User_id:<%= restaurant.user_id %></li>
-        <li>Payment:<%= restaurant.payment %></li>
-        <li>食べログURL:<%= restaurant.url %></li>
-        <li><%= link_to 'Show', restaurant %>
-        <%= link_to 'Edit', edit_restaurant_path(restaurant) %>
-        <%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </ul>
-    <% end %>
-  </tbody>
+    <tr>
+      <td>name:</td>
+      <td><%= restaurant.name %></td>
+      <td rowspan="10"></td>
+    </tr>
+    <tr>
+      <td>category:</td>
+      <td><%= restaurant.category %></td>
+    </tr>
+    <tr>
+      <td>price:</td>
+      <td><%= restaurant.price %></td>
+    </tr>
+    <tr>
+      <td>star:</td>
+      <td><%= restaurant.star %></td>
+    </tr>
+    <tr>
+      <td>image:</td>
+      <td><%= restaurant.image %></td>
+    </tr>
+    <tr>
+      <td>Comment:</td>
+      <td><%= restaurant.comment %></td>
+    </tr>
+    <tr>
+      <td>User_id:</td>
+      <td><%= restaurant.user_id %></td>
+    </tr>
+    <tr>
+      <td>Payment:</td>
+      <td><%= restaurant.payment %></td>
+    </tr>
+    <tr>
+      <td>食べログURL:</td>
+      <td><%= restaurant.url %></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr><%= link_to '[Show]', restaurant %>
+<%= link_to '[Edit]', edit_restaurant_path(restaurant) %>
+<%= link_to '[Destroy]', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+</tbody>
 </table>
 
-<br>
 
-<%= link_to 'New Restaurant', new_restaurant_path %>
