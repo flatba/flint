@@ -7,11 +7,9 @@
   <!-- <li><% if @age %><%= @age %><% end %></li>
   <a href="http://localhost:3000/?age='a'">パラメータつきりんく</a> -->
   <!-- </ul> -->
-  <%= link_to '[Edit]', edit_user_registration_path %>
-  <%= link_to '[Top]', "/" %>
-  <%= link_to '[Logout]', destroy_user_session_path, :method => :delete %></p>
   <%= link_to '[Restaurants]', restaurants_path %>
-  <%= link_to '[ユーザ詳細ページ]', show_path %></br>
+  <%= link_to '[カレントユーザ情報]', user_path %>
+  <%= link_to '[Logout]', destroy_user_session_path, :method => :delete %></br>
 </div>
 
   <ul>
@@ -22,9 +20,8 @@
           <img src="<%= candidate.image %>" alt="...">
           ひとこと：<%= candidate.comment %>
         </div>
-
+          <%= link_to '[もっと見る]', :controller => "flint", :action => "show", :id => candidate.user_id %>
         <% if current_user.gender == "male" %>
-
           <p class = "btn btn-default"><%= link_to "☓", :controller => "flint", :action => "addLike", :u_id => current_user.id, :l_id => "", :restaurant_id => 0, :method => :post %></p>
 
           <p class = "btn btn-default"><%= link_to "ワリカン！", :controller => "flint", :action => "addLike", :u_id => current_user.id, :l_id => "", :restaurant_id => 1, :method => :post %></p>
@@ -39,4 +36,5 @@
     </div>
   <% end %>
 </ul>
+<%= link_to '[Top]', "/" %><%= link_to '[Logout]', destroy_user_session_path, :method => :delete %>
 </CENTER>

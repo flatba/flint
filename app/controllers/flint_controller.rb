@@ -27,9 +27,14 @@ class FlintController < ApplicationController
     	@user_like = UserLike.new
     end
 
+    def user
+        @current_user_candidates = Restaurant.where(:user_id => current_user.id)
+    end
+
     def show
-        # render template: "flint/index"
-        # @current_users = User.where(:user => current_user.id)
+        # 現在表示されているユーザのレストラン情報のみ表示したい。
+        @select_user_candidate = Restaurant.where(:user_id => params[:id])
+        @users = User.where(:id => params[:id])
     end
 
     def addLike # like側のuser_idとlikeされる側のuser_idをデータベース（user_like）に入れる

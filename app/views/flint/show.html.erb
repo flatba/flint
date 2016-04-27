@@ -1,11 +1,52 @@
-<h1>ユーザ詳細ページ</h1>
+<center>
+<h1>ユーザ個別詳細ページ</h1>
 <%= link_to '[Top]', "/" %></br>
 
+<!-- ユーザ情報 -->
+<ul>
+<% @select_user_candidate.each do |candidate| %>
+	<% @users.each do |user| %>
+    <div class="row">
+      <div class="col-xs-12 col-md-offset-3 col-md-6" style="background-color: white;">
+        <div class="thumbnail">
+          <img src= "https://graph.facebook.com/<%= user.uid %>/picture?type=large" alt="...">
+          	<p><strong><%= user.name %></strong> , <%= user.age_range %>, <%= user.gender %> , UserID <%= user.id %></p>
+    <% end %>
 
-<p><img src= "https://graph.facebook.com/<%= current_user.uid %>/picture?type=large" alt="..."></p>
-<p><%= current_user.name %></p>
-<p><%= current_user.gender %></p>
-<p><%= current_user.age_range %></p>
-<p>UserID.<%= current_user.id %></p>
+        <!-- レストラン情報 -->
+        <ul style="list-style:none;">
+        	<li><img src="<%= candidate.image %>" alt="..."></li>
+            <li>店舗名：<%= candidate.name %></li>
+            <li>カテゴリ：<%= candidate.category %></li>
+            <li>価格帯：<%= candidate.price %>~</li>
+            <li>評価：<%= candidate.star %></li>
+            <li>エリア：<%= candidate.area %></li>
+            <li>
+              <% if candidate.payment == 0 %>
+                payment:奢るよ！
+              <% elsif candidate.payment == 1 %>
+                payment:割り勘で！
+              <% end %></li>
+            <li>一言コメント：<%= candidate.comment %></li>
+        <% end %>
+        </ul>
+        </div>
 
+        <!-- 男女別選択肢ボタン -->
+        <% if current_user.gender == "male" %>
+          <p class = "btn btn-default"><%= link_to "☓", :controller => "flint", :action => "addLike", :u_id => current_user.id, :l_id => "", :restaurant_id => 0, :method => :post %></p>
 
+          <p class = "btn btn-default"><%= link_to "ワリカン！", :controller => "flint", :action => "addLike", :u_id => current_user.id, :l_id => "", :restaurant_id => 1, :method => :post %></p>
+
+          <p class = "btn btn-default"><%= link_to "おごる！", :controller => "flint", :action => "addLike", :u_id => current_user.id, :l_id => "", :restaurant_id => 2, :method => :post %></p>
+
+        <% elsif current_user.gender == "female" %>
+          <p class = "btn btn-default"><%= link_to "☓", :controller => "flint", :action => "addLike", :u_id => current_user.id, :l_id => "", :restaurant_id => 0, :method => :post %></p>
+
+          <p class = "btn btn-default"><%= link_to "行きたい！", :controller => "flint", :action => "addLike", :u_id => current_user.id, :l_id => "", :restaurant_id => 1, :method => :post %></p>
+        <% end %>
+
+      </div>
+    </div>
+</ul>
+</center>
