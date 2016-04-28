@@ -20,7 +20,7 @@
         <div class="thumbnail">
           <img src="<%= candidate.image %>" alt="...">
           <%= link_to '[もっと見る]', :controller => "flint", :action => "show", :id => candidate.user_id %>
-          <ul>
+          <ul style="list-style:none;">
             <li><%= candidate.name %></li>
             <li><%= candidate.category %></li>
             <li><%= candidate.price %></li>
