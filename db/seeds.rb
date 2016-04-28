@@ -52,7 +52,7 @@
 
 require "csv"
 
-CSV.foreach('db/user.csv') do |row|
+CSV.foreach('db/csv/user.csv') do |row|
   User.create(
   	:email => row[0],
   	:encrypted_password => row[1],
@@ -68,7 +68,7 @@ CSV.foreach('db/user.csv') do |row|
   	)
 end
 
-CSV.foreach('db/user_like.csv') do |row|
+CSV.foreach('db/csv/user_like.csv') do |row|
   UserLike.create(
   	:user_id => row[0],
 	:like_id => row[1],
@@ -78,7 +78,7 @@ CSV.foreach('db/user_like.csv') do |row|
   	)
 end
 
-CSV.foreach('db/restaurant.csv') do |row|
+CSV.foreach('db/csv/restaurant.csv') do |row|
   Restaurant.create(
   	:name => row[0],
 	:category => row[1],
