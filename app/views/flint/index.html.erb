@@ -19,23 +19,22 @@
       <div class="col-xs-12 col-md-offset-3 col-md-6" style="background-color: white;">
         <div class="thumbnail">
           <img src="<%= candidate.image %>" alt="...">
-          ひとこと：<%= candidate.comment %>
-        </div>
           <%= link_to '[もっと見る]', :controller => "flint", :action => "show", :id => candidate.user_id %>
-        <ul>
-          <li><%= candidate.name %></li>
-          <li><%= candidate.category %></li>
-          <li><%= candidate.price %></li>
-          <li><%= candidate.star %></li>
-          <li><%= candidate.area %></li>
-          <li><%= candidate.user.name %></li>
-          <li><%= candidate.user.age_range %></li>
-          <li><%= candidate.user.thumb %></li>
-          <li><%= candidate.comment %></li>
-          <% if current_user.gender == "male" %>
-          <li><%= candidate.payment %></li>
-          <% end %>
-        </ul>
+          <ul style="list-style:none;">
+            <li><%= candidate.name %></li>
+            <li><%= candidate.category %></li>
+            <li><%= candidate.price %></li>
+            <li><%= candidate.star %></li>
+            <li><%= candidate.area %></li>
+            <li><%= candidate.name %></li>
+
+            <li><%= candidate.comment %></li>
+            <% if current_user.gender == "male" %>
+            <li><%= candidate.payment %></li>
+            <% end %>
+          </ul>
+        </div>
+
         <% if current_user.gender == "male" %>
 
           <p class = "btn btn-default"><%= link_to "☓", :controller => "flint", :action => "addLike", :l_id => candidate.user_id, :matching => 0,:restaurant_id => candidate.id, :matching => 0, :method => :post %></p>

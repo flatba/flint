@@ -29,8 +29,8 @@ class User < ActiveRecord::Base
   end
 
   # バリデーション設定
-  validates :password, presence: false, on: :facebook_login #Facebookログイン時
-  validates :name, presence: true, length: { maximum: 50 } # Userテーブルのnameカラム
+  # validates :password, presence: false, on: :facebook_login #Facebookログイン時
+  # validates :name, presence: true, length: { maximum: 50 } # Userテーブルのnameカラム
 
 
   private
