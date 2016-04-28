@@ -44,13 +44,15 @@
       <td><%= restaurant.url %></td>
     </tr>
     <tr>
-      <td></td>
-      <td></td>
-    </tr><%= link_to '[Show]', restaurant %>
+      <td><%= link_to '[Show]', restaurant %>
 <%= link_to '[Edit]', edit_restaurant_path(restaurant) %>
-<%= link_to '[Destroy]', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to '[Destroy]', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td></td>
+    </tr>
+
+    <hr>
+
 <% end %>
+
 </tbody>
 </table>
-
-
