@@ -15,13 +15,13 @@ class User < ActiveRecord::Base
 
   ## user_likeテーブル
   # A:user -> B:user_like(user_id)
-  has_many :sender, class_name: "Message", foreign_key: :sender_id
+  has_many :messages, class_name: "Message", foreign_key: :sender_id
   # A:user -> C:user_like(user_id)
-  # has_many :likes, through: "user_likes"
+  has_many :senders, through: "messages"
   # C:user -> B:user_like(like_id)
-  has_many :receiver, class_name: "Message", foreign_key: :receiver_id
+  has_many :messages, class_name: "Message", foreign_key: :receive_id
   # C:user -> A:user_like(user_id)
-  has_many :likers, through: "user_likers"
+  has_many :receivers, through: "massages"
 
   has_many :restaurants
 

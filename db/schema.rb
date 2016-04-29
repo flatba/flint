@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 20160427102340) do
     t.text     "body"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.integer  "sender"
-    t.integer  "receiver"
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
   end
 
   add_index "messages", ["user_like_id"], name: "index_messages_on_user_like_id"

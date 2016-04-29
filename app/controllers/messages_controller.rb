@@ -1,12 +1,19 @@
 class MessagesController < ApplicationController
 
   def show
-    @userlike = UserLike.where(:id => params[:id]).first
-    matching = @userlike.matching
-    if matching <= 2
+    @userlike = UserLike.find(params[:id])
+    @matching = @userlike.matching
+
+    if @userlike.like.gender == "male"
+      @payment_user = @userlike.like
+    elsif @userlike.liker.gender == "male"
+      @payment_user = @userlike.liker
+    end
+
+    if @matching <= 2
       @user_id = @userlike.user_id
       @like_id = current_user.id
-    elsif matching == 3
+    elsif @matching == 3
       if current_user.gender == "male"
         @user_id = @userlike.user_id
         @like_id = current_user.id
@@ -14,7 +21,7 @@ class MessagesController < ApplicationController
         @user_id = current_user.id
         @like_id = @userlike.like_id
       end
-    elsif matching == 4
+    elsif @matching == 4
       if current_user.gender == "male"
         @user_id = current_user.id
         @like_id = @userlike.like_id

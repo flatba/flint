@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   # メソッドの呼び出し
   get 'addLike' => 'flint#addLike'
+  get 'updateMatch' => 'flint#updateMatch'
+
   get 'match' => 'flint#match'
 
   get 'user' => 'flint#user'

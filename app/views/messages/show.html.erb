@@ -1,26 +1,62 @@
 <h1>メッセージ</h1>
 
 <%= link_to 'Top', "/" %></br>
-
 <hr>
+<p>お店の写真 <%= @userlike.restaurant.image %></p>
+<img src="http://placehold.it/350x150" />
 
-
-<!-- メッセージ表示 -->
-<!-- <h1><%= @messages.count %></h1> -->
-
-<% @messages.each do |message| %>
-	<ul style="list-style:none;">
-		<li><%= message.id %> : <%= message.created_at %></li>
-		<li><%= message.body %></li>
-	</ul>
+<p>おごるかどうか:
+<% if @userlike.matching == 2 %>
+  <%= @payment_user.name %>さんがごちそうしてくれるといってます！
+<% elsif @userlike.matching == 4 %>
+  <%= @payment_user.name %>さんがごちそうしてくれます！
+<% else %>
+  <% if  @userlike.restaurant.payment == 0 %>
+    <%= @payment_user.name %>さんがごちそうしてくれるといってます！
+  <% elsif @userlike.restaurant.payment == 1 %>
+    <%= @payment_user.name %>さんとワリカンでいきましょう！
+  <% else %>
+  <% end %>
 <% end %>
+</p>
 
-<hr>
+<p>店の名前 <%= @userlike.restaurant.name %></p>
+<p>店の評価 <%= @userlike.restaurant.star %></p>
+<p>店の価格 <%= @userlike.restaurant.price %></p>
+<p>お店をすすめている人の写真 <%= @userlike.restaurant.user.thumb %></p>
+<p>お店をすすめている人の名前 <%= @userlike.restaurant.user.name %></p>
 
-<!-- メッセージ入力欄 -->
-<%= form_tag(messages_path(), method: 'post') do %>
-	<input type="text" name="body"></input>
-	<input name="id" type="hidden" value="<%= @userlike.id %>" />
-  <input type="submit" value="send"></input>
+<% if @matching == 1 %>
+  <% if @userlike.like.gender =="male" %>
+    <p class = "btn btn-default"><%= link_to "☓", :controller => "flint", :action => "updateMatch", :userlike_id => @userlike.id, :matching => 0,:method => :post %></p>
+    <p class = "btn btn-default"><%= link_to "ワリカン！", :controller => "flint", :action => "updateMatch", :userlike_id => @userlike.id, :matching => 3,:method => :post %></p>
+    <p class = "btn btn-default"><%= link_to "おごる！", :controller => "flint", :action => "updateMatch", :userlike_id => @userlike.id, :matching => 4,:method => :post %></p>
+  <% elsif @userlike.like.gender =="female" %>
+    <p class = "btn btn-default"><%= link_to "お断りする", :controller => "flint", :action => "updateMatch", :userlike_id => @userlike.id, :matching => 0,:method => :post %></p>
+    <p class = "btn btn-default"><%= link_to "お誘いを受ける", :controller => "flint", :action => "updateMatch", :userlike_id => @userlike.id, :matching => 3,:method => :post %></p>
+  <% else %>
+  <% end %>
+<% elsif @matching == 2 %>
+    <p class = "btn btn-default"><%= link_to "お断りする", :controller => "flint", :action => "updateMatch", :userlike_id => @userlike.id, :matching => 0,:method => :post %></p>
+    <p class = "btn btn-default"><%= link_to "お誘いを受ける", :controller => "flint", :action => "updateMatch", :userlike_id => @userlike.id, :matching => 4,:method => :post %></p>
+<% else %>
+  <!-- メッセージ表示 -->
+  <!-- <h1><%= @messages.count %></h1> -->
+
+  <% @messages.each do |message| %>
+  	<ul style="list-style:none;">
+  		<li><%= message.id %> : <%= message.created_at %></li>
+  		<li><%= message.body %></li>
+  	</ul>
+  <% end %>
+
+  <hr>
+
+  <!-- メッセージ入力欄 -->
+  <%= form_tag(messages_path(), method: 'post') do %>
+  	<input type="text" name="body"></input>
+  	<input name="id" type="hidden" value="<%= @userlike.id %>" />
+    <input type="submit" value="send"></input>
+  <% end %>
+
 <% end %>
-

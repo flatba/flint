@@ -6,4 +6,7 @@ class UserLike < ActiveRecord::Base
   belongs_to :liker, class_name: "User", foreign_key: "user_id"
 
   has_many :messages
+
+  belongs_to :restaurant
+
 end
