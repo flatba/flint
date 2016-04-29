@@ -1,13 +1,9 @@
 <CENTER>
 <h1>Flint Top</h1>
-
   <p>現在ログイン中のユーザのUser. (<%= current_user.id %>, <%= current_user.name %>, <%= current_user.gender %>, <%= current_user.age_range %>)</p>
   <p><%= link_to '通知', notification_path %></p>
 <div class="footer">
     <p><%= link_to "[マッチング一覧]", :controller => "flint", :action => "match", :current => current_user.id, method: :post %>
-  <!-- <li><% if @age %><%= @age %><% end %></li>
-  <a href="http://localhost:3000/?age='a'">パラメータつきりんく</a> -->
-  <!-- </ul> -->
   <%= link_to '[Restaurants]', restaurants_path %>
   <%= link_to '[カレントユーザ情報]', user_path %>
   <%= link_to '[Logout]', destroy_user_session_path, :method => :delete %></br>
