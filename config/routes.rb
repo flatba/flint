@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'match/:id' => 'flint#showMessage'
   post 'messages/:id/' => 'messages#create'
   get 'user' => 'flint#user'
-  get 'show' => 'flint#show'
+  get 'show/:id' => 'flint#show'
 
   get 'notification' => 'notifications#index'
 
