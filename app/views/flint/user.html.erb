@@ -8,7 +8,7 @@
   <div class="row">
     <div class="col-xs-12 col-md-offset-3 col-md-6" style="background-color: white;">
       <div class="thumbnail">
-        <img src= "https://graph.facebook.com/<%= current_user.uid %>/picture?type=large" alt="...">
+        <img src= "<%= @facebook_uid_thumb %>" alt="...">
         <p><strong><%= current_user.name %></strong> , <%= current_user.age_range %>, <%= current_user.gender %> , UserID <%= current_user.id %></p>
         <!-- レストラン情報 -->
         <ul style="list-style:none;">

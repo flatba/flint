@@ -23,14 +23,19 @@ class FlintController < ApplicationController
     	@user_like = UserLike.new
     end
 
+    
     def user
         @current_user_candidates = Restaurant.where(:user_id => current_user.id)
+        facebook_uid = User.find(current_user.id).uid
+        @facebook_uid_thumb = "https://graph.facebook.com/"+ facebook_uid +"/picture?type=large"
     end
-
-    def show
-        # 現在表示されているユーザのレストラン情報のみ表示したい。
+    ### ↑たぶん、userメソッドとshowメソッドは一緒にできる。↓　###
+    def show # クリックされたユーザのレストラン情報とサムネイル画像
         @select_user_candidate = Restaurant.where(:user_id => params[:id])
         @users = User.where(:id => params[:id])
+        facebook_uid = User.find(params[:id]).uid
+        @facebook_uid_thumb = "https://graph.facebook.com/"+ facebook_uid +"/picture?type=large"
+  
     end
 
     def addLike # like側のuser_idとlikeされる側のuser_idをデータベース（user_like）に入れる

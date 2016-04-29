@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'match' => 'flint#match'
 
   get 'user' => 'flint#user'
-  get 'show' => 'flint#show'
+  get 'show/:id' => 'flint#show'
 
   get 'notification' => 'notifications#index'
 
