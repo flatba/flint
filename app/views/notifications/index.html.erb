@@ -1,127 +1,138 @@
-<% if current_user.gender == "male" %>
+<ul>
+
+<p>
+  <% if current_user.gender == "male" %>
   <% @notifications.each do |notification| %>
-    <% if notification.matching == 1 %>
-      <% if notification.liker.id == current_user.id %>
-        <img src="<%= notification.like.thumb %>" />
-        <%= link_to notification.like.name+"さんがあなたと"+notification.restaurant.name+"にいきたがっています！",message_path(notification.id) %>
-      <% elsif notification.like.id == current_user.id %>
-        <img src="<%= notification.liker.thumb %>" />
-        <%= link_to notification.liker.name+"さんがあなたと"+notification.restaurant.name+"にいきたがっています！",message_path(notification.id) %>
-      <% end %>
-      
+  <% if notification.matching == 1 %>
+  <% if notification.liker.id == current_user.id %>
+  <img src="<%= notification.like.thumb %>" width="200" />
+  <%= link_to notification.like.name+"さんがあなたと"+notification.restaurant.name+"にいきたがっています！",message_path(notification.id) %>
+  <% elsif notification.like.id == current_user.id %>
+  <img src="<%= notification.liker.thumb %>" width="200" />
+  <%= link_to notification.liker.name+"さんがあなたと"+notification.restaurant.name+"にいきたがっています！",message_path(notification.id) %>
+  <% end %>
+</p>
 
-    <% elsif notification.matching == 2 %>
+  <% elsif notification.matching == 2 %>
+<p>
+  <% if notification.liker.id == current_user.id %>
+  <img src="<%= notification.like.thumb %>" width="200" />
+  <%= link_to notification.like.name+"さんがあなたと"+notification.restaurant.name+"にいきたがっています！",message_path(notification.id) %>
+  <% elsif notification.like.id == current_user.id %>
+  <img src="<%= notification.liker.thumb %>" width="200" />
+  <%= link_to notification.liker.name+"さんがあなたと"+notification.restaurant.name+"にいきたがっています！",message_path(notification.id) %>
+  <% end %>
+</p>
 
-      <% if notification.liker.id == current_user.id %>
-        <img src="<%= notification.like.thumb %>" />
-        <%= link_to notification.like.name+"さんがあなたと"+notification.restaurant.name+"にいきたがっています！",message_path(notification.id) %>
-      <% elsif notification.like.id == current_user.id %>
-        <img src="<%= notification.liker.thumb %>" />
-        <%= link_to notification.liker.name+"さんがあなたと"+notification.restaurant.name+"にいきたがっています！",message_path(notification.id) %>
-      <% end %>
-      
-
-    <% elsif notification.matching == 3 %>
-
-      <% if notification.liker.id == current_user.id %>
-        <img src="<%= notification.like.thumb %>" />
-      <% elsif notification.like.id == current_user.id %>
-        <img src="<%= notification.liker.thumb %>" />
-      <% end %>
-
-      <% if notification.messages.count == 0 %>
-        <% if notification.liker.id == current_user.id %>
-          <%= link_to notification.like.name+"さんと[ワリカン]でマッチしました！",message_path(notification.id) %>
-        <% elsif notification.like.id == current_user.id %>
-          <%= link_to notification.liker.name+"さんと[ワリカン]でマッチしました！",message_path(notification.id) %>
-        <% end %>
-      <% else %>
-        <%= link_to notification.messages.last.body, message_path(notification.id) %>
-      <% end %>
-
-    <% elsif notification.matching == 4 %>
-
-      <% if notification.liker.id == current_user.id %>
-        <img src="<%= notification.like.thumb %>" />
-      <% elsif notification.like.id == current_user.id %>
-        <img src="<%= notification.liker.thumb %>" />
-      <% end %>
-
-      <% if notification.messages.count == 0 %>
-        <% if notification.liker.id == current_user.id %>
-          <%= link_to notification.like.name+"さんと[おごる]でマッチしました！",message_path(notification.id) %>
-        <% elsif notification.like.id == current_user.id %>
-          <%= link_to notification.liker.name+"さんと[おごる]でマッチしました！",message_path(notification.id) %>
-        <% end %>
-
-      <% else %>
-        <%= link_to notification.messages.last.body,message_path(notification.id) %>
-      <% end %>
-
-    <% end %>
+  <% elsif notification.matching == 3 %>
+<p>
+  <% if notification.liker.id == current_user.id %>
+  <img src="<%= notification.like.thumb %>" width="200" />
+  <% elsif notification.like.id == current_user.id %>
+  <img src="<%= notification.liker.thumb %>" width="200" />
   <% end %>
 
-<% elsif current_user.gender == "female" %>
+  <% if notification.messages.count == 0 %>
+  <% if notification.liker.id == current_user.id %>
+  <%= link_to notification.like.name+"さんと[ワリカン]でマッチしました！",message_path(notification.id) %>
+  <% elsif notification.like.id == current_user.id %>
+  <%= link_to notification.liker.name+"さんと[ワリカン]でマッチしました！",message_path(notification.id) %>
+  <% end %>
+  <% else %>
+  <%= link_to notification.messages.last.body, message_path(notification.id) %>
+  <% end %>
+</p>
+
+<p>
+  <% elsif notification.matching == 4 %>
+
+  <% if notification.liker.id == current_user.id %>
+  <img src="<%= notification.like.thumb %>" width="200" />
+  <% elsif notification.like.id == current_user.id %>
+  <img src="<%= notification.liker.thumb %>" width="200" />
+  <% end %>
+
+  <% if notification.messages.count == 0 %>
+  <% if notification.liker.id == current_user.id %>
+  <%= link_to notification.like.name+"さんと[おごる]でマッチしました！",message_path(notification.id) %>
+  <% elsif notification.like.id == current_user.id %>
+  <%= link_to notification.liker.name+"さんと[おごる]でマッチしました！",message_path(notification.id) %>
+  <% end %>
+
+  <% else %>
+  <%= link_to notification.messages.last.body,message_path(notification.id) %>
+  <% end %>
+
+  <% end %>
+  <% end %>
+
+  <% elsif current_user.gender == "female" %>
   <% @notifications.each do |notification| %>
 
-    <% if notification.matching == 1 %>
+  <% if notification.matching == 1 %>
 
-      <% if notification.liker.id == current_user.id %>
-        <img src="<%= notification.like.thumb %>" />
-        <%= link_to notification.like.name+"さんがあなたと"+notification.restaurant.name+"にいきたがっています！",message_path(notification.id) %>
-      <% elsif notification.like.id == current_user.id %>
-        <img src="<%= notification.liker.thumb %>" />
-        <%= link_to notification.liker.name+"さんがあなたと"+notification.restaurant.name+"にいきたがっています！",message_path(notification.id) %>
-      <% end %>
-      
+  <% if notification.liker.id == current_user.id %>
+  <img src="<%= notification.like.thumb %>" width="200" />
+  <%= link_to notification.like.name+"さんがあなたと"+notification.restaurant.name+"にいきたがっています！",message_path(notification.id) %>
+  <% elsif notification.like.id == current_user.id %>
+  <img src="<%= notification.liker.thumb %>" width="200" />
+  <%= link_to notification.liker.name+"さんがあなたと"+notification.restaurant.name+"にいきたがっています！",message_path(notification.id) %>
+  <% end %>
+</p>
 
-    <% elsif notification.matching == 2 %>
+<p>
+  <% elsif notification.matching == 2 %>
 
-      <% if notification.liker.id == current_user.id %>
-        <img src="<%= notification.like.thumb %>" />
-        <%= link_to notification.like.name+"さんがあなたを"+notification.restaurant.name+"にご招待しています！（おごってもらえるチャンスかも？）",message_path(notification.id) %>
-      <% elsif notification.like.id == current_user.id %>
-        <img src="<%= notification.liker.thumb %>" />
-        <%= link_to notification.liker.name+"さんがあなたを"+notification.restaurant.name+"にご招待しています！（おごってもらえるチャンスかも？）",message_path(notification.id) %>
-      <% end %>
-      
+  <% if notification.liker.id == current_user.id %>
+  <img src="<%= notification.like.thumb %>" width="200" />
+  <%= link_to notification.like.name+"さんがあなたを"+notification.restaurant.name+"にご招待しています！（おごってもらえるチャンスかも？）",message_path(notification.id) %>
+  <% elsif notification.like.id == current_user.id %>
+  <img src="<%= notification.liker.thumb %>" width="200" />
+  <%= link_to notification.liker.name+"さんがあなたを"+notification.restaurant.name+"にご招待しています！（おごってもらえるチャンスかも？）",message_path(notification.id) %>
+  <% end %>
+</p>
 
-    <% elsif notification.matching == 3 %>
+<p>
+  <% elsif notification.matching == 3 %>
 
-      <% if notification.liker.id == current_user.id %>
-        <img src="<%= notification.like.thumb %>" />
-      <% elsif notification.like.id == current_user.id %>
-        <img src="<%= notification.liker.thumb %>" />
-      <% end %>
+  <% if notification.liker.id == current_user.id %>
+  <img src="<%= notification.like.thumb %>" width="200" />
+  <% elsif notification.like.id == current_user.id %>
+  <img src="<%= notification.liker.thumb %>" width="200" />
+  <% end %>
 
-      <% if notification.messages.count == 0 %>
-        <% if notification.like.id == current_user.id %>
-          <%= link_to notification.liker.name+"さんオススメのレストラン"+notification.restaurant.name+"とマッチしました！",message_path(notification.id) %>
-        <% elsif notification.like.id == current_user.id %>
-          <%= link_to notification.liker.name+"さんと[ワリカン]でマッチしました！",message_path(notification.id) %>
-        <% end %>
-      <% else %>
-        <p><%= link_to notification.messages.last.body,message_path(notification.id) %>
-      <% end %>
+  <% if notification.messages.count == 0 %>
+  <% if notification.like.id == current_user.id %>
+  <%= link_to notification.liker.name+"さんオススメのレストラン"+notification.restaurant.name+"とマッチしました！",message_path(notification.id) %>
+  <% elsif notification.like.id == current_user.id %>
+  <%= link_to notification.liker.name+"さんと[ワリカン]でマッチしました！",message_path(notification.id) %>
+  <% end %>
+  <% else %>
+  <%= link_to notification.messages.last.body,message_path(notification.id) %>
+    <% end %>
+</p>
 
+<p>
     <% elsif notification.matching == 4 %>
 
-      <% if notification.liker.id == current_user.id %>
-        <img src="<%= notification.like.thumb %>" />
-      <% elsif notification.like.id == current_user.id %>
-        <img src="<%= notification.liker.thumb %>" />
-      <% end %>
+    <% if notification.liker.id == current_user.id %>
+    <img src="<%= notification.like.thumb %>" width="200" />
+    <% elsif notification.like.id == current_user.id %>
+    <img src="<%= notification.liker.thumb %>" width="200" />
+    <% end %>
 
-      <% if notification.messages.count == 0 %>
-        <% if notification.liker.id == current_user.id %>
-          <%= link_to notification.like.name+"さんオススメのレストラン"+notification.restaurant.name+"とマッチしました！おごってもらえるチャンス♡",message_path(notification.id) %>
-        <% elsif notification.like.id == current_user.id %>
-          <%= link_to notification.liker.name+"さんオススメのレストラン"+notification.restaurant.name+"とマッチしました！おごってもらえるチャンス♡",message_path(notification.id) %>
-        <% end %>
-      <% else %>
-        <%= link_to notification.messages.last.body,message_path(notification.id) %>
-      <% end %>
+    <% if notification.messages.count == 0 %>
+    <% if notification.liker.id == current_user.id %>
+    <%= link_to notification.like.name+"さんオススメのレストラン"+notification.restaurant.name+"とマッチしました！おごってもらえるチャンス♡",message_path(notification.id) %>
+    <% elsif notification.like.id == current_user.id %>
+    <%= link_to notification.liker.name+"さんオススメのレストラン"+notification.restaurant.name+"とマッチしました！おごってもらえるチャンス♡",message_path(notification.id) %>
+    <% end %>
+    <% else %>
+    <%= link_to notification.messages.last.body,message_path(notification.id) %>
+    <% end %>
 
     <% end %>
-  <% end %>
-<% end %>
+    <% end %>
+    <% end %>
+</p>
+</ul>
