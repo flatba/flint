@@ -14,8 +14,9 @@ class FlintController < ApplicationController
         end
         #ログインユーザーが、既にselectしている異性レストランid一覧を取得
         selected_gender_restraunt_id = UserLike.select(:restaurant_id).where(:user_id => current_user.id, :like_id => gender_like_id)
+        same_gender_id = User.select(:id).where(:gender => current_user.gender)
         #selectされていない異性レストラン一覧を取得
-        @candidates = Restaurant.where.not(:id => selected_gender_restraunt_id).where.not(:user_id => current_user.id)
+        @candidates = Restaurant.where.not(:id => selected_gender_restraunt_id).where.not(:user_id => same_gender_id)
     end
 
     def new
