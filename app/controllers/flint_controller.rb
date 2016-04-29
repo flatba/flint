@@ -66,6 +66,11 @@ class FlintController < ApplicationController
         end
     end
 
+    def updateMatch
+        UserLike.find(params[:userlike_id]).update(:matching => params[:matching])
+        redirect_to root_path
+    end
+
   #ログイン中ユーザーのマッチした一覧を表示
   def match
     @matches = UserLike.where(:user_id => current_user.id, :matching => 1)
