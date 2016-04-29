@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
 
   def show
+
     @userlike = UserLike.find(params[:id])
     @matching = @userlike.matching
 
@@ -33,6 +34,7 @@ class MessagesController < ApplicationController
       render text: "something wrong"
     end
       @messages = Message.where(:user_like_id => @userlike.id)
+
   end
 
   # 書き込み

@@ -72,9 +72,10 @@ CSV.foreach('db/csv/user_like.csv') do |row|
   UserLike.create(
   	:user_id => row[0],
 	:like_id => row[1],
-	:matching => row[2],	
-	:created_at => row[3],
-	:updated_at => row[4],
+	:matching => row[2],
+  :restaurant_id => row[3],	
+	:created_at => row[4],
+	:updated_at => row[5]
   	)
 end
 
