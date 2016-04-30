@@ -1,4 +1,9 @@
 class RestaurantsController < ApplicationController
+  require 'net/http'
+  require "open-uri"
+  require 'nokogiri'
+  require 'logger'
+
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
   # GET /restaurants
@@ -27,7 +32,48 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(restaurant_params)
     if @restaurant.save
-      redirect_to root_path
+    
+      # redirect_to root_path
+
+    # スクレイピング先のURL
+    restaurant_url = Restaurant.last.url
+    
+
+    charset = nil
+    html = open(restaurant_url) do |f|
+      charset = f.charset # 文字種別を取得
+      f.read # htmlを読み込んで変数htmlに渡す
+    end
+
+    # htmlをパース(解析)してオブジェクトを生成
+    doc = Nokogiri::HTML.parse(html, nil, charset)
+
+    # 店舗名
+    name =  doc.title
+    # カテゴリー
+    category = doc.xpath('//p/span[@property="v:category"][1]/text()').to_s
+    # 価格帯
+    price = doc.xpath('//dd[@class="rdhead-budget__price"]/a[@class]/text()').to_s
+    price = price[1..price.index("～")-1].delete(",").to_i
+    # 評価
+    star = doc.xpath('//strong[@class="score"]/span/text()').to_s
+    # エリア
+    area = doc.xpath('//div[@class="parent"]/p/a[1]/text()').first
+    # イメージ
+    # image = doc.xpath('//meta[@property="og:image"]').attribute("content").value
+    image = doc.xpath('//li[@class="mainphoto-box"]/img[@class="mainphoto-image"]').attribute("src").value
+
+    @restaurant.update(
+      :name => name,
+      :category => category,
+      :price => price,
+      :star => star,
+      :area => area,
+      :image => image
+      )
+
+    redirect_to root_path
+    
     else
       render 'new'
     end
@@ -37,7 +83,7 @@ class RestaurantsController < ApplicationController
   # PATCH/PUT /restaurants/1.json
   def update
       if @restaurant.update(restaurant_params)
-        redirect_to root_path
+        
       else
         render 'edit'
       end
