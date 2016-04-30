@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   get 'notification' => 'notifications#index'
 
+  get 'create/:url' => "restaurant#create"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

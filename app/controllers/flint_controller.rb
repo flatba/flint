@@ -25,9 +25,16 @@ class FlintController < ApplicationController
 
     
     def user
+        facebook_uid = nil
         @current_user_candidates = Restaurant.where(:user_id => current_user.id)
         facebook_uid = User.find(current_user.id).uid
+        
+        if facebook_uid == nil
+            redirect_to root_path
+        else
         @facebook_uid_thumb = "https://graph.facebook.com/"+ facebook_uid +"/picture?type=large"
+        end
+
     end
     ### ↑たぶん、userメソッドとshowメソッドは一緒にできる。↓　###
     def show # クリックされたユーザのレストラン情報とサムネイル画像
