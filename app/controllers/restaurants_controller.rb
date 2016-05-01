@@ -32,12 +32,8 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(restaurant_params)
     if @restaurant.save
-    
-      # redirect_to root_path
-
     # スクレイピング先のURL
     restaurant_url = Restaurant.last.url
-    
 
     charset = nil
     html = open(restaurant_url) do |f|
