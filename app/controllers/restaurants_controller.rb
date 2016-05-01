@@ -59,8 +59,6 @@ class RestaurantsController < ApplicationController
     # image = doc.xpath('//meta[@property="og:image"]').attribute("content").value
     image = doc.xpath('//li[@class="mainphoto-box"]/img[@class="mainphoto-image"]').attribute("src").value
 
-    render :text => name
-
     @restaurant.update(
       :name => name,
       :category => category,
@@ -70,7 +68,7 @@ class RestaurantsController < ApplicationController
       :image => image
       )
 
-    # redirect_to root_path
+    redirect_to root_path
     
     else
       render 'new'
