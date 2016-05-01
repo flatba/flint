@@ -19,9 +19,13 @@ gem 'ffaker'
 gem 'rails', '4.2.6'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', group: :development
-# 本番ではpostgressを使用する
-gem 'pg', group: :production
+group :development do
+  gem 'sqlite3'
+end
+group :production do
+  gem 'pg'
+  gem 'rails_12factor' # Rails4がHerokuでうまく動くようにするためのライブラリ
+end
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
