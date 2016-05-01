@@ -32,12 +32,8 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(restaurant_params)
     if @restaurant.save
-    
-      # redirect_to root_path
-
     # スクレイピング先のURL
     restaurant_url = Restaurant.last.url
-    
 
     charset = nil
     html = open(restaurant_url) do |f|
@@ -63,6 +59,8 @@ class RestaurantsController < ApplicationController
     # image = doc.xpath('//meta[@property="og:image"]').attribute("content").value
     image = doc.xpath('//li[@class="mainphoto-box"]/img[@class="mainphoto-image"]').attribute("src").value
 
+    render :text => name
+
     @restaurant.update(
       :name => name,
       :category => category,
@@ -72,7 +70,7 @@ class RestaurantsController < ApplicationController
       :image => image
       )
 
-    redirect_to root_path
+    # redirect_to root_path
     
     else
       render 'new'
