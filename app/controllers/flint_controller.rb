@@ -10,7 +10,11 @@ class FlintController < ApplicationController
             #異性のid一覧を取得
             gender_like_id = User.select(:id).where(:gender => "male")
         else
-            render :text => current_user.gender + ' ' + current_user.name + ' ' + current_user.id
+            if curretn_user 
+                redirect_to user_session_path
+            else
+                render :text => "something wrong"
+            end
 
         end
         #ログインユーザーが、既にselectしている異性レストランid一覧を取得
