@@ -61,7 +61,7 @@ class RestaurantsController < ApplicationController
     area = doc.xpath('//div[@class="parent"]/p/a[1]/text()').first
     # イメージ
     # image = doc.xpath('//meta[@property="og:image"]').attribute("content").value
-    image = doc.xpath('//li[@class="mainphoto-box"]/img[@class="mainphoto-image"]').attribute("src").value
+    # image = doc.xpath('//li[@class="mainphoto-box"]/img[@class="mainphoto-image"]').attribute("src").value
 
     @restaurant.update(
       :name => name,
@@ -69,7 +69,7 @@ class RestaurantsController < ApplicationController
       :price => price,
       :star => star,
       :area => area,
-      :image => image
+      # :image => image
       )
 
     redirect_to root_path
