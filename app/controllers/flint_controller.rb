@@ -3,6 +3,7 @@ class FlintController < ApplicationController
 	# helper_method :addLike
 
 	def index
+        render :text => "ここまできてる"
         if current_user.gender == "male"
             #異性のid一覧を取得
             gender_like_id = User.select(:id).where(:gender => "female")
@@ -10,9 +11,7 @@ class FlintController < ApplicationController
             #異性のid一覧を取得
             gender_like_id = User.select(:id).where(:gender => "male")
         else
-            logger.debug "-@-@-@-@-@-@-@--@-@-@-@-@-@-@--@-@-@-@-@-@-@--@-@-@-@-@-@-@--@-@-@-@-@-@-@--@-@-@-@-@-@-@--@-@-@-@-@-@-@--@-@-@-@-@-@-@--@-@-@-@-@-@-@--@-@-@-@-@-@-@--@-@-@-@-@-@-@--@-@-@-@-@-@-@--@-@-@-@-@-@-@--@-@-@-@-@-@-@--@-@-@-@-@-@-@--@-@-@-@-@-@-@--@-@-@-@-@-@-@--@-@-@-@-@-@-@--@-@-@-@-@-@-@--@-@-@-@-@-@-@-"
-            logger.debug current_user
-            render :text => "Something Wrong."
+            # render :text => "Something Wrong 111111."
 
         end
         #ログインユーザーが、既にselectしている異性レストランid一覧を取得
