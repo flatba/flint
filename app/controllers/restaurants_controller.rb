@@ -33,7 +33,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
     if @restaurant.save
     # # スクレイピング先のURL
-    restaurant_url = Restaurant.last.url
+    # restaurant_url = Restaurant.last.url
 
     # # charset = nil
     # # html = open(restaurant_url) do |f|
@@ -68,21 +68,21 @@ class RestaurantsController < ApplicationController
     # yelpのスクレイピング先のURL
     # url = 'https://www.yelp.co.jp/biz/%E3%83%8B%E3%83%A5%E3%83%BC%E3%83%A8%E3%83%BC%E3%82%AF-%E3%82%B0%E3%83%AA%E3%83%AB-%E6%96%B0%E5%AE%BF%E5%8C%BA'
 
-    opt = {}
-    opt['User-Agent'] = 'Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 '
+url = Restaurant.last.url
 
-    charset = nil
-    html = open(url,opt) do |f|
-      charset = f.charset # 文字種別を取得
-      f.read # htmlを読み込んで変数htmlに渡す
-    end
+opt = {}
+opt['User-Agent'] = 'Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 '
 
-    # htmlをパース(解析)してオブジェクトを生成
-    doc = Nokogiri::HTML.parse(html, nil, charset)
+charset = nil
+html = open(url,opt) do |f|
+  charset = f.charset # 文字種別を取得
+  f.read # htmlを読み込んで変数htmlに渡す
+end
 
-    # 店舗名
-    title =  doc.title
-    puts title
+# htmlをパース(解析)してオブジェクトを生成
+doc = Nokogiri::HTML.parse(html, nil, charset)
+# 店舗名
+name =  doc.title
 
     @restaurant.update(
       :name => name,
