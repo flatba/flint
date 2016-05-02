@@ -35,14 +35,18 @@ class RestaurantsController < ApplicationController
     # スクレイピング先のURL
     restaurant_url = Restaurant.last.url
 
-    charset = nil
-    html = open(restaurant_url) do |f|
-      charset = f.charset # 文字種別を取得
-      f.read # htmlを読み込んで変数htmlに渡す
-    end
+    # charset = nil
+    # html = open(restaurant_url) do |f|
+    #   charset = f.charset # 文字種別を取得
+    #   f.read # htmlを読み込んで変数htmlに渡す
+    # end
+
+    # Heroku用にopen-uriの記述を追加
+    url_text = Net::HTTP.get(URI.parse restaurant_url)
+    doc = Nokogiri::HTML(url_text)
 
     # htmlをパース(解析)してオブジェクトを生成
-    doc = Nokogiri::HTML.parse(html, nil, charset)
+    # doc = Nokogiri::HTML.parse(html, nil, charset)
 
     # 店舗名
     name =  doc.title
@@ -50,7 +54,7 @@ class RestaurantsController < ApplicationController
     category = doc.xpath('//p/span[@property="v:category"][1]/text()').to_s
     # 価格帯
     price = doc.xpath('//dd[@class="rdhead-budget__price"]/a[@class]/text()').to_s
-    price = price[1..price.index("～")-1].delete(",").to_i
+    # price = price[1..price.index("～")-1].delete(",").to_i
     # 評価
     star = doc.xpath('//strong[@class="score"]/span/text()').to_s
     # エリア
