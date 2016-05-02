@@ -29,6 +29,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+url_text = Net::HTTP.get(URI.parse "http://www.w3schools.com/xml/note.xml")
+doc = Nokogiri::XML(url_text)
 
 
 end
