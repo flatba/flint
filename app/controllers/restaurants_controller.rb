@@ -120,7 +120,7 @@ class RestaurantsController < ApplicationController
     price = doc.xpath('//dd[@class="nowrap price-description"]/text()').to_s
     price_head = price.index("￥")
     price_tail = price.index("以上")
-    price = price[price_head+1..price_tail-1].delete(",")
+    price = price[price_head+1..price_tail-1].delete(",").to_i
     puts price
     # 評価
     star = doc.xpath('//i[@class="star-img stars_4"]').attribute("title").value
