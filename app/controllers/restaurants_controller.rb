@@ -120,8 +120,14 @@ class RestaurantsController < ApplicationController
     price = doc.xpath('//dd[@class="nowrap price-description"]/text()').to_s
     price_head = price.index("￥")
     price_tail = price.index("以上")
+
+    if price.count("-") > 0
+      price_tail = price.index("-")
+    end
+
     price = price[price_head+1..price_tail-1].delete(",").to_i
     puts price
+    
     # 評価
     star = doc.xpath('//i[@class="star-img stars_4"]').attribute("title").value
     star_num = star.index("星")
@@ -147,7 +153,7 @@ class RestaurantsController < ApplicationController
     ######################################################################
 
     @restaurant.update(
-      :name => name,
+      :name => title,
       :category => category,
       :price => price,
       :star => star,
