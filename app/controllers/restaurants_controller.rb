@@ -119,15 +119,21 @@ class RestaurantsController < ApplicationController
     # 価格帯
     price = doc.xpath('//dd[@class="nowrap price-description"]/text()').to_s
     price_head = price.index("￥")
-    price_tail = price.index("以上")
-
-    if price.count("-") > 0
+    
+    if price.count("以") > 0
+      price_tail = price.index("以上")
+    elsif price.count("-") > 0
       price_tail = price.index("-")
+    elsif 
+      price_tail = nil
     end
 
-    price = price[price_head+1..price_tail-1].delete(",").to_i
+    if price_tail != nil
+      price = price[price_head+1..price_tail-1].delete(",").to_i
+    end
+
     puts price
-    
+
     # 評価
     star = doc.xpath('//i[@class="star-img stars_4"]').attribute("title").value
     star_num = star.index("星")
