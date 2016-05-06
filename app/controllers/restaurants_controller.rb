@@ -47,13 +47,30 @@ class RestaurantsController < ApplicationController
     # # htmlをパース(解析)してオブジェクトを生成
     # doc = Nokogiri::HTML.parse(html, nil, charset)
 
+    # # スクレイピング先のURL
+    # restaurant_url = Restaurant.last.url
+
+    # # charset = nil
+    # # html = open(restaurant_url) do |f|
+    # #   charset = f.charset # 文字種別を取得
+    # #   f.read # htmlを読み込んで変数htmlに渡す
+    # # end
+
+    # # Heroku用にopen-uriの記述を追加
+    # url_text = Net::HTTP.get(URI.parse restaurant_url)
+    # doc = Nokogiri::HTML(url_text)
+
+    # # htmlをパース(解析)してオブジェクトを生成
+    # # doc = Nokogiri::HTML.parse(html, nil, charset)
+
+
     # # 店舗名
     # name =  doc.title
     # # カテゴリー
     # category = doc.xpath('//p/span[@property="v:category"][1]/text()').to_s
     # # 価格帯
     # price = doc.xpath('//dd[@class="rdhead-budget__price"]/a[@class]/text()').to_s
-    # price = price[1..price.index("～")-1].delete(",").to_i
+    # # price = price[1..price.index("～")-1].delete(",").to_i
     # # 評価
     # star = doc.xpath('//strong[@class="score"]/span/text()').to_s
     # # エリア
@@ -66,10 +83,18 @@ class RestaurantsController < ApplicationController
     ######################################################################
     # yelp
     ######################################################################
+    # # image = doc.xpath('//li[@class="mainphoto-box"]/img[@class="mainphoto-image"]').attribute("src").value
+
+    # yelpのスクレイピング先のURL
+    # url = 'https://www.yelp.co.jp/biz/%E3%83%8B%E3%83%A5%E3%83%BC%E3%83%A8%E3%83%BC%E3%82%AF-%E3%82%B0%E3%83%AA%E3%83%AB-%E6%96%B0%E5%AE%BF%E5%8C%BA'
+
+    url = Restaurant.last.url
+
     opt = {}
     opt['User-Agent'] = 'Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 '
 
     charset = nil
+
     html = open(restaurant_url,opt) do |f|
       charset = f.charset # 文字種別を取得
       f.read # htmlを読み込んで変数htmlに渡す
@@ -83,6 +108,7 @@ class RestaurantsController < ApplicationController
     title_num =  doc.title.index("-")
     title = title[0..title_num-2]
     puts title
+
     # # カテゴリー
     category = doc.xpath('//span[@class="category-str-list"]/a[1]/text()').to_s
     # category2 = doc.xpath('//span[@class="category-str-list"]/a[2]/text()').to_s
