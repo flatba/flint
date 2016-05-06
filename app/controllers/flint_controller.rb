@@ -12,6 +12,11 @@ class FlintController < ApplicationController
         else
             render :text => "Something Wrong."
         end
+            if current_user == nil
+                    redirect_to user_session_path
+                else
+                    render :text => "something wrong"
+        end
         #ログインユーザーが、既にselectしている異性レストランid一覧を取得
         selected_gender_restraunt_id = UserLike.select(:restaurant_id).where(:user_id => current_user.id, :like_id => gender_like_id)
         same_gender_id = User.select(:id).where(:gender => current_user.gender)
