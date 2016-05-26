@@ -1,40 +1,157 @@
-<center>
-<h1>ユーザ個別詳細ページ</h1>
-<%= link_to '[Top]', "/" %></br>
-
-<!-- ユーザ情報 -->
-<ul>
+<!-- 選択したユーザの詳細情報 -->
 <% @select_user_candidate.each do |candidate| %>
-	<% @users.each do |user| %>
+<div class="container">
     <div class="row">
-      <div class="col-xs-12 col-md-offset-3 col-md-6" style="background-color: white;">
-        <div class="thumbnail">
-          <img src= "<%= @facebook_uid_thumb %>" alt="...">
-          	<p><strong><%= user.name %></strong> , <%= user.age_range %>, <%= user.gender %> , UserID <%= user.id %></p>
-    <% end %>
+      <div class="col-md-6 col-md-offset-3">
+        <div class="main">
+          <div class="fem-profile">
 
-        <!-- レストラン情報 -->
-        <ul style="list-style:none;">
-        	<li><img src="<%= candidate.image %>" width="200" alt="..."></li>
-            <li>店舗名：<%= candidate.name %></li>
-            <li>カテゴリ：<%= candidate.category %></li>
-            <li>価格帯：<%= candidate.price %>~</li>
-            <li>評価：<%= candidate.star %></li>
-            <li>エリア：<%= candidate.area %></li>
-            <li>
-              <% if candidate.payment == 0 %>
-                payment:奢るよ！
-              <% elsif candidate.payment == 1 %>
-                payment:割り勘で！
-              <% end %>
-            </li>
-            <li>一言コメント：<%= candidate.comment %></li>
-        
-        </ul>
+          <% @users.each do |user| %>
+            <div class="fem-profile-part-1">
+              <img src="<%= @facebook_uid_thumb %>" alt="" />
+            </div>
+            <div class="fem-profile-part-2">
+              <h4>
+                <strong><%= user.name %></strong>.<%= user.age_range %> <img src="/assets/group.png" alt="" class="name-img" />
+              </h4>
+              <p>
+                <%= user.gender %> , UserID <%= user.id %>
+              </p>
+              <p>
+                Aenean fringilla et massa justo curabitur ultricies fringilla. Proin vehicula feugiat taciti mattis condimentum dolor. Porttitor habitasse aptent felis eleifend ridiculus ipsum elit urna lectus dignissim massa sagittis tempor sit.
+              </p>
+            </div>
+            <div class="fem-profile-part-2">
+              <h4>共通の友人</h4>
+              <ul class="woman-pick-list">
+                <li>
+                  <img src="/assets/girl1.jpg" alt="..." class="img-circle">
+                </li>
+                <li>
+                  <img src="/assets/girl2.jpg" alt="..." class="img-circle">
+                </li>
+                <li>
+                  <img src="/assets/girl3.jpg" alt="..." class="img-circle">
+                </li>
+              </ul>
+            </div>
+            <div class="fem-profile-part-2">
+              <h4>レストラン</h4>
+            </div>
+            <img src="<%= candidate.image %>" alt="image" />
+            <div class="fem-profile-part-2">
+              <div class="male-msg-top-text">
+                <h4><%= candidate.name %></h4>
+                <ul class="woman-pick-list">
+                  <li>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                  </li>
+                  <li>
+                    <%= candidate.star %>
+                  </li>
+                  <li>
+                    <div class="woman-pick-profile">
+                    <div class="woman-pick-profile-text">
+                      <% if candidate.payment == 0 %>
+                          奢るよ！
+                      <% elsif candidate.payment == 1 %>
+                          割り勘で！
+                      <% else %>
+
+                      <% end %>
+                    </div>
+                    </div>
+                  </li>
+                </ul>
+                <ul class="woman-pick-list">
+                  <li>
+                    <span class="border-text">カテゴリ</span>
+                    <span><%= candidate.category %></span>
+                  </li>
+                  <li>
+                    <span class="border-text">価格帯</span>
+                    <span><%= candidate.price %>~</span>
+                  </li>
+                  <li>
+                    <span class="border-text">エリア</span>
+                    <span><%= candidate.area %></span>
+                  </li>
+                </ul>
+
+
+                <!-- 男性だった場合の選択ボタン -->
+                <% if current_user.gender == "male" %>
+                <div class="fem-profile-table">
+                  <div class="fem-profile-table-img">
+                    <img src="/assets/girl1.jpg" alt="..." class="img-circle">
+                  </div>
+                  <div class="fem-profile-table-textarea">
+                    <textarea class="form-control" rows="3" cols="80"></textarea>
+                    <%= candidate.comment %>
+                  </div>
+                </div>
+                <div class="cir-btn-table" style="padding-top: 20px">
+                  <div class="cir-btn-table-cell">
+                    <div class="cir-btn cir-btn-blue">
+                      <!-- <i class="fa fa-times" aria-hidden="true"></i> -->
+                      <%= link_to "✕", :controller => "flint", :action => "addLike", :l_id => candidate.user_id, :matching => 0,:restaurant_id => candidate.id, :matching => 0, :method => :post %>
+                    </div>
+                    <p>行かない</p>
+                  </div>
+                  <div class="cir-btn-table-cell">
+                    <div class="cir-btn cir-btn-red">
+                      <!-- <i class="fa fa-heart" aria-hidden="true"></i> -->
+                      <%= link_to "◯", :controller => "flint", :action => "addLike", :l_id => candidate.user_id, :restaurant_id => candidate.id, :matching => 1, :matching => 1, :method => :post %>
+                    </div>
+                    <p>ワリカン！</p>
+                  </div>
+                  <div class="cir-btn-table-cell">
+                    <div class="cir-btn cir-btn-orange">
+                      <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
+                      <%= link_to "♡", :controller => "flint", :action => "addLike", :l_id => candidate.user_id, :restaurant_id => candidate.id, :matching => 2, :method => :post %>
+                    </div>
+                    <p>奢るよ！</p>
+                  </div>
+                </div>
+
+                <!-- 女性だった場合の選択ボタン -->
+                <% elsif current_user.gender == "female" %>
+                <div class="cir-btn-table">
+                  <div class="cir-btn-table-cell">
+                    <div class="cir-btn cir-btn-blue">
+                      <!-- <i class="fa fa-times" aria-hidden="true"></i> -->
+                      <%= link_to "✕", :controller => "flint", :action => "addLike", :l_id => candidate.user_id, :restaurant_id => candidate.id, :matching => 0, :method => :post , :class => " fa fa-heart" %>
+                    </div>
+                    <p>行かない</p>
+                  </div>
+                  <div class="cir-btn-table-cell">
+                    <div class="cir-btn cir-btn-red">
+                      <!-- <i class="fa fa-heart" aria-hidden="true"></i> -->
+                      <%= link_to "◯", :controller => "flint", :action => "addLike", :l_id => candidate.user_id, :restaurant_id => candidate.id, :matching => 1, :method => :post, :class => " fa fa-heart" %>
+                    </div>
+                    <p>行きたい</p>
+                  </div>
+                </div>
+                <% end %>
+
+
+
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+    </div>
+  </div>
+  <% end %>
 
-        <!-- 男女別選択肢ボタン -->
-        <% if current_user.gender == "male" %>
+
+   <!-- 男女別選択肢ボタン -->
+        <!--<% if current_user.gender == "male" %>
           <p class = "btn btn-default"><%= link_to "☓", :controller => "flint", :action => "addLike", :u_id => current_user.id, :l_id => candidate.user, :restaurant_id => 0, :method => :post %></p>
 
           <p class = "btn btn-default"><%= link_to "ワリカン！", :controller => "flint", :action => "addLike", :u_id => current_user.id, :l_id => candidate.user, :restaurant_id => 1, :method => :post %></p>
@@ -45,10 +162,7 @@
           <p class = "btn btn-default"><%= link_to "☓", :controller => "flint", :action => "addLike", :u_id => current_user.id, :l_id => candidate.user, :restaurant_id => 0, :method => :post %></p>
 
           <p class = "btn btn-default"><%= link_to "行きたい！", :controller => "flint", :action => "addLike", :u_id => current_user.id, :l_id => candidate.user, :restaurant_id => 1, :method => :post %></p>
-        <% end %>
+         <% end %> -->
 <% end %>
 
-      </div>
-    </div>
-</ul>
-</center>
+<%= link_to 'Top', "/" %></br>

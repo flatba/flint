@@ -1,13 +1,24 @@
-<h1>トップ画面</h1>
+# CSSをあてる画面
 
-<%= link_to 'facebookログイン',user_omniauth_authorize_path(:facebook) %>
-
-<p><%= link_to 'ユーザー情報編集', edit_user_registration_path %></p>
-<p><%= link_to 'ログアウト', destroy_user_session_path, :method => :delete %></p>
-<p><%= link_to '新規ユーザ登録', new_user_registration_path %></p>
-<p><%= link_to 'Home', "/" %></p>
-
-
+[一旦 DOING]一覧ページ（トップページ）（男女）
+[一旦 DONE]ログイン中のユーザ詳細情報
+[一旦 DONE]ユーザの詳細ページ（男女）
+[一旦 DONE]マッチング一覧
+[TODO]通知一覧
+	[TODO]メッセージのやり取りの画面
 
 
-<%= link_to "マッチング一覧", :controller => "flint", :action => "showMatch", :current => current_user.id %>
+
+messageのbodyをユーザでちゃんと振り分けたい
+	つまり、送信側を判別して表示する。
+	いまは、送信したものしか表示していないため、ごっちゃになっている。
+
+
+
+
+<li>payment:：
+<% if candidate.payment == 0 %>
+奢るよ！
+<% elsif candidate.payment == 1 %>
+割り勘で！
+<% end %></li>

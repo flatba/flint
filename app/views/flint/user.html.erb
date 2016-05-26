@@ -1,35 +1,89 @@
+<!-- ログインしているユーザの情報 -->
+
+<!-- Button -->
 <center>
-<h1>ログインしているユーザの詳細ページ</h1>
-<%= link_to '[Top]', "/" %>
-<%= link_to '[Edit]', edit_user_registration_path %></br>
+<ul>
+  <button type="button" class="btn btn-default"><%= link_to '<', "/" %></button>
+  <button type="button" class="btn btn-default"><%= link_to 'Edit', edit_user_registration_path %></button>
+  <button type="button" class="btn btn-default"><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></button>
+</ul>
+</center>
 
 <!-- ユーザ情報 -->
-<ul>
+<div class="container">
   <div class="row">
-    <div class="col-xs-12 col-md-offset-3 col-md-6" style="background-color: white;">
-      <div class="thumbnail">
-        <img src= "<%= @facebook_uid_thumb %>" alt="...">
-        <p><strong><%= current_user.name %></strong> , <%= current_user.age_range %>, <%= current_user.gender %> , UserID <%= current_user.id %></p>
-        <!-- レストラン情報 -->
-        <ul style="list-style:none;">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="main">
+        <div class="fem-profile">
+          <div class="fem-profile-part-1">
+            <img src="<%= @facebook_uid_thumb %>" alt="" />
+          </div>
+          <div class="fem-profile-part-2">
+            <h4>
+              UserID <%= current_user.id %>:<strong><%= current_user.name %></strong>.<%= current_user.age_range %> <img src="/assets/group.png" alt="" class="name-img" />
+            </h4>
+            <p>
+              職業
+            </p>
+            <p>
+              これは自己紹介です。Aenean fringilla et massa justo curabitur ultricies fringilla. Proin vehicula feugiat taciti mattis condimentum dolor. Porttitor habitasse aptent felis eleifend ridiculus ipsum elit urna lectus dignissim massa sagittis tempor sit.
+            </p>
+          </div>
+
+          <!-- レストラン情報 -->
           <% @current_user_candidates.each do |candidate| %>
-            <li><img src="<%= candidate.image %>" width="200" alt="..."></li>
-            <li>店舗名：<%= candidate.name %></li>
-            <li>カテゴリ：<%= candidate.category %></li>
-            <li>価格帯：<%= candidate.price %>~</li>
-            <li>評価：<%= candidate.star %></li>
-            <li>エリア：<%= candidate.area %></li>
-            <li>payment:：
-              <% if candidate.payment == 0 %>
-                奢るよ！
-              <% elsif candidate.payment == 1 %>
-                割り勘で！
-              <% end %></li>
-            <li>一言コメント：<%= candidate.comment %></li>
+          <div class="fem-profile-part-2">
+            <h4>レストラン情報</h4>
+          </div>
+
+          <img src="<%= candidate.image %>" alt="image" />
+          <div class="fem-profile-part-2">
+            <div class="male-msg-top-text">
+              <h4><%= candidate.name %></h4>
+              <ul class="woman-pick-list">
+                <li>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <%= candidate.star %>
+                </li>
+                <li>
+                  奢る/奢らないよ
+                </li>
+              </ul>
+              <ul class="woman-pick-list">
+                <li>
+                  <span class="border-text">カテゴリ</span>
+                  <span><%= candidate.category %></span>
+                </li>
+                <li>
+                  <span class="border-text">価格帯</span>
+                  <span><%= candidate.price %>~</span>
+                </li>
+                <li>
+                  <span class="border-text">エリア</span>
+                  <span><%= candidate.area %></span>
+                </li>
+              </ul>
+
+              <div class="fem-profile-table">
+                <div class="fem-profile-table-img">
+                  <img src="<%= @facebook_uid_thumb %>" alt="..." class="img-circle">
+                </div>
+                <div class="form-control" rows="3" cols="80" style = "width: 310px; height: 100px; border-radius: 10px; "><%= candidate.comment %></div>
+              </div>
+
+            </div>
+          </div>
           <% end %>
-        </ul>
+        </div>
       </div>
     </div>
   </div>
-</ul>
-</center>
+</div>
+</div>
+</div>
+
