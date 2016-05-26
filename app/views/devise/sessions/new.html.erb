@@ -1,29 +1,55 @@
-<center>
-<h2>Welcome to Flint.</h2>
-
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="main">
+          <div class="iphone-cont">
+            <div><img src="/assets/food.jpg" alt="image" /></div>
+            <div class="center-content">
+              <p class="lead iphone-text">
+                Welcome to Flint.
+              </p>
+              <div>
+                <button class="btn btn-facebook"><i class="fa fa-facebook"></i> | <%= render "devise/shared/fblinks" %></button>
+              </div>
+              <div class="field">
+                <%= f.label :email %><br />
+                <%= f.email_field :email, autofocus: true %>
+              </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+              <div class="field">
+                <%= f.label :password %><br />
+                <%= f.password_field :password, autocomplete: "off" %>
+              </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+              <% if devise_mapping.rememberable? -%>
+              <div class="field">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>
+              <% end %>
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+              <p>
+                <!-- <i class="actions fa fa-info-circle" aria-hidden = "true"> -->
+                  <%= f.submit "Log in" %>
+                <!-- </i> -->
+              </p>
+
+              <p>
+              <button type="button" class="btn btn-default btn-xs"><%= render "devise/shared/links" %></button>
+              </p>
+
+              <p>
+              <button type="button" class="btn btn-default btn-xs"><%= render "devise/shared/forgot" %></button>
+              </p>
+
+              <br>
+
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    </div>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>
-</center>

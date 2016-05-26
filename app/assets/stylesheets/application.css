@@ -12,13 +12,372 @@
  *
  *= require_tree .
  *= require_self
+
+ *= require font-awesome
  */
 
-.main{
-    margin: 0 auto;  
+body {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #777;
+  background-color: #f2f2f2;
+}
+h1,h2,h3,h4,h5,h6 {
+	color: #333;
+	margin: 0;
+	padding: 0;
+}
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+.main {
+	margin: 100px auto;
+	background-color: #fff;
+	-webkit-box-shadow: 0px 4px 4px 1px rgba(0,0,0,0.15);
+	-moz-box-shadow: 0px 4px 4px 1px rgba(0,0,0,0.15);
+	box-shadow: 0px 4px 4px 1px rgba(0,0,0,0.15);
+}
+.center-content {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+a {
+	-webkit-transition: all 300ms ease;
+	-moz-transition: all 300ms ease;
+	-ms-transition: all 300ms ease;
+	-o-transition: all 300ms ease;
+	transition: all 300ms ease;
+}
+a:hover,
+a:focus,
+a:active {
+	-webkit-transition: all 300ms ease;
+	-moz-transition: all 300ms ease;
+	-ms-transition: all 300ms ease;
+	-o-transition: all 300ms ease;
+	transition: all 300ms ease;
+}
+label {
+	font-weight: normal;
+}
+input[type="text"] {
+	border: 1px solid #ddd;
+}
+.btn-default {
+	border: 1px solid #eee !important;
+	box-shadow: 0 4px 2px -2px rgba(0,0,0,0.2) !important;
+}
+.btn-default:hover,
+.btn-default:focus,
+.btn-default:active {
+	color: #fff;
+	background-color: #333;
+}
+.btn-danger {
+	background-color: #a82246 !important;
+}
+.border-text {
+	border: 1px solid #ddd;
+	padding: 8px;
+	display: inline-block;
+	background-color: f9f9f9;
 }
 
-.footer{
-    width: 80%;  
-    margin: 0 auto;  
-} 
+/* Circular Buttons
+=================================*/
+.cir-btn {
+	width: 50px;
+	height: 50px;
+	line-height: 46px;
+	-webkit-border-radius: 25px;
+	border-radius: 25px;
+	text-align: center;
+	display: inline-block;
+	border: 2px solid #ddd;
+	font-size: 25px;
+}
+.cir-btn-blue {
+	color: #39579b;
+}
+.cir-btn-blue:hover,
+.cir-btn-blue:focus,
+.cir-btn-blue:active {
+	color: #fff;
+	background-color: #39579b;
+	border-color: #39579b;
+}
+.cir-btn-red {
+	color: #a3163c;
+}
+.cir-btn-red:hover,
+.cir-btn-red:focus,
+.cir-btn-red:active {
+	color: #fff;
+	background-color: #a3163c;
+	border-color: #a3163c;
+}
+.cir-btn-orange {
+	color: #ffa000;
+}
+.cir-btn-orange:hover,
+.cir-btn-orange:focus,
+.cir-btn-orange:active {
+	color: #fff;
+	background-color: #ffa000;
+	border-color: #ffa000;
+}
+.cir-btn-table {
+	display: table;
+	width: 100%;
+}
+.cir-btn-table-cell {
+	display: table-cell;
+	text-align: center;
+	padding: 20px;
+}
+
+/* iphone
+=================================*/
+.iphone-cont {
+	background-color: #a3163c;
+}
+.iphone-text {
+	padding: 30px 25px 40px;
+	color: #fff;
+}
+.fb-btn {
+	display: inline-block;
+	padding: 12px 30px;
+	font-size: 22px;
+	line-height: 26px;
+	font-weight: bold;
+	text-align: center;
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+	background-color: #fff;
+	color: #3B5998;
+	margin-bottom: 25px;
+}
+.fb-btn:hover,
+.fb-btn:focus,
+.fb-btn:active {
+	background-color: #3B5998;
+	color: #fff;
+}
+.fb-btn i {
+	padding-right: 8px;
+}
+.name-img {
+	display: inline;
+	padding-left: 5px;
+}
+.pick-text-pad {
+	padding-left: 30px;
+	padding-right: 30px;
+}
+/* Notification Index
+=================================*/
+.notice-index h4 {
+	margin-bottom: 13px;
+	margin-top: 8px;
+}
+.notice-table {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.notice-table li {
+	display: table;
+	border-bottom: 1px solid #ddd;
+	padding: 15px 25px;
+}
+.notice-table li .notice-img {
+	display: table-cell;
+	vertical-align: top;
+	padding-right: 20px;
+}
+.notice-table li .notice-img img {
+	margin-right: 20px;
+}
+.notice-table li .notice-text {
+	display: table-cell;
+	vertical-align: top;
+}
+
+/* male_restaurant#new
+=================================*/
+.male-res h3{
+	margin-bottom: 20px;
+}
+.male-res-inner {
+	padding: 25px;
+}
+.btn-and-input {
+	margin-bottom: 13px;
+}
+.input-radio {
+	display: inline-block;
+	margin-right: 15px;
+}
+.male-res-footer {
+	background-color: #a3163c;
+	color: #fff;
+	text-align: center;
+	padding: 20px 20px 8px;
+}
+.male-res-input {
+	border: 1px solid #eee !important;
+	box-shadow: 0 4px 2px -2px rgba(0,0,0,0.2) !important;
+	width: 100%;
+	padding: 13px;
+	font-size: 18px;
+}
+
+/* woman_pick_1
+=================================*/
+.woman-pick {
+	padding-top: 10px;
+}
+.woman-pick-pic {
+	position: relative;
+}
+.woman-pick-pic img.pick-top-img {
+	border-top-left-radius: 10px !important;
+	border-top-right-radius: 10px !important;
+}
+.woman-pick-profile {
+	display: table;
+	padding: 10px;
+}
+.woman-pick-profile-pic {
+	position: absolute;
+	bottom: -50px;
+	left: 20px;
+}
+.woman-pick-profile-text {
+	vertical-align: top;
+	padding-top: 0px;
+	margin-left: 120px;
+}
+.woman-pick-list {
+	margin: 20px 0;
+	padding: 0;
+	list-style: none;
+}
+.woman-pick-list li {
+	display: inline-block;
+	padding: 5px 7px;
+}
+.woman-pick-list li i {
+	color: #ffb536;
+}
+.woman-pick-list li input,
+.woman-pick-list li label {
+	display: inline;
+}
+.woman-pick-list li input {
+	width: 60px;
+}
+.woman-pick-inner {
+	margin: 10px !important;
+	border: 1px solid #ddd;
+	border-top: none;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+/* requestFromFemale
+=================================*/
+.req-fem {
+	padding-bottom: 25px;
+}
+
+/* male_message
+=================================*/
+.male-msg {
+}
+.male-msg-top {
+	border-bottom: 1px solid #ddd;
+}
+.male-msg-top-inner {
+	padding: 20px;
+	display: table;
+}
+.male-msg-top-img {
+	width: 150px;
+	display: table-cell;
+	vertical-align: top;
+	padding-right: 15px;
+}
+.male-msg-top-text {
+	display: table-cell;
+	vertical-align: top;
+}
+.male-msg .woman-pick-list {
+	margin: 5px 0;
+}
+.male-msg-med {
+	padding: 20px 20px 40px;
+}
+.male-msg-comm-list {
+	margin: 15px 0 0;
+	padding: 0;
+	list-style: none;
+}
+.male-msg-comm-list li {
+	margin-bottom: 20px;
+	display: table;
+}
+.male-msg-comm-list li.left .comm-img {
+	display: table-cell;
+	padding-right: 13px;
+}
+.male-msg-comm-list li.right .comm-img {
+	display: table-cell;
+	padding-left: 13px;
+	vertical-align: middle;
+}
+.male-msg-comm-list li .comm-text {
+	display: table-cell;
+	vertical-align: middle;
+	background-color: #e1e1e1;
+	color: #222;
+	padding: 13px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+.male-msg-footer {
+	padding: 20px;
+	border-top: 1px solid #ddd;
+}
+
+/* female_profile
+=================================*/
+.fem-profile {
+
+}
+.fem-profile-part-1 {
+}
+.fem-profile-part-2 {
+	padding: 20px;
+	border-top: 1px solid #ddd;
+}
+.fem-profile-table {
+	display: table;
+	/*width: 100%:*/
+}
+.fem-profile-table-img {
+	display: table-cell;
+	padding-right: 13px;
+	width: 100px;
+}
+.fem-profile-table-textarea {
+	display: table-cell;
+}
+.fem-profile-table-textarea textarea {
+	width: 100% !important:
+}

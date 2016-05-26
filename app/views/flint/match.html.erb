@@ -1,13 +1,25 @@
-<h1>マッチ一覧</h1>
-
-<ul>
-<% @matches.each do |match| %>
-	<li>UserLikesテーブルの
-		<%= link_to match.id, :controller => "messages", :action => "show", :id => match.id, :current => current_user.id %>番目のレコードでは、
-		
-		USER_ID:<%= current_user.id %>とマッチしています。
-	</li>
-<% end %>
-</ul>
-
-<%= link_to 'Top', "/" %></br>
+<!-- マッチ一覧 -->
+<div class="container">
+<button type="button" class="btn btn-default"><%= link_to '<', "/" %></button>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div class="main">
+				<div class="notice-index">
+					<% @matches.each do |match| %>
+					<ul class="notice-table">
+						<li>
+							<div class="notice-img">
+								<img src="/assets/girl1.jpg" alt="..." class="img-circle" />
+							</div>
+							<div class="notice-text">
+								<h4>USER_ID:<%= link_to match.id, :controller => "messages", :action => "show", :id => match.id, :current => current_user.id %>番とマッチしています。</h4>
+							</div>
+						</li>
+					</ul>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
