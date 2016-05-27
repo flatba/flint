@@ -98,7 +98,11 @@
                     </div>
                     <div class="comm-img">
                       <img src="<%= @userlike.restaurant.user.thumb %>" width="100" alt="..." class="img-circle">
-                      <%= @userlike.liker.name %>
+                      <% if current_user.id == @userlike.restaurant.user.id %>
+                        <%= @userlike.liker.name %>
+                      <% elsif current_user.id != @userlike.restaurant.user.id %>
+                        <%= @userlike.like.name %>
+                      <% end %>
                     </div>
                   </li>
                 <!-- 相手のメッセージ -->
@@ -109,7 +113,6 @@
                       <% if current_user.id == @userlike.restaurant.user.id %>
                         <%= @userlike.like.name %>
                       <% elsif current_user.id != @userlike.restaurant.user.id %>
-                        <!-- <%= @userlike.restaurant.user.name %> -->
                         <%= @userlike.liker.name %>
                       <% end %>
                     </div>
