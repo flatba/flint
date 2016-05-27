@@ -55,7 +55,7 @@
                   </li>
                   <li>
                     <span class="border-text">エリア</span>
-                    <span>Text</span>
+                    <span><%= @userlike.restaurant.area %></span>
                   </li>
                 </ul>
 
@@ -89,46 +89,46 @@
           <div class="male-msg-med">
             <p class="lead text-center"><%= @userlike.restaurant.user.id %>：<%= @userlike.restaurant.user.name %></p>
             <% @messages.each do |message| %>
-            <div class="male-msg-comm-list">
-
-              <!-- 自分のメッセージ -->
-              <% if message.sender_id == current_user.id %>
-              <li class="left">
-                <div class="comm-text">
-                  <%= message.body %>
-                </div>
-                <div class="comm-img">
-                  <img src="<%= @userlike.restaurant.user.thumb %>" width="100" alt="..." class="img-circle">
-                  <%= current_user.name %>
-                </div>
-              </li>
-              <% else %>
-              <!-- 相手のメッセージ -->
-              <li class="right">
-                <div class="comm-img">
-                  <img src="<%= @userlike.restaurant.user.thumb %>" width="100" alt="..." class="img-circle">
-                  <%= @userlike.restaurant.user.name %>
-                </div>
-                <div class="comm-text">
-                  <%= message.body %>
-                </div>
-              </li>
-              <% end %>
-            </div>
+              <div class="male-msg-comm-list">
+                <!-- 自分のメッセージ -->
+                <% if message.sender_id == current_user.id%>
+                  <li class="left">
+                    <div class="comm-text">
+                      <%= message.body %>
+                    </div>
+                    <div class="comm-img">
+                      <img src="<%= @userlike.restaurant.user.thumb %>" width="100" alt="..." class="img-circle">
+                      <%= @userlike.liker.name %>
+                    </div>
+                  </li>
+                <!-- 相手のメッセージ -->
+                <% elsif message.sender_id != current_user.id %>
+                  <li class="right">
+                    <div class="comm-img">
+                      <img src="<%= @userlike.restaurant.user.thumb %>" width="100" alt="..." class="img-circle">
+                      <% if current_user.id == @userlike.restaurant.user.id %>
+                        <%= @userlike.like.name %>
+                      <% elsif current_user.id != @userlike.restaurant.user.id %>
+                        <!-- <%= @userlike.restaurant.user.name %> -->
+                        <%= @userlike.liker.name %>
+                      <% end %>
+                    </div>
+                    <div class="comm-text">
+                      <%= message.body %>
+                    </div>
+                  </li>
+                <% end %>
+              </div>
             <% end %>
           </div>
-
-
 
           <!-- メッセージ入力欄 -->
           <%= form_tag(messages_path(), method: 'post') do %>
           <input type="text" name="body"></input>
           <input name="id" type="hidden" value="<%= @userlike.id %>" />
 
-          <%= submit_tag "send", :sender_id => current_user.id %>
+          <%= submit_tag "send", :sender_id => current_user.id , :receiver_id => @userlike.restaurant.user.name %>
           <% end %>
-
-
 
           <!-- トップに戻るボタン -->
           <div class="male-msg-footer clearfix">
