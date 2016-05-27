@@ -13,32 +13,39 @@
                 <h4><%= @userlike.restaurant.name %></h4>
                 <ul class="woman-pick-list">
                   <li>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
+                      <% for starNum in 1..@userlike.restaurant.star do %>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                      <% end %>
                   </li>
                   <li>
                     <%= @userlike.restaurant.star %>
                   </li>
                   <li>
+                    <!-- 2：奢るよと男から言っている -->
                     <% if @userlike.matching == 2 %>
-                    <a href="" class="btn btn-danger btn-xs">
-                    <%= @payment_user.name %>さんがごちそうしてくれるといってます！
-                    </a>
+                    <div class="btn-danger btn-xs disabled">
+                    <!-- <%= @payment_user.name %>さんがごちそうしてくれるといってます！ -->
+                    ごちそうします。
+                    </div>
+                    <!-- 4：男から女へ、奢るよという誘いがあってマッチ成立 -->
                     <% elsif @userlike.matching == 4 %>
-                    <a href="" class="btn btn-danger btn-xs">
-                    <%= @payment_user.name %>さんがごちそうしてくれます！
-                    </a>
+                    <div class="btn-danger btn-xs disabled">
+                    <!-- <%= @payment_user.name %>さんがごちそうしてくれます！ -->
+                    ごちそうしてくれます。
+                    </div>
                     <% else %>
+                    <!-- 0：行かない -->
                     <% if  @userlike.restaurant.payment == 0 %>
-                    <a href="" class="btn btn-danger btn-xs">
-                    <%= @payment_user.name %>さんがごちそうしてくれるといってます！
-                    </a>
+                    <div class="btn-danger btn-xs disabled">
+                    <!-- <%= @payment_user.name %>さんがごちそうしてくれるといってます！ -->
+                    ごちそうしてくれます。
+                    </div>
+                    <!-- 1：片方が行きたいと言っている -->
                     <% elsif @userlike.restaurant.payment == 1 %>
-                    <a href="" class="btn btn-danger btn-xs">
-                    <%= @payment_user.name %>さんとワリカンでいきましょう！
-                    </a>
+                    <div class="btn-danger btn-xs disabled">
+                    <!-- <%= @payment_user.name %>さんとワリカンでいきましょう！ -->
+                    ワリカンで！
+                    </div>
                     <% else %>
                     <% end %>
                     <% end %>
@@ -92,20 +99,31 @@
         </div>
         <% end %>
 
+@matching：
+<%= @matching %><br>
+current_user.gender：
+<%= current_user.gender %><br>
+@userlike.like.gender：
+<%= @userlike.like.gender %><br>
+
+        <!-- 1：片方が行きたいと言っている -->
         <% if @matching == 1 %>
         <% if current_user.gender == "male" %>
-        <% if @userlike.like.gender =="male" %>
-        <p class = "btn btn-default"><%= link_to "☓", :controller => "flint", :action => "updateMatch", :userlike_id => @userlike.id, :matching => 0,:method => :post %></p>
-        <p class = "btn btn-default"><%= link_to "ワリカン！", :controller => "flint", :action => "updateMatch", :userlike_id => @userlike.id, :matching => 3,:method => :post %></p>
-        <p class = "btn btn-default"><%= link_to "おごる！", :controller => "flint", :action => "updateMatch", :userlike_id => @userlike.id, :matching => 4,:method => :post %></p>
+          <% if @userlike.like.gender =="male" %>
+            <p class = "btn btn-default"><%= link_to "✕", :controller => "flint", :action => "updateMatch", :userlike_id => @userlike.id, :matching => 0,:method => :post %></p>
+            <p class = "btn btn-default"><%= link_to "ワリカン！", :controller => "flint", :action => "updateMatch", :userlike_id => @userlike.id, :matching => 3,:method => :post %></p>
+            <p class = "btn btn-default"><%= link_to "おごる！", :controller => "flint", :action => "updateMatch", :userlike_id => @userlike.id, :matching => 4,:method => :post %></p>
+        <!-- ---------------------------------------------------- -->
         <% elsif current_user.gender == "female" %>
-        <% elsif @userlike.like.gender =="female" %>
-        <p class = "btn btn-default"><%= link_to "お断りする", :controller => "flint", :action => "updateMatch", :userlike_id => @userlike.id, :matching => 0,:method => :post %></p>
-        <p class = "btn btn-default"><%= link_to "お誘いを受ける", :controller => "flint", :action => "updateMatch", :userlike_id => @userlike.id, :matching => 3,:method => :post %></p>
-        <% else %>
-        <% end %>
+          <% elsif @userlike.like.gender =="female" %>
+            <p class = "btn btn-default"><%= link_to "お断りする", :controller => "flint", :action => "updateMatch", :userlike_id => @userlike.id, :matching => 0,:method => :post %></p>
+            <p class = "btn btn-default"><%= link_to "お誘いを受ける", :controller => "flint", :action => "updateMatch", :userlike_id => @userlike.id, :matching => 3,:method => :post %></p>
+          <% else %>
+        <!-- ---------------------------------------------------- -->
+          <% end %>
         <% end %>
 
+        <!-- 2：奢るよと男から言っている -->
         <% elsif @matching == 2 %>
         <% elsif current_user.gender == "female" %>
         <p class = "btn btn-default"><%= link_to "お断りする", :controller => "flint", :action => "updateMatch", :userlike_id => @userlike.id, :matching => 0,:method => :post %></p>

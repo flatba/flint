@@ -44,10 +44,9 @@
                 <h4><%= candidate.name %></h4>
                 <ul class="woman-pick-list">
                   <li>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <% for starNum in 1..candidate.star do %>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                    <% end %>
                   </li>
                   <li>
                     <%= candidate.star %>
@@ -60,7 +59,7 @@
                       <% elsif candidate.payment == 1 %>
                           割り勘で！
                       <% else %>
-
+                          どちらでも！
                       <% end %>
                     </div>
                     </div>

@@ -42,16 +42,23 @@
               <h4><%= candidate.name %></h4>
               <ul class="woman-pick-list">
                 <li>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <% for starNum in 1..candidate.star do %>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                  <% end %>
                 </li>
                 <li>
                   <%= candidate.star %>
                 </li>
                 <li>
-                  奢る/奢らないよ
+                  <div class="btn-danger btn-xs disabled">
+                    <% if candidate.payment == 0 %>
+                      おごるよ！
+                    <% elsif  candidate.payment == 1 %>
+                      ワリカンで！
+                    <% else %>
+                      無記入
+                    <% end %>
+                  </div>
                 </li>
               </ul>
               <ul class="woman-pick-list">
