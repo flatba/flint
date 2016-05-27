@@ -66,9 +66,9 @@
 
                   <% if notification.messages.count == 0 %>
                   <% if notification.liker.id == current_user.id %>
-                  <%= link_to notification.like.name+"さんと[ワリカン]でマッチしました！",message_path(notification.id) %>
+                  <%= link_to notification.like.name+"さんと[ワリカン]でマッチしました！",message_path(notification.like.id) %>
                   <% elsif notification.like.id == current_user.id %>
-                  <%= link_to notification.liker.name+"さんと[ワリカン]でマッチしました！",message_path(notification.id) %>
+                  <%= link_to notification.liker.name+"さんと[ワリカン]でマッチしました！",message_path(notification.liker.id) %>
                   <% end %>
                   <% else %>
                   <%= link_to notification.messages.last.body, message_path(notification.id) %>
