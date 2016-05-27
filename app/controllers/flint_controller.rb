@@ -15,7 +15,6 @@ class FlintController < ApplicationController
             else
                 render :text => "something wrong"
             end
-
         end
 
         #ログインユーザーが、既にselectしている異性レストランid一覧を取得
@@ -24,18 +23,21 @@ class FlintController < ApplicationController
         #selectされていない異性レストラン一覧を取得
         @candidates = Restaurant.where.not(:id => selected_gender_restraunt_id).where.not(:user_id => same_gender_id)
         @users = User.where(:id => params[:id])
+
+
+
     end
 
     def new
     	@user_like = UserLike.new
     end
 
-    
+
     def user
         facebook_uid = nil
         @current_user_candidates = Restaurant.where(:user_id => current_user.id)
         facebook_uid = User.find(current_user.id).uid
-        
+
         if facebook_uid == nil
             redirect_to root_path
         else
@@ -49,7 +51,7 @@ class FlintController < ApplicationController
         @users = User.where(:id => params[:id])
         facebook_uid = User.find(params[:id]).uid
         @facebook_uid_thumb = "https://graph.facebook.com/"+ facebook_uid +"/picture?type=large"
-  
+
     end
 
     def addLike # like側のuser_idとlikeされる側のuser_idをデータベース（user_like）に入れる

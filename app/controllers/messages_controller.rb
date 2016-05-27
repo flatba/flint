@@ -1,7 +1,6 @@
 class MessagesController < ApplicationController
 
   def show
-
     @userlike = UserLike.find(params[:id])
     @matching = @userlike.matching
 
@@ -11,10 +10,10 @@ class MessagesController < ApplicationController
       @payment_user = @userlike.liker
     end
 
-    if @matching <= 2
+    if @matching <= 2 # 奢るよと男から言っている
       @user_id = @userlike.user_id
       @like_id = current_user.id
-    elsif @matching == 3
+    elsif @matching == 3 # 普通にマッチ
       if current_user.gender == "male"
         @user_id = @userlike.user_id
         @like_id = current_user.id
@@ -22,7 +21,7 @@ class MessagesController < ApplicationController
         @user_id = current_user.id
         @like_id = @userlike.like_id
       end
-    elsif @matching == 4
+    elsif @matching == 4 # 男から女へ、奢るよという誘いがあってマッチ成立
       if current_user.gender == "male"
         @user_id = current_user.id
         @like_id = @userlike.like_id
@@ -34,7 +33,6 @@ class MessagesController < ApplicationController
       render text: "something wrong"
     end
       @messages = Message.where(:user_like_id => @userlike.id)
-
   end
 
   # 書き込み

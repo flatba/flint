@@ -39,10 +39,9 @@
               <%= link_to '[もっと見る]', :controller => "flint", :action => "show", :id => candidate.user_id, :class => "btn btn-danger btn-xs" %></a>
               <ul class="woman-pick-list">
                 <li>
+                <% for starNum in 1..candidate.star do %>
                   <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
+                <% end %>
                 </li>
                 <li>
                   <%= candidate.star %>
