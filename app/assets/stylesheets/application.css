@@ -257,6 +257,16 @@ input[type="text"] {
 	position: absolute;
 	bottom: -50px;
 	left: 20px;
+
+	/*追加分*/
+	position:relative;
+	width: 100px;
+	height: 100px;
+	overflow: hidden;
+	-webkit-border-radius: 50%;/* width,heightの半分 */
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+
 }
 .woman-pick-profile-text {
 	vertical-align: top;

@@ -80,12 +80,11 @@
                   </li>
                 </ul>
 
-
                 <!-- 男性だった場合の選択ボタン -->
                 <% if current_user.gender == "male" %>
                 <div class="fem-profile-table">
                   <div class="fem-profile-table-img">
-                    <img src="/assets/girl1.jpg" alt="..." class="img-circle">
+                    <img src="<%= user.thumb %>" alt="...">
                   </div>
                   <div class="fem-profile-table-textarea">
                     <textarea class="form-control" rows="3" cols="80"></textarea>
@@ -118,6 +117,15 @@
 
                 <!-- 女性だった場合の選択ボタン -->
                 <% elsif current_user.gender == "female" %>
+                 <div class="fem-profile-table">
+                  <div class="fem-profile-table-img">
+                    <img src="<%= user.thumb %>" alt="...">
+                  </div>
+                  <div class="fem-profile-table-textarea">
+                    <textarea class="form-control" rows="3" cols="80"></textarea>
+                    <%= candidate.comment %>
+                  </div>
+                </div>
                 <div class="cir-btn-table">
                   <div class="cir-btn-table-cell">
                     <div class="cir-btn cir-btn-blue">
@@ -135,9 +143,6 @@
                   </div>
                 </div>
                 <% end %>
-
-
-
               </div>
             </div>
           </div>
