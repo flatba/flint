@@ -33,6 +33,7 @@ class MessagesController < ApplicationController
       render text: "something wrong"
     end
       @messages = Message.where(:user_like_id => @userlike.id)
+      @users = User.all
   end
 
   # 書き込み

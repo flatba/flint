@@ -97,7 +97,7 @@
                       <%= message.body %>
                     </div>
                     <div class="comm-img">
-                      <img src="<%= @userlike.restaurant.user.thumb %>" width="100" alt="..." class="img-circle">
+                      <img src="<%= @users.find(current_user.id).thumb %>" width="100" alt="..." class="img-circle">
                       <% if current_user.id == message.sender_id || current_user.id == message.receiver_id %>
                         <%= current_user.name %>
                       <% end %>
@@ -107,10 +107,11 @@
                 <% elsif message.sender_id != current_user.id %>
                   <li class="right">
                     <div class="comm-img">
-                      <img src="<%= @userlike.restaurant.user.thumb %>" width="100" alt="..." class="img-circle">
                       <% if current_user.id == @userlike.restaurant.user.id %>
+                        <img src="<%= @users.find(@userlike.liker.id).thumb %>" width="100" alt="..." class="img-circle">
                         <%= @userlike.liker.name %>
                       <% else %>
+                        <img src="<%= @users.find(@userlike.like.id).thumb %>" width="100" alt="..." class="img-circle">
                         <%= @userlike.like.name %>
                       <% end %>
                     </div>

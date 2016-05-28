@@ -25,7 +25,7 @@
               <img src="<%= candidate.image %>" alt="image" class="pick-top-img" />
 
               <div class="woman-pick-profile-pic">
-                <img src="/assets/girl1.jpg" alt="..." class="img-circle">
+                <img src="<%= @users.find(candidate.user_id).thumb %>" alt="..." >
               </div>
             </div>
             <div class="woman-pick-profile">
@@ -39,9 +39,13 @@
               <%= link_to '[もっと見る]', :controller => "flint", :action => "show", :id => candidate.user_id, :class => "btn btn-danger btn-xs" %></a>
               <ul class="woman-pick-list">
                 <li>
-                <% for starNum in 1..candidate.star do %>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                <% end %>
+                   <% if candidate.star > 0 %>
+                      <% for starNum in 1..candidate.star do %>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                      <% end %>
+                    <% elsif candidate.star == nil  %>
+                      no data
+                    <% end %>
                 </li>
                 <li>
                   <%= candidate.star %>
