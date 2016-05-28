@@ -23,7 +23,7 @@
               UserID <%= current_user.id %>:<strong><%= current_user.name %></strong>.<%= current_user.age_range %> <img src="/assets/group.png" alt="" class="name-img" />
             </h4>
             <p>
-              職業
+              <%= @users.find(current_user.id).job %>
             </p>
             <p>
               これは自己紹介です。Aenean fringilla et massa justo curabitur ultricies fringilla. Proin vehicula feugiat taciti mattis condimentum dolor. Porttitor habitasse aptent felis eleifend ridiculus ipsum elit urna lectus dignissim massa sagittis tempor sit.

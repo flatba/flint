@@ -2,7 +2,7 @@
 # 10.times do
 # 	User.create(
 # 	  	# :id => Faker::Number.between(1, 100),
-# 	  	:email => Faker::Internet.email, 
+# 	  	:email => Faker::Internet.email,
 # 	  	:encrypted_password => "testtest",
 # 	  	# :reset_password_token => nil,
 # 	  	# :reset_password_sent_at => nil,
@@ -28,14 +28,14 @@
 # 		:user_id => Faker::Number.between(1, 10),
 # 		:like_id => Faker::Number.between(1, 10),
 # 		:matching => 3,
-# 		:created_at => "2016-04-26 02:43:49", 
+# 		:created_at => "2016-04-26 02:43:49",
 # 		:updated_at => "2016-04-26 02:43:49",
 # 		:restaurant_id => Faker::Number.between(1, 100)
 # 	)
 
 # 	Restaurant.create(
 # 	  	# :id => Faker::Number.between(1, 100),
-# 	  	:name => "A店", 
+# 	  	:name => "A店",
 # 	  	:category => "居酒屋",
 # 	  	:price => Faker::Number.between(5000, 50000),
 # 	  	:star => Faker::Number.between(1, 5),
@@ -64,7 +64,8 @@ CSV.foreach('db/csv/user.csv') do |row|
   	:password => row[7],
   	:uid => row[8],
   	:created_at => row[9],
-	:updated_at => row[10]
+	 :updated_at => row[10],
+   :job => row[11]
   	)
 end
 
@@ -73,7 +74,7 @@ CSV.foreach('db/csv/user_like.csv') do |row|
   	:user_id => row[0],
 	:like_id => row[1],
 	:matching => row[2],
-  :restaurant_id => row[3],	
+  :restaurant_id => row[3],
 	:created_at => row[4],
 	:updated_at => row[5]
   	)

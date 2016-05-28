@@ -30,8 +30,8 @@
             </div>
             <div class="woman-pick-profile">
               <div class="woman-pick-profile-text">
-                <h5><%= candidate.user_id %><img src="/assets/group.png" alt="" class="name-img" /></h5>
-                <p>職業</p>
+                <h5><%= candidate.user_id %>：<strong><%= @users.find(candidate.user_id).name %></strong>.<%= @users.find(candidate.user_id).age_range %><img src="/assets/group.png" alt="" class="name-img" /></h5>
+                <p><%= @users.find(candidate.user_id).job %></p>
               </div>
             </div>
             <div class="pick-text-pad">
