@@ -30,6 +30,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 img {
 	display: block;
+	/*display: inline-block;*/
 	max-width: 100%;
 	height: auto;
 }
@@ -85,6 +86,14 @@ input[type="text"] {
 	padding: 8px;
 	display: inline-block;
 	background-color: f9f9f9;
+}
+.word-box {
+	/*追加分*/
+　　width: 400px;
+　　overflow: hidden;
+　　_zoom: 1; /*IE6バグ対策*/
+　　border: 1px solid DDDDDD;
+　　padding: 15px;
 }
 
 /* Circular Buttons
@@ -257,16 +266,16 @@ input[type="text"] {
 	position: absolute;
 	bottom: -50px;
 	left: 20px;
-
+}
+.pick-profile-pic-trim {
 	/*追加分*/
 	position:relative;
 	width: 100px;
 	height: 100px;
 	overflow: hidden;
-	-webkit-border-radius: 50%;/* width,heightの半分 */
+	-webkit-border-radius: 50%; /* width,heightの半分 */
     -moz-border-radius: 50%;
     border-radius: 50%;
-
 }
 .woman-pick-profile-text {
 	vertical-align: top;
@@ -371,14 +380,13 @@ input[type="text"] {
 
 }
 .fem-profile-part-1 {
+
 }
 .fem-profile-part-2 {
 	padding: 20px;
 	border-top: 1px solid #ddd;
 }
 .fem-profile-table {
-	display: table;
-	/*width: 100%:*/
 }
 .fem-profile-table-img {
 	display: table-cell;
@@ -390,4 +398,22 @@ input[type="text"] {
 }
 .fem-profile-table-textarea textarea {
 	width: 100% !important:
+}
+
+/*baloon rightとleftを作る*/
+.baloon {
+	position: relative;
+	padding: .5em .75em;
+	background-color: #f0f0f0;
+	border-radius: 6px;
+}
+.baloon::after {
+	position: absolute;
+	top: 100%;
+	left: 30px;
+	content: '';
+	width: 0;
+	height: 0;
+	border: 10px solid transparent;
+	border-top: 15px solid #f0f0f0;
 }

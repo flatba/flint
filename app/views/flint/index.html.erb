@@ -22,9 +22,9 @@
             <div class="woman-pick-pic">
 
               <!-- レストランの画像 -->
-              <img src="<%= candidate.image %>" alt="image" class="pick-top-img" />
+              <img src="<%= candidate.image %>" alt="image" class="pick-top-img" style ="width: 100%; background-size: cover;"/>
 
-              <div class="woman-pick-profile-pic">
+              <div class="woman-pick-profile-pic pick-profile-pic-trim">
                 <img src="<%= @users.find(candidate.user_id).thumb %>" alt="..." >
               </div>
             </div>
