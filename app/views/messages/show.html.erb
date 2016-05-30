@@ -93,14 +93,17 @@
                 <!-- 自分のメッセージ -->
                 <% if message.sender_id == current_user.id%>
                   <li class="left">
-                    <div class="comm-text">
+                    <div class="baloon">
                       <%= message.body %>
                     </div>
                     <div class="comm-img">
-                      <img src="<%= @users.find(current_user.id).thumb %>" width="100" alt="..." class="img-circle">
+                    <div class="pick-profile-pic-trim">
+                      <img src="<%= @users.find(current_user.id).thumb %>" alt="...">
+                      </div>
                       <% if current_user.id == message.sender_id || current_user.id == message.receiver_id %>
                         <%= current_user.name %>
                       <% end %>
+
                     </div>
                   </li>
                 <!-- 相手のメッセージ -->
@@ -108,14 +111,18 @@
                   <li class="right">
                     <div class="comm-img">
                       <% if current_user.id == @userlike.restaurant.user.id %>
-                        <img src="<%= @users.find(@userlike.liker.id).thumb %>" width="100" alt="..." class="img-circle">
-                        <%= @userlike.liker.name %>
+                      <div class="pick-profile-pic-trim">
+                        <img src="<%= @users.find(@userlike.like.id).thumb %>" alt="...">
+                        </div>
+                        <%= @userlike.like.name %>
                       <% else %>
-                        <img src="<%= @users.find(@userlike.like.id).thumb %>" width="100" alt="..." class="img-circle">
+                      <div class="pick-profile-pic-trim">
+                        <img src="<%= @users.find(@userlike.liker.id).thumb %>" alt="...">
+                        </div>
                         <%= @userlike.like.name %>
                       <% end %>
                     </div>
-                    <div class="comm-text">
+                    <div class="baloon">
                       <%= message.body %>
                     </div>
                   </li>

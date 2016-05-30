@@ -1,4 +1,10 @@
 <!-- 選択したユーザの詳細情報 -->
+<center>
+<ul>
+<button type="button" class="btn btn-default"><%= link_to '<', "/" %></button>
+</ul>
+</center>
+
 <% @select_user_candidate.each do |candidate| %>
 <div class="container">
     <div class="row">
@@ -8,7 +14,7 @@
 
           <% @users.each do |user| %>
             <div class="fem-profile-part-1">
-              <img src="<%= @facebook_uid_thumb %>" alt="" />
+              <img src="<%= @facebook_uid_thumb %>" alt="" style ="width: 100%; background-size: cover;"/>
             </div>
             <div class="fem-profile-part-2">
               <h4>
@@ -52,6 +58,7 @@
                     <%= candidate.star %>
                   </li>
                   <li>
+                  <% if user.gender == "male" %>
                     <div class="woman-pick-profile">
                     <div class="woman-pick-profile-text">
                       <% if candidate.payment == 0 %>
@@ -63,6 +70,7 @@
                       <% end %>
                     </div>
                     </div>
+                    <% end %>
                   </li>
                 </ul>
                 <ul class="woman-pick-list">
@@ -82,14 +90,15 @@
 
                 <!-- 男性だった場合の選択ボタン -->
                 <% if current_user.gender == "male" %>
-                <div class="fem-profile-table">
-                  <div class="fem-profile-table-img">
+                <div class="fem-profile-table row">
+                <div class="col-xs-3">
+                  <div class="pick-profile-pic-trim">
                     <img src="<%= user.thumb %>" alt="...">
                   </div>
-                  <div class="fem-profile-table-textarea">
-                    <textarea class="form-control" rows="3" cols="80"></textarea>
-                    <%= candidate.comment %>
                   </div>
+                    <div class="baloon col-xs-9">
+                    <%= candidate.comment %>
+                    </div>
                 </div>
                 <div class="cir-btn-table" style="padding-top: 20px">
                   <div class="cir-btn-table-cell">
@@ -117,12 +126,13 @@
 
                 <!-- 女性だった場合の選択ボタン -->
                 <% elsif current_user.gender == "female" %>
-                 <div class="fem-profile-table">
-                  <div class="fem-profile-table-img">
-                    <img src="<%= user.thumb %>" alt="...">
-                  </div>
-                  <div class="fem-profile-table-textarea">
-                    <textarea class="form-control" rows="3" cols="80"></textarea>
+                 <div class="fem-profile-table row">
+                 <div class="col-xs-4">
+                    <div class="pick-profile-pic-trim">
+                      <img src="<%= user.thumb %>" alt="...">
+                    </div>
+                    </div>
+                  <div class="baloon col-xs-8">
                     <%= candidate.comment %>
                   </div>
                 </div>

@@ -16,7 +16,8 @@
       <div class="main">
         <div class="fem-profile">
           <div class="fem-profile-part-1">
-            <img src="<%= @facebook_uid_thumb %>" alt="" />
+            <img src="<%= @facebook_uid_thumb %>" alt="" style ="width: 100%; background-size: cover;"/>
+            <!-- <img src="<%= @facebook_uid_thumb %>" alt="" /> -->
           </div>
           <div class="fem-profile-part-2">
             <h4>
@@ -80,13 +81,19 @@
                 </li>
               </ul>
 
-              <div class="fem-profile-table">
-                <div class="fem-profile-table-img">
-                  <img src="<%= @facebook_uid_thumb %>" alt="..." class="img-circle">
-                </div>
-                <div class="form-control" rows="3" cols="80" style = "width: 310px; height: 100px; border-radius: 10px; "><%= candidate.comment %></div>
+              <div class="fem-profile-table row">
+              <div class="col-xs-4">
+                  <div class="pick-profile-pic-trim">
+                    <img src="<%= @users.find(current_user.id).thumb %>" alt='' >
+                  </div>
+                  </div>
+                  <div class="baloon col-xs-8">
+                    <%= candidate.comment %>
+                  </div>
               </div>
 
+                <!-- <%= candidate.comment %> -->
+                <!-- <div class="form-control" rows="3" cols="80" style = "width: 310px; height: 100px; border-radius: 10px;"><%= candidate.comment %></div> -->
             </div>
           </div>
           <% end %>
@@ -97,4 +104,3 @@
 </div>
 </div>
 </div>
-
