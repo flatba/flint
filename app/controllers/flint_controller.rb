@@ -33,12 +33,12 @@ class FlintController < ApplicationController
 
     def user
         facebook_uid = nil
+        # ここがバグの元↓
         @current_user_candidates = Restaurant.where(:user_id => current_user.id)
-        render :text => @current_user_candidates
         facebook_uid = User.find(current_user.id).uid
 
         if facebook_uid == nil
-            # redirect_to root_path
+            redirect_to root_path
         else
         @facebook_uid_thumb = "https://graph.facebook.com/"+ facebook_uid +"/picture?type=large"
         end
