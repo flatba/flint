@@ -207,8 +207,10 @@
 
                   <% if notification.liker.id == current_user.id %>
                   <!-- <img src="<%= notification.like.thumb %>" width="200" /> -->
+                  <a href="<%= message_path(notification.id) %>"><i class="fa fa-comments" aria-hidden="true">メッセージはこちらから</i></a>
                   <% elsif notification.like.id == current_user.id %>
                   <!-- <img src="<%= notification.liker.thumb %>" width="200" /> -->
+                  <a href="<%= message_path(notification.id) %>"><i class="fa fa-comments" aria-hidden="true">メッセージはこちらから</i></a>
                   <% end %>
 
                   <% if notification.messages.count == 0 %>
