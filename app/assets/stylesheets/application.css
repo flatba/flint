@@ -248,6 +248,10 @@ input[type="text"] {
 
 /* woman_pick_1
 =================================*/
+.roll-fixing{
+	position: absolute;
+
+}
 .woman-pick {
 	padding-top: 10px;
 }
@@ -269,8 +273,8 @@ input[type="text"] {
 }
 .pick-profile-pic-trim {
 	/*追加分*/
-	width: 100px;
-	height: 100px;
+	width: 80px;
+	height: 80px;
 	overflow: hidden;
 	-webkit-border-radius: 50%; /* width,heightの半分 */
     -moz-border-radius: 50%;
@@ -400,7 +404,7 @@ input[type="text"] {
 	width: 100% !important:
 }
 
-/*後でbaloon rightとleftを作る予定*/
+
 .baloon {
 	position: absolute;
 	/*padding: .5em .75em;*/
@@ -469,4 +473,9 @@ input[type="text"] {
 	border-style: solid;
 	border-width: 10px 0 10px 10px;
 	border-color: transparent transparent transparent #19283C;
+}
+
+@btn-facebook-color: #4c66a4;
+.btn-facebook {
+  .button-variant(lighten(@btn-facebook-color, 50%); @btn-facebook-color; darken(@btn-facebook-color, 20%));
 }

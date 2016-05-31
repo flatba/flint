@@ -15,32 +15,21 @@
                 <p style="color: #FFFFFF; width: 90%;">続行すると、お客様は当社の次の規約に同意することになります：<strong>サービスご利用規約</strong>と<strong>プライバシー ポリシー</strong></p>
                 </p>
 
-                <div>
-                  <button class="btn btn-facebook"><i class="fa fa-facebook"></i> | <%= render "devise/shared/fblinks" %></button>
-                </div>
+                <button style="background-color: #305097; font-size: 1.2em; border-style: none; padding: 10px 30px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;"><%= render "devise/shared/fblinks" %></button>
 
+                <!-- プロダクションバージョンでは消す項目 -->
                 <div class="field">
                   <%= f.label :email %><br>
                   <%= f.email_field :email, autofocus: true %>
                 </div>
-
                 <div class="field">
                   <%= f.label :password %><br>
                   <%= f.password_field :password, autocomplete: "off" %>
                 </div>
-
-<!--               <% if devise_mapping.rememberable? -%>
-              <div class="field">
-                <%= f.check_box :remember_me %>
-                <%= f.label :remember_me %>
-              </div>
-              <% end %> -->
-
-              <p>
-                  <button type="button" class="btn btn-default btn-xs">
-                  <%= f.submit "Log in" %>
-                  </button>
-              </p>
+                <p>
+                <%= f.submit "Log in", :class => "btn btn-default btn-xs"%>
+                </p>
+                <!-- プロダクションバージョンでは消す項目 -->
               </center>
 
               <!-- サインアップとパスワード忘れ -->
@@ -56,6 +45,7 @@
               Flint は Facebook に投稿することはありません。
               </i>
               </p>
+
               <br>
 
             </div>

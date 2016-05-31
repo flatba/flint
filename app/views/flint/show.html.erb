@@ -1,10 +1,8 @@
 <!-- 選択したユーザの詳細情報 -->
-<center>
-<ul>
-<button type="button" class="btn btn-default"><%= link_to '<', "/" %></button>
-</ul>
-</center>
-
+<div class="container">
+<a href="/"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Home</a>
+</div>
+<hr>
 <% @select_user_candidate.each do |candidate| %>
 <div class="container">
     <div class="row">
@@ -18,7 +16,7 @@
             </div>
             <div class="fem-profile-part-2">
               <h4>
-                <strong><%= user.name %></strong>.<%= user.age_range %> <img src="/assets/group.png" alt="" class="name-img" />
+                <strong><%= user.name %></strong>.<%= user.age_range %> <i class="fa fa-users" aria-hidden="true"></i>
               </h4>
               <p>
                 <%= user.gender %> , UserID <%= user.id %>
@@ -48,6 +46,17 @@
             <div class="fem-profile-part-2">
               <div class="male-msg-top-text">
                 <h4><%= candidate.name %></h4>
+                <% if user.gender == "male" %>
+                      <div class="btn-danger btn-xs disabled" style="width: 20%;">
+                        <% if candidate.payment == 0 %>
+                            奢るよ！
+                        <% elsif candidate.payment == 1 %>
+                            割り勘で！
+                        <% else %>
+                            どちらでも！
+                        <% end %>
+                      </div>
+                <% end %>
                 <ul class="woman-pick-list">
                   <li>
                     <% for starNum in 1..candidate.star do %>
@@ -56,21 +65,6 @@
                   </li>
                   <li>
                     <%= candidate.star %>
-                  </li>
-                  <li>
-                  <% if user.gender == "male" %>
-                    <div class="woman-pick-profile">
-                    <div class="woman-pick-profile-text">
-                      <% if candidate.payment == 0 %>
-                          奢るよ！
-                      <% elsif candidate.payment == 1 %>
-                          割り勘で！
-                      <% else %>
-                          どちらでも！
-                      <% end %>
-                    </div>
-                    </div>
-                    <% end %>
                   </li>
                 </ul>
                 <ul class="woman-pick-list">
@@ -178,5 +172,3 @@
           <p class = "btn btn-default"><%= link_to "行きたい！", :controller => "flint", :action => "addLike", :u_id => current_user.id, :l_id => candidate.user, :restaurant_id => 1, :method => :post %></p>
          <% end %> -->
 <% end %>
-
-<%= link_to 'Top', "/" %></br>

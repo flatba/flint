@@ -1,13 +1,20 @@
 <!-- ログインしているユーザの情報 -->
-
-<!-- Button -->
+<br>
 <center>
-<ul>
-  <button type="button" class="btn btn-default"><%= link_to '<', "/" %></button>
-  <button type="button" class="btn btn-default"><%= link_to 'Edit', edit_user_registration_path %></button>
-  <button type="button" class="btn btn-default"><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></button>
-</ul>
+<div class="row">
+<div class="col-xs-4">
+<a href= "<%= edit_user_registration_path %>"><i class="fa fa-cog fa-fw" aria-hidden="true"></i>&nbsp; Edit</a>
+</div>
+<div class="col-xs-4">
+<a href="/"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Home</a>
+</div>
+<div class="col-xs-4">
+<a href="<%= destroy_user_session_path %>" , method = "delete"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>&nbsp; <%= link_to 'Logout', destroy_user_session_path, :method => :delete %></a>
+</div>
+</div>
+<h4>情報の編集</h4>
 </center>
+<hr>
 
 <!-- ユーザ情報 -->
 <div class="container">
@@ -21,7 +28,7 @@
           </div>
           <div class="fem-profile-part-2">
             <h4>
-              UserID <%= current_user.id %>:<strong><%= current_user.name %></strong>.<%= current_user.age_range %> <img src="/assets/group.png" alt="" class="name-img" />
+              UserID <%= current_user.id %>:<strong><%= current_user.name %></strong>.<%= current_user.age_range %> <i class="fa fa-users" aria-hidden="true"></i>
             </h4>
             <p>
               <%= @users.find(current_user.id).job %>

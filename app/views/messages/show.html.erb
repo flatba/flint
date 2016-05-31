@@ -89,40 +89,45 @@
           <div class="male-msg-med">
             <p class="lead text-center"><%= @userlike.restaurant.user.id %>：<%= @userlike.restaurant.user.name %></p>
             <% @messages.each do |message| %>
-              <div class="male-msg-comm-list">
+              <div class="male-msg-comm-list row">
                 <!-- 自分のメッセージ -->
                 <% if message.sender_id == current_user.id%>
                   <li class="left">
-                    <div class="baloon">
+                    <div class="baloon col-xs-9">
                       <%= message.body %>
                     </div>
-                    <div class="comm-img">
-                    <div class="pick-profile-pic-trim">
+                    <div class="comm-img col-xs-3">
+                    <div class="pick-profile-pic-trim" style="width: 50px; height: 50px;">
                       <img src="<%= @users.find(current_user.id).thumb %>" alt="...">
                       </div>
+                      <p>
                       <% if current_user.id == message.sender_id || current_user.id == message.receiver_id %>
-                        <%= current_user.name %>
+                      <%= current_user.name %>
                       <% end %>
+                      </p>
 
                     </div>
                   </li>
                 <!-- 相手のメッセージ -->
                 <% elsif message.sender_id != current_user.id %>
                   <li class="right">
-                    <div class="comm-img">
-                      <% if current_user.id == @userlike.restaurant.user.id %>
-                      <div class="pick-profile-pic-trim">
-                        <img src="<%= @users.find(@userlike.like.id).thumb %>" alt="...">
+                    <div class="comm-img col-xs-3">
+
+                        <% if current_user.id == @userlike.restaurant.user.id %>
+                        <div class="pick-profile-pic-trim" style="width: 50px; height: 50px;">
+                          <img src="<%= @users.find(@userlike.liker.id).thumb %>" alt="...">
                         </div>
-                        <%= @userlike.like.name %>
-                      <% else %>
-                      <div class="pick-profile-pic-trim">
-                        <img src="<%= @users.find(@userlike.liker.id).thumb %>" alt="...">
+                          <%= @userlike.liker.name %>
+                        <% else %>
+                        <div class="pick-profile-pic-trim" style="width: 50px; height: 50px;">
+                          <img src="<%= @users.find(@userlike.like.id).thumb %>" alt="...">
                         </div>
-                        <%= @userlike.like.name %>
-                      <% end %>
+                          <%= @userlike.like.name %>
+                        <% end %>
+
                     </div>
-                    <div class="baloon">
+
+                    <div class="baloon col-xs-9">
                       <%= message.body %>
                     </div>
                   </li>
@@ -136,7 +141,7 @@
           <input type="text" name="body"></input>
           <input name="id" type="hidden" value="<%= @userlike.id %>" />
 
-          <%= submit_tag "send", :sender_id => current_user.id , :receiver_id => @userlike.restaurant.user.name %>
+          <button type="button" class="btn btn-default btn-xs"><%= submit_tag "send", :sender_id => current_user.id , :receiver_id => @userlike.restaurant.user.name %></button>
           <% end %>
 
           <!-- トップに戻るボタン -->
