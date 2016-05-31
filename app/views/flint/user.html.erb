@@ -37,7 +37,7 @@
             <h4>レストラン情報</h4>
           </div>
 
-          <img src="<%= candidate.image %>" alt="image" />
+          <img src="<%= candidate.image %>" alt="image" style ="width: 100%; background-size: cover;"/>
           <div class="fem-profile-part-2">
             <div class="male-msg-top-text">
               <h4><%= candidate.name %></h4>
@@ -82,16 +82,17 @@
               </ul>
 
               <div class="fem-profile-table row">
-              <div class="col-xs-4">
-                  <div class="pick-profile-pic-trim">
+              <div class="col-xs-3">
+                  <div class="pick-profile-pic-trim" style="width: 50px; height: 50px;">
                     <img src="<%= @users.find(current_user.id).thumb %>" alt='' >
                   </div>
                   </div>
-                  <div class="baloon col-xs-8">
+                  <div class ="col-xs-9">
+                  <div class="baloon">
                     <%= candidate.comment %>
                   </div>
+                  </div>
               </div>
-
                 <!-- <%= candidate.comment %> -->
                 <!-- <div class="form-control" rows="3" cols="80" style = "width: 310px; height: 100px; border-radius: 10px;"><%= candidate.comment %></div> -->
             </div>

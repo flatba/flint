@@ -9,40 +9,53 @@
               <p class="lead iphone-text">
                 Welcome to Flint.
               </p>
-              <div>
-                <button class="btn btn-facebook"><i class="fa fa-facebook"></i> | <%= render "devise/shared/fblinks" %></button>
-              </div>
-              <div class="field">
-                <%= f.label :email %><br />
-                <%= f.email_field :email, autofocus: true %>
-              </div>
+              <center>
 
-              <div class="field">
-                <%= f.label :password %><br />
-                <%= f.password_field :password, autocomplete: "off" %>
-              </div>
+                <p>
+                <p style="color: #FFFFFF; width: 90%;">続行すると、お客様は当社の次の規約に同意することになります：<strong>サービスご利用規約</strong>と<strong>プライバシー ポリシー</strong></p>
+                </p>
 
-              <% if devise_mapping.rememberable? -%>
+                <div>
+                  <button class="btn btn-facebook"><i class="fa fa-facebook"></i> | <%= render "devise/shared/fblinks" %></button>
+                </div>
+
+                <div class="field">
+                  <%= f.label :email %><br>
+                  <%= f.email_field :email, autofocus: true %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :password %><br>
+                  <%= f.password_field :password, autocomplete: "off" %>
+                </div>
+
+<!--               <% if devise_mapping.rememberable? -%>
               <div class="field">
                 <%= f.check_box :remember_me %>
                 <%= f.label :remember_me %>
               </div>
-              <% end %>
+              <% end %> -->
 
               <p>
-                <!-- <i class="actions fa fa-info-circle" aria-hidden = "true"> -->
+                  <button type="button" class="btn btn-default btn-xs">
                   <%= f.submit "Log in" %>
-                <!-- </i> -->
+                  </button>
               </p>
+              </center>
 
-              <p>
+              <!-- サインアップとパスワード忘れ -->
+              <!-- <p>
               <button type="button" class="btn btn-default btn-xs"><%= render "devise/shared/links" %></button>
-              </p>
+              </p> -->
+              <!-- <p>
+              <button type="button" class="btn btn-default btn-xs"><%= render "devise/shared/forgot" %></button>
+              </p> -->
 
               <p>
-              <button type="button" class="btn btn-default btn-xs"><%= render "devise/shared/forgot" %></button>
+              <i class="actions fa fa-info-circle" aria-hidden = "true" style="color: #FFFFFF;">
+              Flint は Facebook に投稿することはありません。
+              </i>
               </p>
-
               <br>
 
             </div>
