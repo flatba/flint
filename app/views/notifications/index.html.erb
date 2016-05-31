@@ -1,8 +1,6 @@
 <!-- 通知一覧 -->
-<div class="container">
-  <br>
-  <button type="button" class="btn btn-default"><%= link_to '<', "/" %></button>
-
+<div class="container"><br>
+<a href="/"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Home</a>
 <hr>
 
   <div class="row">
@@ -59,14 +57,10 @@
                 <h4>お誘いが来ています。2</h4>
                 <p>
                   <% if notification.liker.id == current_user.id %>
-                  <div class="pick-profile-pic-trim">
                     <!-- <img src="<%= notification.like.thumb %>" width="200" /> -->
-                  </div>
                   <%= link_to notification.like.name+"さんがあなたと"+notification.restaurant.name+"にいきたがっています！",message_path(notification.id) %>
                   <% elsif notification.like.id == current_user.id %>
-                  <div class="pick-profile-pic-trim">
                     <!-- <img src="<%= notification.liker.thumb %>" width="200" /> -->
-                  </div>
                   <%= link_to notification.liker.name+"さんがあなたと"+notification.restaurant.name+"にいきたがっています！",message_path(notification.id) %>
                   <% end %>
                 </p>

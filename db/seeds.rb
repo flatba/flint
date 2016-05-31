@@ -64,8 +64,8 @@ CSV.foreach('db/csv/user.csv') do |row|
   	:password => row[7],
   	:uid => row[8],
   	:created_at => row[9],
-	 :updated_at => row[10],
-   :job => row[11]
+	  :updated_at => row[10],
+    :job => row[11]
   	)
 end
 

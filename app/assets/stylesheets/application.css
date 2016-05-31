@@ -248,6 +248,10 @@ input[type="text"] {
 
 /* woman_pick_1
 =================================*/
+.roll-fixing{
+	position: absolute;
+
+}
 .woman-pick {
 	padding-top: 10px;
 }
@@ -400,7 +404,7 @@ input[type="text"] {
 	width: 100% !important:
 }
 
-/*後でbaloon rightとleftを作る予定*/
+
 .baloon {
 	position: absolute;
 	/*padding: .5em .75em;*/

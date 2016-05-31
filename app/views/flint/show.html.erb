@@ -1,13 +1,8 @@
 <!-- 選択したユーザの詳細情報 -->
-<center>
-<br>
-<ul>
-<button type="button" class="btn btn-default"><%= link_to '<', "/" %></button>
-</ul>
-</center>
-
+<div class="container">
+<a href="/"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Home</a>
+</div>
 <hr>
-
 <% @select_user_candidate.each do |candidate| %>
 <div class="container">
     <div class="row">

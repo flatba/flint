@@ -1,21 +1,24 @@
 <!-- ログインしているユーザの情報 -->
-
-<!-- Button -->
-<center>
 <br>
-  <button type="button" class="btn btn-default"><%= link_to '<', "/" %></button>
-  <button type="button" class="btn btn-default"><%= link_to 'Edit', edit_user_registration_path %></button>
-  <button type="button" class="btn btn-default"><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></button>
-
-  <h4>情報の編集</h4>
+<center>
+<div class="row">
+<div class="col-xs-4">
+<a href= "<%= edit_user_registration_path %>"><i class="fa fa-cog fa-fw" aria-hidden="true"></i>&nbsp; Edit</a>
+</div>
+<div class="col-xs-4">
+<a href="/"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Home</a>
+</div>
+<div class="col-xs-4">
+<a href="<%= destroy_user_session_path %>" , method = "delete"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>&nbsp; <%= link_to 'Logout', destroy_user_session_path, :method => :delete %></a>
+</div>
+</div>
+<h4>情報の編集</h4>
 </center>
-
 <hr>
 
 <!-- ユーザ情報 -->
 <div class="container">
   <div class="row">
-
     <div class="col-md-6 col-md-offset-3">
       <div class="main">
         <div class="fem-profile">

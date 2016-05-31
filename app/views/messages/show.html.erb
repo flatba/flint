@@ -112,15 +112,19 @@
                 <% elsif message.sender_id != current_user.id %>
                   <li class="right">
                     <div class="comm-img col-xs-3">
-                      <div class="pick-profile-pic-trim" style="width: 50px; height: 50px;">
+
                         <% if current_user.id == @userlike.restaurant.user.id %>
+                        <div class="pick-profile-pic-trim" style="width: 50px; height: 50px;">
                           <img src="<%= @users.find(@userlike.liker.id).thumb %>" alt="...">
+                        </div>
                           <%= @userlike.liker.name %>
                         <% else %>
+                        <div class="pick-profile-pic-trim" style="width: 50px; height: 50px;">
                           <img src="<%= @users.find(@userlike.like.id).thumb %>" alt="...">
+                        </div>
                           <%= @userlike.like.name %>
                         <% end %>
-                      </div>
+
                     </div>
 
                     <div class="baloon col-xs-9">
