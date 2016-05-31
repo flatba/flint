@@ -44,7 +44,7 @@
             <div class="fem-profile-part-2">
               <h4>レストラン</h4>
             </div>
-            <img src="<%= candidate.image %>" alt="image" />
+            <img src="<%= candidate.image %>" alt="image" style ="width: 100%; background-size: cover;"/>
             <div class="fem-profile-part-2">
               <div class="male-msg-top-text">
                 <h4><%= candidate.name %></h4>
@@ -92,7 +92,7 @@
                 <% if current_user.gender == "male" %>
                 <div class="fem-profile-table row">
                 <div class="col-xs-3">
-                  <div class="pick-profile-pic-trim">
+                  <div class="pick-profile-pic-trim" style="width: 50px; height: 50px;">
                     <img src="<%= user.thumb %>" alt="...">
                   </div>
                   </div>
@@ -127,12 +127,12 @@
                 <!-- 女性だった場合の選択ボタン -->
                 <% elsif current_user.gender == "female" %>
                  <div class="fem-profile-table row">
-                 <div class="col-xs-4">
-                    <div class="pick-profile-pic-trim">
+                 <div class="col-xs-3">
+                    <div class="pick-profile-pic-trim" style="width: 50px; height: 50px;">
                       <img src="<%= user.thumb %>" alt="...">
                     </div>
                     </div>
-                  <div class="baloon col-xs-8">
+                  <div class="baloon col-xs-9">
                     <%= candidate.comment %>
                   </div>
                 </div>

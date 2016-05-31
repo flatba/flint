@@ -269,7 +269,6 @@ input[type="text"] {
 }
 .pick-profile-pic-trim {
 	/*追加分*/
-	position:relative;
 	width: 100px;
 	height: 100px;
 	overflow: hidden;
@@ -277,6 +276,7 @@ input[type="text"] {
     -moz-border-radius: 50%;
     border-radius: 50%;
 }
+
 .woman-pick-profile-text {
 	vertical-align: top;
 	padding-top: 0px;
@@ -400,14 +400,16 @@ input[type="text"] {
 	width: 100% !important:
 }
 
-/*baloon rightとleftを作る*/
+/*後でbaloon rightとleftを作る予定*/
 .baloon {
-	position: relative;
-	padding: .5em .75em;
+	position: absolute;
+	/*padding: .5em .75em;*/
+	max-width: 100%;
+    height: auto;
 	background-color: #f0f0f0;
 	border-radius: 6px;
 }
-.baloon::after {
+.baloon::after { /*三角形の設定*/
 	position: absolute;
 	top: 100%;
 	left: 30px;
@@ -416,4 +418,55 @@ input[type="text"] {
 	height: 0;
 	border: 10px solid transparent;
 	border-top: 15px solid #f0f0f0;
+}
+.baloon-left {
+	border-top: solid 7px transparent;
+	border-bottom: solid 7px transparent;
+	border-right: solid 10px #222;
+	left: -10px;
+	content:"";
+	display:block;
+	height:0;
+	top:50%;
+	margin-top:-7px;
+	position: absolute;
+	width:0;
+}
+.balloon-left::after {
+	content: "";
+	position: absolute;
+	top: 50%; left: -10px;
+	margin-top: -10px;
+	display: block;
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 10px 10px 10px 0;
+	border-color: transparent #19283C transparent transparent;
+}
+/* balloon-2 right */
+#balloon-right {
+	position: relative;
+	display: inline-block;
+	padding: 0 15px;
+	width: auto;
+	min-width: 115px;
+	height: 40px;
+	color: #F6F6F6;
+	line-height: 40px;
+	text-align: center;
+	background: #19283C;
+	z-index: 0;
+}
+#balloon-right:after {
+	content: "";
+	position: absolute;
+	top: 50%; right: -10px;
+	margin-top: -10px;
+	display: block;
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 10px 0 10px 10px;
+	border-color: transparent transparent transparent #19283C;
 }
