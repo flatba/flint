@@ -15,9 +15,9 @@
                 <p style="color: #FFFFFF; width: 90%;">続行すると、お客様は当社の次の規約に同意することになります：<strong>サービスご利用規約</strong>と<strong>プライバシー ポリシー</strong></p>
                 </p>
 
-                <div>
-                  <button class="btn btn-facebook"><i class="fa fa-facebook"></i> | <%= render "devise/shared/fblinks" %></button>
-                </div>
+
+                  <button style="background-color: #305097; font-size: 1.2em; border-style: none; padding: 10px 30px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;"><%= render "devise/shared/fblinks" %></button>
+
 
                 <div class="field">
                   <%= f.label :email %><br>
@@ -36,11 +36,10 @@
               </div>
               <% end %> -->
 
-              <p>
-                  <button type="button" class="btn btn-default btn-xs">
-                  <%= f.submit "Log in" %>
-                  </button>
-              </p>
+                  <p>
+                  <%= f.submit "Log in", :class => "btn btn-default btn-xs"%>
+                  </p>
+
               </center>
 
               <!-- サインアップとパスワード忘れ -->

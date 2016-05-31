@@ -470,3 +470,8 @@ input[type="text"] {
 	border-width: 10px 0 10px 10px;
 	border-color: transparent transparent transparent #19283C;
 }
+
+@btn-facebook-color: #4c66a4;
+.btn-facebook {
+  .button-variant(lighten(@btn-facebook-color, 50%); @btn-facebook-color; darken(@btn-facebook-color, 20%));
+}

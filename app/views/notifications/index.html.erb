@@ -4,11 +4,13 @@
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <div class="main">
+      <h4>新しいマッチ</h4>
         <div class="notice-index">
           <ul class="notice-table">
 
-            <!-- 男性の場合 -->
+            <!-- 男性でログインしている場合 -->
             <% if current_user.gender == "male" %>
+            男性でログインしています
             <% @notifications.each do |notification| %>
             <% if notification.matching == 1 %>
             <li>
@@ -124,8 +126,9 @@
               </div>
             </li>
 
-            <!-- 女性の場合 -->
+            <!-- 女性でログインしている場合 -->
             <% elsif current_user.gender == "female" %>
+            女性でログインしています
             <% @notifications.each do |notification| %>
             <% if notification.matching == 1 %>
             <li>
