@@ -269,8 +269,8 @@ input[type="text"] {
 }
 .pick-profile-pic-trim {
 	/*追加分*/
-	width: 100px;
-	height: 100px;
+	width: 80px;
+	height: 80px;
 	overflow: hidden;
 	-webkit-border-radius: 50%; /* width,heightの半分 */
     -moz-border-radius: 50%;

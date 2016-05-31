@@ -8,8 +8,8 @@
 <hr>
 
   <!-- グローバルナビ -->
-  <button type="button" class="btn btn-default"><%= link_to 'ユーザ情報', user_path %></button>
-  <button type="button" class="btn btn-default"><%= link_to '通知', notification_path %></button>
+  <button type="button" class="btn btn-default"><i class="fa fa-user" aria-hidden="true"></i><%= link_to 'ユーザ情報', user_path %></button>
+  <button type="button" class="btn btn-default"><i class="fa fa-bell-o" aria-hidden="true"><%= link_to '通知', notification_path %></i></button>
 </center>
 
 <% @candidates.each do |candidate| %>
@@ -30,7 +30,7 @@
             </div>
             <div class="woman-pick-profile">
               <div class="woman-pick-profile-text">
-                <h5><%= candidate.user_id %>：<strong><%= @users.find(candidate.user_id).name %></strong>.<%= @users.find(candidate.user_id).age_range %><img src="/assets/group.png" alt="" class="name-img" /></h5>
+                <h5><%= candidate.user_id %>：<strong><%= @users.find(candidate.user_id).name %></strong>.<%= @users.find(candidate.user_id).age_range %> <i class="fa fa-users" aria-hidden="true"></i></h5>
                 <p><%= @users.find(candidate.user_id).job %></p>
               </div>
             </div>

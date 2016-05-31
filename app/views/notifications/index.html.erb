@@ -1,9 +1,14 @@
 <!-- 通知一覧 -->
 <div class="container">
+  <br>
   <button type="button" class="btn btn-default"><%= link_to '<', "/" %></button>
+
+<hr>
+
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <div class="main">
+      <br>
       <h4>新しいマッチ</h4>
         <div class="notice-index">
           <ul class="notice-table">
@@ -11,15 +16,16 @@
             <!-- 男性でログインしている場合 -->
             <% if current_user.gender == "male" %>
             男性でログインしています
+            <hr>
             <% @notifications.each do |notification| %>
             <% if notification.matching == 1 %>
             <li>
               <div class="notice-img">
                 <div class="pick-profile-pic-trim">
                 <% if notification.liker.id == current_user.id %>
-                <img src="<%= notification.like.thumb %>" width="200" />
+                  <a href="<%= message_path(notification.id) %>"><img src="<%= notification.like.thumb %>" width="200" /></a>
                 <% elsif notification.like.id == current_user.id %>
-                  <img src="<%= notification.liker.thumb %>" width="200" />
+                  <a href="<%= message_path(notification.id) %>"><img src="<%= notification.liker.thumb %>" width="200" /></a>
                   <% end %>
                 </div>
               </div>
@@ -42,8 +48,11 @@
             <li>
               <div class="notice-img">
                 <div class="pick-profile-pic-trim">
-                  <!-- <img src="notification.liker.thumb" alt="..."> -->
-                  <img src="<%= notification.liker.thumb %>" width="200" />
+                <% if notification.liker.id == current_user.id %>
+                  <a href="<%= message_path(notification.id) %>"><img src="<%= notification.like.thumb %>" width="200" /></a>
+                <% elsif notification.like.id == current_user.id %>
+                  <a href="<%= message_path(notification.id) %>"><img src="<%= notification.liker.thumb %>" width="200" /></a>
+                <% end %>
                 </div>
               </div>
               <div class="notice-text">
@@ -69,7 +78,11 @@
             <li>
               <div class="notice-img">
               <div class="pick-profile-pic-trim">
-                <img src="<%= notification.liker.thumb %>" alt="...">
+                <% if notification.liker.id == current_user.id %>
+                  <a href="<%= message_path(notification.id) %>"><img src="<%= notification.like.thumb %>" width="200" /></a>
+                <% elsif notification.like.id == current_user.id %>
+                  <a href="<%= message_path(notification.id) %>"><img src="<%= notification.liker.thumb %>" width="200" /></a>
+                <% end %>
                 </div>
               </div>
               <div class="notice-text">
@@ -98,8 +111,11 @@
             <li>
               <div class="notice-img">
               <div class="pick-profile-pic-trim">
-                <!-- <img src="notification.liker.thumb" alt="..."> -->
-                <img src="<%= notification.liker.thumb %>" width="200" />
+                <% if notification.liker.id == current_user.id %>
+                  <a href="<%= message_path(notification.id) %>"><img src="<%= notification.like.thumb %>" width="200" /></a>
+                <% elsif notification.like.id == current_user.id %>
+                  <a href="<%= message_path(notification.id) %>"><img src="<%= notification.liker.thumb %>" width="200" /></a>
+                <% end %>
                 </div>
               </div>
               <div class="notice-text">
@@ -135,9 +151,9 @@
               <div class="notice-img">
                 <div class="pick-profile-pic-trim">
                   <% if notification.like.id == current_user.id %>
-                  <img src="<%= notification.liker.thumb %>" width="200" />
+                    <a href="<%= message_path(notification.id) %>"><img src="<%= notification.liker.thumb %>" width="200" /></a>
                   <% elsif notification.liker.id == current_user.id %>
-                  <img src="<%= notification.like.thumb %>" width="200" />
+                    <a href="<%= message_path(notification.id) %>"><img src="<%= notification.like.thumb %>" width="200" /></a>
                   <% end %>
                 </div>
               </div>
@@ -159,8 +175,11 @@
             <li>
               <div class="notice-img">
                 <div class="pick-profile-pic-trim">
-                  <!-- <img src="notification.liker.thumb" alt="..."> -->
-                  <img src="<%= notification.liker.thumb %>" width="200" />
+                  <% if notification.like.id == current_user.id %>
+                    <a href="<%= message_path(notification.id) %>"><img src="<%= notification.liker.thumb %>" width="200" /></a>
+                  <% elsif notification.liker.id == current_user.id %>
+                    <a href="<%= message_path(notification.id) %>"><img src="<%= notification.like.thumb %>" width="200" /></a>
+                  <% end %>
                 </div>
               </div>
               <div class="notice-text">
@@ -181,13 +200,17 @@
             <li>
               <div class="notice-img">
                 <div class="pick-profile-pic-trim">
-                  <!-- <img src="notification.liker.thumb" alt="..."> -->
-                  <img src="<%= notification.liker.thumb %>" width="200" />
+                  <% if notification.like.id == current_user.id %>
+                    <a href="<%= message_path(notification.id) %>"><img src="<%= notification.liker.thumb %>" width="200" /></a>
+                  <% elsif notification.liker.id == current_user.id %>
+                    <a href="<%= message_path(notification.id) %>"><img src="<%= notification.like.thumb %>" width="200" /></a>
+                  <% end %>
                 </div>
               </div>
               <div class="notice-text">
                 <h4>マッチしました。6</h4>
                 <p>
+
                   <% if notification.liker.id == current_user.id %>
                   <!-- <img src="<%= notification.like.thumb %>" width="200" /> -->
                   <% elsif notification.like.id == current_user.id %>
@@ -212,8 +235,11 @@
             <li>
               <div class="notice-img">
                 <div class="pick-profile-pic-trim">
-                  <!-- <img src="notification.liker.thumb" alt="..."> -->
-                  <img src="<%= notification.liker.thumb %>" width="200" />
+                  <% if notification.like.id == current_user.id %>
+                    <a href="<%= message_path(notification.id) %>"><img src="<%= notification.liker.thumb %>" width="200" /></a>
+                  <% elsif notification.liker.id == current_user.id %>
+                    <a href="<%= message_path(notification.id) %>"><img src="<%= notification.like.thumb %>" width="200" /></a>
+                  <% end %>
                 </div>
               </div>
               <div class="notice-text">
@@ -241,12 +267,9 @@
                 </p>
               </div>
             </li>
-
-
           </ul>
         </div>
       </div>
-
     </div>
   </div>
 </div>
