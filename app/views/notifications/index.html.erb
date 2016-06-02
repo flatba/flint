@@ -13,7 +13,7 @@
 
             <!-- 男性でログインしている場合 -->
             <% if current_user.gender == "male" %>
-            男性でログインしています
+            <!-- 男性でログインしています -->
             <hr>
             <% @notifications.each do |notification| %>
             <% if notification.matching == 1 %>
@@ -138,7 +138,7 @@
 
             <!-- 女性でログインしている場合 -->
             <% elsif current_user.gender == "female" %>
-            女性でログインしています
+            <!-- 女性でログインしています -->
             <% @notifications.each do |notification| %>
             <% if notification.matching == 1 %>
             <li>
