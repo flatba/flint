@@ -1,5 +1,5 @@
 <div class="container">
-<!-- <%= link_to 'レストラン一覧', restaurants_path %> -->
+<%= link_to 'レストラン一覧', restaurants_path %>
 <!-- <%= link_to "マッチング一覧", :controller => "flint", :action => "match", :current => current_user.id, method: :post %><br> -->
 <br>
 <center>
@@ -44,15 +44,10 @@
       <%= link_to '[もっと見る]', :controller => "flint", :action => "show", :id => candidate.user_id, :class => "btn btn-danger btn-xs" %></a>
       <ul class="woman-pick-list">
         <li>
-<!--         <%= candidate.star %>
-          <% if candidate.star > 0 %>
+<!-- ここに星数えて表示する奴 -->
 
-            <% for starNum in 1..candidate.star do %>
-              <i class="fa fa-star" aria-hidden="true"></i>
-            <% end %>
-          <% elsif candidate.star == nil  %>
-              no data
-          <% end %> -->
+
+
         </li>
         <li>
           <%= candidate.star %>
