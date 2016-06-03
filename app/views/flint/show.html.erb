@@ -22,10 +22,10 @@
                 <%= user.gender %> , UserID <%= user.id %>
               </p>
               <p>
-                <% if @users.find(current_user.id).introduction == nil %>
+                <% if @users.find(candidate.user.id).introduction == nil %>
                   nil
                 <% else %>
-                  <%= @users.find(current_user.id).introduction %>
+                  <%= @users.find(candidate.user.id).introduction %>
                 <% end %>
               </p>
             </div>
