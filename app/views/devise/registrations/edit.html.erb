@@ -1,35 +1,35 @@
-<br>
-<div class="main">
-<center>
-<a href="/"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Home</a>
+<div class="container">
+  <div class="main roll-fixing">
+    <div class="pbody">
+      <center>
+        <a href="/"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Home</a>
+        <h4>user情報の編集</h4>
+      </center>
 
-<h4>user情報の編集</h4>
-</center>
+      <hr>
 
-<hr>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+      <div class="field">
+        <%= f.label "名前" %><br />
+        <%= f.text_field :name%>
+      </div>
 
-  <div class="field">
-    <%= f.label "名前" %><br />
-    <%= f.text_field :name%>
-  </div>
+      <div class="field">
+        <%= f.label "年齢" %><br />
+        <%= f.text_field :age_range %>
+      </div>
 
-  <div class="field">
-    <%= f.label "年齢" %><br />
-    <%= f.text_field :age_range %>
-  </div>
+      <div class="field">
+        <%= f.label "職業" %><br />
+        <%= f.text_field :job%>
+      </div>
 
-  <div class="field">
-    <%= f.label "職業" %><br />
-    <%= f.text_field :job%>
-  </div>
-
-  <div class="field">
-    <%= f.label "自己紹介" %><br />
-    <%= f.text_area :introduction, :size => "40x10"%>
-  </div>
+      <div class="field">
+        <%= f.label "自己紹介" %><br />
+        <%= f.text_area :introduction, :size => "40x10"%>
+      </div>
 
 <!--   <div class="field">
     <%= f.label "Eメール" %><br />
@@ -41,9 +41,9 @@
   <label><%= f.radio_button :gender, "female" %>女</label>
 </div> -->
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+<% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+<div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+<% end %>
 
 <!--   <div class="field">
     <%= f.label "パスワード（パスワードを変更しない場合は空欄にしてください。）" %> <i>(leave blank if you don't want to change it)</i><br />
@@ -63,11 +63,13 @@
   <div class="actions">
     <%= f.submit "更新" %>
   </div>
-<% end %>
+  <% end %>
 
-<hr>
+  <hr>
 
-<h3>退会</h3>
+  <h3>退会</h3>
 
-<p>退会してユーザ情報を削除しますか? <%= button_to "退会する", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+  <p>退会してユーザ情報を削除しますか? <%= button_to "退会する", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+</div>
+</div>
 </div>
