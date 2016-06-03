@@ -65,7 +65,7 @@ before_action :configure_permitted_parameters, only: [:update]
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:account_update) do |u|
       u.permit(:name,
-        :email, :password, :password_confirmation, :current_password,:age_range, :job)
+        :email, :password, :password_confirmation, :current_password,:age_range, :job, :introduction)
     end
   end
 

@@ -65,8 +65,11 @@ CSV.foreach('db/csv/user.csv') do |row|
   	:uid => row[8],
   	:created_at => row[9],
 	  :updated_at => row[10],
-    :job => row[11]
+    :job => row[11],
+    :introduction => row[12]
   	)
+
+end
 
 CSV.foreach('db/csv/restaurant.csv') do |row|
   Restaurant.create(
@@ -85,19 +88,16 @@ CSV.foreach('db/csv/restaurant.csv') do |row|
     )
 end
 
-CSV.foreach('db/csv/user_like.csv') do |row|
-  UserLike.create(
-    :user_id => row[0],
-  :like_id => row[1],
-  :matching => row[2],
-  :restaurant_id => row[3],
-  :created_at => row[4],
-  :updated_at => row[5]
-    )
-end
-end
-
-
+# CSV.foreach('db/csv/user_like.csv') do |row|
+#   UserLike.create(
+#     :user_id => row[0],
+#   :like_id => row[1],
+#   :matching => row[2],
+#   :restaurant_id => row[3],
+#   :created_at => row[4],
+#   :updated_at => row[5]
+#     )
+# end
 
 
 

@@ -1,117 +1,111 @@
 <!-- ログインしているユーザの情報 -->
 <br>
 <center>
-<div class="row">
-<div class="col-xs-4">
-<a href= "<%= edit_user_registration_path %>"><i class="fa fa-cog fa-fw" aria-hidden="true"></i>&nbsp; Edit</a>
-</div>
-<div class="col-xs-4">
-<a href="/"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Home</a>
-</div>
-<div class="col-xs-4">
-<a href="<%= destroy_user_session_path %>" , method = "delete"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>&nbsp; <%= link_to 'Logout', destroy_user_session_path, :method => :delete %></a>
-</div>
-</div>
-<h4>情報の編集</h4>
+  <div class="row">
+    <div class="col-xs-3">
+      <a href= "<%= edit_user_registration_path %>"><i class="fa fa-cog fa-fw" aria-hidden="true"></i>&nbsp; Edit</a>
+    </div>
+    <div class="col-xs-3">
+      <a href="/restaurants/<%= current_user.id %>/edit"><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i>&nbsp; Restaurant</a>
+    </div>
+    <div class="col-xs-3">
+      <a href="/"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Home</a>
+    </div>
+    <div class="col-xs-3">
+      <a href="<%= destroy_user_session_path %>" , method = "delete"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>&nbsp; <%= link_to 'Logout', destroy_user_session_path, :method => :delete %></a>
+    </div>
+  </div>
+  <h4>情報の編集</h4>
 </center>
+
 <hr>
 
 <!-- ユーザ情報 -->
 <div class="container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <div class="main">
-        <div class="fem-profile">
-          <div class="fem-profile-part-1">
-            <img src="<%= @facebook_uid_thumb %>" alt="" style ="width: 100%; background-size: cover;"/>
-            <!-- <img src="<%= @facebook_uid_thumb %>" alt="" /> -->
-          </div>
-          <div class="fem-profile-part-2">
-            <h4>
-              UserID <%= current_user.id %>:<strong><%= current_user.name %></strong>.<%= current_user.age_range %> <i class="fa fa-users" aria-hidden="true"></i>
-            </h4>
-            <p>
-              <%= @users.find(current_user.id).job %>
-            </p>
-            <p>
-              これは自己紹介です。Aenean fringilla et massa justo curabitur ultricies fringilla. Proin vehicula feugiat taciti mattis condimentum dolor. Porttitor habitasse aptent felis eleifend ridiculus ipsum elit urna lectus dignissim massa sagittis tempor sit.
-            </p>
-          </div>
+  <div class="main">
+    <div class="fem-profile">
+      <div class="fem-profile-part-1">
+        <img src="<%= @facebook_uid_thumb %>" alt="" style ="width: 100%; background-size: cover;"/>
+        <!-- <img src="<%= @facebook_uid_thumb %>" alt="" /> -->
+      </div>
+      <div class="fem-profile-part-2">
+        <h4>
+          UserID <%= current_user.id %>:<strong><%= current_user.name %></strong>.<%= current_user.age_range %> <i class="fa fa-users" aria-hidden="true"></i>
+        </h4>
+        <p>
+          <%= @users.find(current_user.id).job %>
+        </p>
+        <p>
+          <%= @users.find(current_user.id).introduction %>
+        </p>
+      </div>
 
-          <!-- レストラン情報 -->
-          <% @current_user_candidates.each do |candidate| %>
-          <div class="fem-profile-part-2">
-            <h4>レストラン情報</h4>
-          </div>
+      <div class="fem-profile-part-2">
+        <h4>レストラン情報</h4>
+      </div>
 
-          <img src="<%= candidate.image %>" alt="image" style ="width: 100%; background-size: cover;"/>
-          <div class="fem-profile-part-2">
-            <div class="male-msg-top-text">
-              <h4><%= candidate.name %></h4>
-              <ul class="woman-pick-list">
-                <li>
 
-                <% if candidate.star > 0 %>
-                  <% for starNum in 1..candidate.star do %>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                  <% end %>
-                <% elsif candidate.star == nil %>
-                  nil
+      <img src="<%= @current_user_candidates.last.image %>" alt="image" style ="width: 100%; background-size: cover;"/>
+      <div class="fem-profile-part-2">
+        <div class="male-msg-top-text">
+          <h4><%= @current_user_candidates.last.name %></h4>
+          <ul class="woman-pick-list">
+            <li>
+              <% if @current_user_candidates.last.star > 0 %>
+              <% for starNum in 1..@current_user_candidates.last.star do %>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <% end %>
+              <% elsif @current_user_candidates.last.star == nil %>
+              nil
+              <% else %>
+              no data
+              <% end %>
+            </li>
+            <li>
+              <%= @current_user_candidates.last.star %>
+            </li>
+            <li>
+              <% if @users.find(current_user.id).gender == "male" %>
+              <div class="btn-danger btn-xs disabled">
+                <% if @current_user_candidates.last.payment == 0 %>
+                奢るよ！
+                <% elsif @current_user_candidates.last.payment == 1 %>
+                割り勘で！
                 <% else %>
-                  no data
+                どちらでも！
                 <% end %>
-                </li>
-                <li>
-                  <%= candidate.star %>
-                </li>
-                <li>
-                  <div class="btn-danger btn-xs disabled">
-                    <% if candidate.payment == 0 %>
-                      おごるよ！
-                    <% elsif  candidate.payment == 1 %>
-                      ワリカンで！
-                    <% else %>
-                      無記入
-                    <% end %>
-                  </div>
-                </li>
-              </ul>
-              <ul class="woman-pick-list">
-                <li>
-                  <span class="border-text">カテゴリ</span>
-                  <span><%= candidate.category %></span>
-                </li>
-                <li>
-                  <span class="border-text">価格帯</span>
-                  <span><%= candidate.price %>~</span>
-                </li>
-                <li>
-                  <span class="border-text">エリア</span>
-                  <span><%= candidate.area %></span>
-                </li>
-              </ul>
-
-              <div class="fem-profile-table row">
-              <div class="col-xs-3">
-                  <div class="pick-profile-pic-trim" style="width: 50px; height: 50px;">
-                    <img src="<%= @users.find(current_user.id).thumb %>" alt='' >
-                  </div>
-                  </div>
-                  <div class ="col-xs-9">
-                  <div class="baloon">
-                    <%= candidate.comment %>
-                  </div>
-                  </div>
               </div>
-                <!-- <%= candidate.comment %> -->
-                <!-- <div class="form-control" rows="3" cols="80" style = "width: 310px; height: 100px; border-radius: 10px;"><%= candidate.comment %></div> -->
+              <% end %>
+            </li>
+          </ul>
+          <ul class="woman-pick-list">
+            <li>
+              <span class="border-text">カテゴリ</span>
+              <span><%= @current_user_candidates.last.category %></span>
+            </li>
+            <li>
+              <span class="border-text">価格帯</span>
+              <span><%= @current_user_candidates.last.price %>~</span>
+            </li>
+            <li>
+              <span class="border-text">エリア</span>
+              <span><%= @current_user_candidates.last.area %></span>
+            </li>
+          </ul>
+
+          <div class="fem-profile-table row">
+            <div class="col-xs-3">
+              <div class="pick-profile-pic-trim" style="width: 50px; height: 50px; margin-top: 100px;">
+                <img src="<%= @users.find(current_user.id).thumb %>" alt=''>
+              </div>
             </div>
+              <div class="baloon col-xs-9">
+                <%= @current_user_candidates.last.comment %>
+              </div>
           </div>
-          <% end %>
         </div>
       </div>
+
     </div>
   </div>
-</div>
-</div>
 </div>

@@ -1,49 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<body>
+<!-- レストランフォーム -->
 <%= form_for(@restaurant) do |f| %>
-<% if @restaurant.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(@restaurant.errors.count, "error") %> prohibited this restaurant from being saved:</h2>
-
-  <ul>
-    <% @restaurant.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
-</div>
+  <% if @restaurant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@restaurant.errors.count, "error") %> prohibited this restaurant from being saved:</h2>
+    <ul>
+      <% @restaurant.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+    </div>
 <% end %>
 
 <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <div class="main">
-          <div class="male-res">
-            <form>
-              <div class="male-res-inner">
-                <div class="center-content">
-                  <h3>
-                    レストラン入力画面
-                  </h3>
-                </div>
-                <div class="clearfix">
-                  <div class="pull-left">
-
-                  </div>
-<!--                   <div class="pull-right">
-                    <input type="text" placeholder="Some placeholder" class="form-control"  />
-                  </div> -->
-                </div>
-                <div class="btn-and-input">
-                  <p><i class="fa fa-square" aria-hidden="true"></i> YelpのURL </p>
-                    <%= f.text_field :url, :class => "field male-res-input", :placeholder => "https://www.yelp.co.jp/..." %>
-                </div>
-
-                <div class="btn-and-input">
-                  <p><i class="fa fa-square" aria-hidden="true"></i> 一言コメント </p>
-                  <%= f.text_area :comment, :class => "field male-res-input", :placeholder => "一言コメントを入力してください" %>
-                </div>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="main">
+        <div class="male-res">
+          <form>
+            <div class="male-res-inner">
+              <div class="center-content">
+                <h3>レストラン入力画面</h3>
+              </div>
+              <div class="btn-and-input">
+                <p><i class="fa fa-square" aria-hidden="true"></i> YelpのURL </p>
+                  <%= f.text_field :url, :class => "field male-res-input", :placeholder => "https://www.yelp.co.jp/..." %>
+              </div>
+              <div class="btn-and-input">
+                <p><i class="fa fa-square" aria-hidden="true"></i> 一言コメント </p>
+                <%= f.text_area :comment, :class => "field male-res-input", :placeholder => "一言コメントを入力してください" %>
+              </div>
 
 <!--                 <% if current_user.gender == "male" %>
                 <div class="btn-and-input">
@@ -59,28 +44,18 @@
                 </div>
                 <% end %> -->
 
-                <% if current_user.gender == "male" %>
-                <p><i class="fa fa-square" aria-hidden="true"></i> 支払いを選択してください </p>
-                  <label><%= f.radio_button :payment, "0" %>奢るよ！</label>
-                  <label><%= f.radio_button :payment, "1" %>一緒に行こう！</label>
-                <% end %>
-              </div>
-
+              <% if current_user.gender == "male" %>
+              <p><i class="fa fa-square" aria-hidden="true"></i> 支払いを選択してください </p>
+                <label><%= f.radio_button :payment, "0" %>奢るよ！</label>
+                <label><%= f.radio_button :payment, "1" %>一緒に行こう！</label>
+              <% end %>
+            </div>
               <%= hidden_field_tag 'restaurant[user_id]', current_user.id %>
               <%= f.submit :class => "male-res-footer lead field action actions btn-block" %>
-
-
-            </div>
             </form>
-          </div>
         </div>
       </div>
     </div>
-    </div>
   </div>
-
-
-  <% end %>
-
-  </body>
-</html>
+</div>
+<% end %>
