@@ -1,6 +1,17 @@
-<h1>Editing Restaurant</h1>
-
+<!-- <h1>レストラン情報編集画面</h1> -->
+<br>
+<center>
+  <div class="row">
+    <div class="col-xs-4">
+        <a href="<%= destroy_user_session_path %>" , method = "delete"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>&nbsp; <%= link_to 'Logout', destroy_user_session_path, :method => :delete %></a>
+    </div>
+    <div class="col-xs-4">
+        <%= link_to 'Show', @restaurant %>
+    </div>
+    <div class="col-xs-4">
+        <a href="/"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Home</a>
+    </div>
+  </div>
+</center>
 <%= render 'form' %>
 
-<%= link_to 'Show', @restaurant %> |
-<%= link_to 'Back', restaurants_path %>

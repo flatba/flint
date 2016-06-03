@@ -22,7 +22,7 @@
                 <%= user.gender %> , UserID <%= user.id %>
               </p>
               <p>
-                Aenean fringilla et massa justo curabitur ultricies fringilla. Proin vehicula feugiat taciti mattis condimentum dolor. Porttitor habitasse aptent felis eleifend ridiculus ipsum elit urna lectus dignissim massa sagittis tempor sit.
+                <%= user.introduction %>
               </p>
             </div>
             <div class="fem-profile-part-2">
@@ -46,17 +46,6 @@
             <div class="fem-profile-part-2">
               <div class="male-msg-top-text">
                 <h4><%= candidate.name %></h4>
-                <% if user.gender == "male" %>
-                      <div class="btn-danger btn-xs disabled" style="width: 20%;">
-                        <% if candidate.payment == 0 %>
-                            奢るよ！
-                        <% elsif candidate.payment == 1 %>
-                            割り勘で！
-                        <% else %>
-                            どちらでも！
-                        <% end %>
-                      </div>
-                <% end %>
                 <ul class="woman-pick-list">
                   <li>
                     <% for starNum in 1..candidate.star do %>
@@ -66,6 +55,20 @@
                   <li>
                     <%= candidate.star %>
                   </li>
+                  <li>
+                  <% if user.gender == "male" %>
+                      <div class="btn-danger btn-xs disabled">
+                        <% if candidate.payment == 0 %>
+                            奢るよ！
+                        <% elsif candidate.payment == 1 %>
+                            割り勘で！
+                        <% else %>
+                            どちらでも！
+                        <% end %>
+                      </div>
+                  <% end %>
+                  </li>
+
                 </ul>
                 <ul class="woman-pick-list">
                   <li>

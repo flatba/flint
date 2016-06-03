@@ -35,14 +35,16 @@ class FlintController < ApplicationController
         facebook_uid = nil
         # ここがバグの元↓
         @current_user_candidates = Restaurant.where(:user_id => current_user.id)
-        facebook_uid = User.find(current_user.id).uid
 
+        # render :text => Restaurant.all
+
+        facebook_uid = User.find(current_user.id).uid
         if facebook_uid == nil
             redirect_to root_path
         else
         @facebook_uid_thumb = "https://graph.facebook.com/"+ facebook_uid +"/picture?type=large"
         end
-         @users = User.all
+        @users = User.all
     end
     ### ↑たぶん、userメソッドとshowメソッドは一緒にできる。↓　###
     def show # クリックされたユーザのレストラン情報とサムネイル画像
