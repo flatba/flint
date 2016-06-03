@@ -1,5 +1,5 @@
 <div class="container">
-<%= link_to 'レストラン一覧', restaurants_path %>
+<!-- <%= link_to 'レストラン一覧', restaurants_path %> -->
 <!-- <%= link_to "マッチング一覧", :controller => "flint", :action => "match", :current => current_user.id, method: :post %><br> -->
 <br>
 <center>
@@ -81,7 +81,11 @@
         </li>
       </ul>
 
-              <!-- 男性だった場合のボタン -->
+
+
+            </div>
+          </div>
+          <!-- 男性だった場合のボタン -->
               <% if current_user.gender == "male" %>
               <div class="cir-btn-table" style="padding-top: 20px">
                 <div class="cir-btn-table-cell">
@@ -125,8 +129,6 @@
               </div>
               <% end %>
 
-            </div>
-          </div>
         </div>
       </div>
     </div>
