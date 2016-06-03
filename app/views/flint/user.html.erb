@@ -48,32 +48,32 @@
         <h4>レストラン情報</h4>
       </div>
 
-
-      <img src="<%= @current_user_candidates.last.image %>" alt="image" style ="width: 100%; background-size: cover;"/>
+<% @current_user_candidates.each do |candidate| %>
+      <img src="<%= candidate.image %>" alt="image" style ="width: 100%; background-size: cover;"/>
       <div class="fem-profile-part-2">
         <div class="male-msg-top-text">
-          <h4><%= @current_user_candidates.last.name %></h4>
+          <h4><%= candidate.name %></h4>
           <ul class="woman-pick-list">
             <li>
-              <% if @current_user_candidates.last.star > 0 %>
-              <% for starNum in 1..@current_user_candidates.last.star do %>
+              <% if candidate.star > 0 %>
+              <% for starNum in 1..candidate.star do %>
               <i class="fa fa-star" aria-hidden="true"></i>
               <% end %>
-              <% elsif @current_user_candidates.last.star == nil %>
+              <% elsif candidate.star == nil %>
               nil
               <% else %>
               no data
               <% end %>
             </li>
             <li>
-              <%= @current_user_candidates.last.star %>
+              <%= candidate.star %>
             </li>
             <li>
               <% if @users.find(current_user.id).gender == "male" %>
               <div class="btn-danger btn-xs disabled">
-                <% if @current_user_candidates.last.payment == 0 %>
+                <% if candidate.payment == 0 %>
                 奢るよ！
-                <% elsif @current_user_candidates.last.payment == 1 %>
+                <% elsif candidate.payment == 1 %>
                 割り勘で！
                 <% else %>
                 どちらでも！
@@ -85,15 +85,15 @@
           <ul class="woman-pick-list">
             <li>
               <span class="border-text">カテゴリ</span>
-              <span><%= @current_user_candidates.last.category %></span>
+              <span><%=candidate.category %></span>
             </li>
             <li>
               <span class="border-text">価格帯</span>
-              <span><%= @current_user_candidates.last.price %>~</span>
+              <span><%= candidate.price %>~</span>
             </li>
             <li>
               <span class="border-text">エリア</span>
-              <span><%= @current_user_candidates.last.area %></span>
+              <span><%= candidate.area %></span>
             </li>
           </ul>
 
@@ -104,12 +104,12 @@
               </div>
             </div>
               <div class="baloon col-xs-9">
-                <%= @current_user_candidates.last.comment %>
+                <%= candidate.comment %>
               </div>
           </div>
         </div>
       </div>
-
+<% end %>
     </div>
   </div>
 </div>
