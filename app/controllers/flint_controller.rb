@@ -99,6 +99,10 @@ class FlintController < ApplicationController
     @matches = UserLike.where(:user_id => current_user.id, :matching => 1)
   end
 
+  def privacyPolicy
+    render 'privacyPolicy'
+  end
+
 
 end
 

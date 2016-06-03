@@ -16,6 +16,17 @@
  *= require font-awesome
  */
 
+.pbody{
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 14px;
+    margin:5px;
+padding:5px;
+background:#f0f0f0; /* 背景 */
+border:#cccccc 1px solid; /* 枠線 */
+border-left:#cccccc 5px solid; /* 枠線(左) */
+
+}
+
 body {
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   font-size: 14px;
