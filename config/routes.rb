@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root "flint#index"
 
+  get 'privacy-policy' => 'flint#privacyPolicy'
+
   resources :restaurants
 
   ###!!! このルートは本来はオカシイ。production版では修正が必要 !!!!###
