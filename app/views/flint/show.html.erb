@@ -22,7 +22,11 @@
                 <%= user.gender %> , UserID <%= user.id %>
               </p>
               <p>
-                <%= user.introduction %>
+                <% if @users.find(current_user.id).introduction == nil %>
+                  nil
+                <% else %>
+                  <%= @users.find(current_user.id).introduction %>
+                <% end %>
               </p>
             </div>
             <div class="fem-profile-part-2">
