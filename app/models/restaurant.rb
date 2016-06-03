@@ -8,17 +8,6 @@ class Restaurant < ActiveRecord::Base
 # require "open-uri"
 # require "nokogiri"
 
-# 食べログのページを保存する
-
-# 食べログページのhtmlを保存する
-
-# 食べログページのnokogiriをかます
-
-
-# スクレイピング先のURL
-# Tabelog_mainpage = "http://tabelog.com/"
-# htmlをパース(解析)してオブジェクトを生成
-
-# htmlをパース(解析)してオブジェクトを生成
+validates :url, :comment, presence: true
 
 end

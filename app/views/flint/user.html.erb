@@ -55,15 +55,7 @@
           <h4><%= candidate.name %></h4>
           <ul class="woman-pick-list">
             <li>
-              <% if candidate.star > 0 %>
-              <% for starNum in 1..candidate.star do %>
-              <i class="fa fa-star" aria-hidden="true"></i>
-              <% end %>
-              <% elsif candidate.star == nil %>
-              nil
-              <% else %>
-              no data
-              <% end %>
+             <!-- ここに星の評価 -->
             </li>
             <li>
               <%= candidate.star %>
