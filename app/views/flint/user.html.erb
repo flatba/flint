@@ -36,7 +36,11 @@
           <%= @users.find(current_user.id).job %>
         </p>
         <p>
+        <%= if @users.find(current_user.id).introduction == nil %>
+          nil
+        <% else %>
           <%= @users.find(current_user.id).introduction %>
+        <% end %>
         </p>
       </div>
 
