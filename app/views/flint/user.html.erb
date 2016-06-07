@@ -56,14 +56,12 @@
           <ul class="woman-pick-list">
             <li>
              <!-- ここに星の評価 -->
-            <% if candidate.star >=0 %>
+            <% if candidate.star.present? %>
               <% for starNum in 1..candidate.star do %>
                 <i class="fa fa-star" aria-hidden="true"></i>
               <% end %>
-            <% elsif candidate.star == nil %>
-              nil
             <% else %>
-              no data
+              評価なし
             <% end %>
             </li>
             <li>

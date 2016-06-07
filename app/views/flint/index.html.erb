@@ -43,9 +43,13 @@
           <ul class="woman-pick-list">
             <li>
               <!-- ここに星数えて表示する奴 -->
-
-
-
+            <% if candidate.star.present? %>
+              <% for starNum in 1..candidate.star do %>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              <% end %>
+            <% else %>
+              評価なし
+            <% end %>
             </li>
             <li>
               <%= candidate.star %>
