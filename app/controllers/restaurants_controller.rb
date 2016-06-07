@@ -25,6 +25,8 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants/1/edit
   def edit
+    @restaurant = Restaurant.all
+    # @restaurant = Restaurant.where(:user => current_user.id)
   end
 
   # POST /restaurants
@@ -179,10 +181,8 @@ class RestaurantsController < ApplicationController
   # PATCH/PUT /restaurants/1
   # PATCH/PUT /restaurants/1.json
   def update
-    @restaurant = Restaurant.new(restaurant_params)
-    if @restaurant.save
-    # スクレイピング先のURL
-    restaurant_url = Restaurant.last.url
+    @restaurant = Restaurant.find(params[:id])
+    # if @restaurant.update_attributes(params[:id])
 
     ######################################################################
     # yelp
@@ -266,23 +266,23 @@ class RestaurantsController < ApplicationController
     image = doc.xpath('//meta[@property="og:image"]').attribute("content").value
 
     ######################################################################
-
-    @restaurant.update(
+    @restaurant.update_attributes = {
       :name => title,
       :category => category,
       :price => price,
       :star => star,
       :area => area,
       :image => image
-      )
+    }
 
-    if @restaurant.update(restaurant_params)
+
+    if @restaurant.update_attributes(params[:restaurant])
         # redirect_to root_path
         redirect_to user_path
       else
         render 'edit'
       end
-  end
+  # end
 
 
   end
@@ -297,7 +297,8 @@ class RestaurantsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_restaurant
-      @restaurant = Restaurant.find(params[:id])
+      # @restaurant = Restaurant.find(params[:id])
+      @restaurant = Restaurant.where(:user => current_user.id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

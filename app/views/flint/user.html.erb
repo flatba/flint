@@ -6,7 +6,7 @@
       <a href= "<%= edit_user_registration_path %>"><i class="fa fa-cog fa-fw" aria-hidden="true"></i>&nbsp; Edit</a>
     </div>
     <div class="col-xs-3">
-      <a href="/restaurants/<%= current_user.id %>/edit"><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i>&nbsp; Restaurant</a>
+      <a href="/restaurant/edit"><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i>&nbsp; Restaurant</a>
     </div>
     <div class="col-xs-3">
       <a href="/"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Home</a>
@@ -30,7 +30,7 @@
       </div>
       <div class="fem-profile-part-2">
         <h4>
-          UserID <%= current_user.id %>:<strong><%= current_user.name %></strong>.<%= current_user.age_range %> <i class="fa fa-users" aria-hidden="true"></i>
+          UserID <%= current_user.id %>:<strong><%= current_user.name %></strong>.<%= @facebook_birthday %> <i class="fa fa-users" aria-hidden="true"></i>
         </h4>
         <p>
           <%= @users.find(current_user.id).job %>

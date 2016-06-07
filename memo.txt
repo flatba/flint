@@ -31,3 +31,19 @@
               <% else %>
               no data
               <% end %>
+
+
+
+@restaurant.update(
+      :name => title,
+      :category => category,
+      :price => price,
+      :star => star,
+      :area => area,
+      :image => image
+      )
+
+
+
+
+

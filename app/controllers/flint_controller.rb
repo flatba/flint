@@ -37,14 +37,18 @@ class FlintController < ApplicationController
         @current_user_candidates = Restaurant.where(:user_id => current_user.id)
 
         # render :text => Restaurant.all
+        @users = User.all
 
+        # Facebook情報取得
         facebook_uid = User.find(current_user.id).uid
         if facebook_uid == nil
             redirect_to root_path
         else
         @facebook_uid_thumb = "https://graph.facebook.com/"+ facebook_uid +"/picture?type=large"
         end
-        @users = User.all
+        @facebook_birthday = "https://graph.facebook.com/oauth/authorize?client_id=477433369118312&amp;scope=user_birthday&amp;redirect_uri=" + facebook_uid
+        # @facebook_friends =
+
     end
     ### ↑たぶん、userメソッドとshowメソッドは一緒にできる。↓　###
     def show # クリックされたユーザのレストラン情報とサムネイル画像
@@ -52,6 +56,7 @@ class FlintController < ApplicationController
         @users = User.where(:id => params[:id])
         facebook_uid = User.find(params[:id]).uid
         @facebook_uid_thumb = "https://graph.facebook.com/"+ facebook_uid +"/picture?type=large"
+        @facebook_birthday = "https://graph.facebook.com/oauth/authorize?client_id=477433369118312&amp;scope=user_birthday&amp;redirect_uri=" + facebook_uid
 
     end
 

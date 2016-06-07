@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   get 'privacy-policy' => 'flint#privacyPolicy'
 
-  resources :restaurants
+  # resources :restaurants
+  get 'restaurant/edit' => 'restaurants#edit'
 
   ###!!! このルートは本来はオカシイ。production版では修正が必要 !!!!###
   resources :messages
