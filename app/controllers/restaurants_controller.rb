@@ -194,6 +194,11 @@ class RestaurantsController < ApplicationController
 
     url = Restaurant.last.url
 
+    # スマホURLの対応
+    if (url.index("m") == 8)
+      url = url.gsub("m", "www")
+    end
+
     opt = {}
     opt['User-Agent'] = 'Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 '
 
