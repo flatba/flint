@@ -25,8 +25,8 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants/1/edit
   def edit
-    @restaurant = Restaurant.all
-    # @restaurant = Restaurant.where(:user => current_user.id)
+    # @restaurant = Restaurant.all
+    @restaurant = Restaurant.where(:user => current_user.id)
   end
 
   # POST /restaurants

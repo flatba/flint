@@ -15,7 +15,7 @@
       <a href="<%= destroy_user_session_path %>" , method = "delete"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>&nbsp; <%= link_to 'Logout', destroy_user_session_path, :method => :delete %></a>
     </div>
   </div>
-  <h4>情報の編集</h4>
+  <h4><i class="fa fa-user fa-fw" aria-hidden="true"></i> &nbsp; ユーザ情報</h4>
 </center>
 
 <hr>
@@ -56,6 +56,13 @@
           <ul class="woman-pick-list">
             <li>
              <!-- ここに星の評価 -->
+            <% if candidate.star.present? %>
+              <% for starNum in 1..candidate.star do %>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              <% end %>
+            <% else %>
+              評価なし
+            <% end %>
             </li>
             <li>
               <%= candidate.star %>
