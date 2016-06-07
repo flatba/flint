@@ -19,3 +19,15 @@
 切り抜きは、正方形にしたい
 
 そのあとbootstrapで円形にして表示する
+
+
+// スターの表示
+<% if candidate.star > 0 %>
+              <% for starNum in 1..candidate.star do %>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <% end %>
+              <% elsif candidate.star == nil %>
+              nil
+              <% else %>
+              no data
+              <% end %>
