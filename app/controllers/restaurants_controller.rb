@@ -85,10 +85,12 @@ class RestaurantsController < ApplicationController
     ######################################################################
     # # image = doc.xpath('//li[@class="mainphoto-box"]/img[@class="mainphoto-image"]').attribute("src").value
 
-    # yelpのスクレイピング先のURL
-    # url = 'https://www.yelp.co.jp/biz/%E3%83%8B%E3%83%A5%E3%83%BC%E3%83%A8%E3%83%BC%E3%82%AF-%E3%82%B0%E3%83%AA%E3%83%AB-%E6%96%B0%E5%AE%BF%E5%8C%BA'
-
     url = Restaurant.last.url
+
+    # スマホURLの対応
+    if (url.index("m") == 8)
+      url = url.gsub("m", "www")
+    end
 
     opt = {}
     opt['User-Agent'] = 'Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 '
