@@ -21,15 +21,15 @@
     <div class="woman-pick">
       <div class="woman-pick-inner">
 
-        <!-- レストランの画像ここから -->
+        <!-- レストランの画像 -->
         <div class="woman-pick-pic">
           <img src="<%= candidate.image %>" alt="image" class="pick-top-img" style ="width: 100%; background-size: cover;"/>
           <div class="woman-pick-profile-pic pick-profile-pic-trim">
             <img src="<%= @users.find(candidate.user_id).thumb %>" alt="..." >
           </div>
         </div>
-        <!-- レストランの画像ここまで -->
-        <!-- ユーザ情報とレストラン情報ここから -->
+
+        <!-- ユーザ情報とレストラン情報 -->
         <div class="woman-pick-profile">
           <div class="woman-pick-profile-text">
             <h5><%= candidate.user_id %>：<strong><%= @users.find(candidate.user_id).name %></strong>.<%= @users.find(candidate.user_id).age_range %> <i class="fa fa-users" aria-hidden="true"></i></h5>
