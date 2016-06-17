@@ -3,18 +3,18 @@
   <center>
     <div class="row">
       <div class="col-xs-4">
-        <a href="<%= user_path %>"><i class="fa fa-user fa-fw" aria-hidden="true"></i> &nbsp; ユーザ情報</a>
+        <a href="<%= user_path %>"><i class="fa fa-user fa-3x" aria-hidden="true"></i> &nbsp;</a>
       </div>
       <div class="col-xs-4">
-        <strong><%= current_user.name %></strong><br>
-        <h5><%= current_user.age_range %>.<%= current_user.gender %></h5>
+        <strong ><%= current_user.name %>.<%= current_user.age_range %></strong>
       </div>
       <div class="col-xs-4">
-        <a href="<%= notification_path %>"><i class="fa fa-bell-o fa-fw" aria-hidden="true"></i>&nbsp; 通知</a>
+        <a href="<%= notification_path %>"><i class="fa fa-bell-o fa-3x" aria-hidden="true"></i>&nbsp;</a>
       </div>
     </div>
   </center>
 
+  <br>
 
   <% @candidates.each do |candidate| %>
   <div class="main roll-fixing">

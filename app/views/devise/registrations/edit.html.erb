@@ -2,11 +2,12 @@
   <div class="main roll-fixing">
     <div class="pbody">
       <center>
-        <a href="/"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Home</a>
-        <h4>user情報の編集</h4>
-      </center>
+        <a href="/"><i class="fa fa-home fa-3x" aria-hidden="true"></i>&nbsp;</a>
 
       <hr>
+
+      <a href="<%= user_path %>"><i class="fa fa-user fa-3x" aria-hidden="true"></i> &nbsp;</a>
+      </center>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= devise_error_messages! %>
@@ -64,6 +65,10 @@
     <%= f.submit "更新" %>
   </div>
   <% end %>
+
+<hr>
+
+<a href="<%= destroy_user_session_path %>" , method = "delete"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>&nbsp; <%= link_to 'Logout', destroy_user_session_path, :method => :delete %></a>
 
   <hr>
 

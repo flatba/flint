@@ -2,26 +2,23 @@
 <br>
 <center>
   <div class="row">
-    <div class="col-xs-3">
-      <a href= "<%= edit_user_registration_path %>"><i class="fa fa-cog fa-fw" aria-hidden="true"></i>&nbsp; Edit</a>
+    <div class="col-xs-4">
+      <a href= "<%= edit_user_registration_path %>"><i class="fa fa-cog fa-3x" aria-hidden="true"></i>&nbsp;</a>
     </div>
-    <div class="col-xs-3">
-      <a href="/restaurant/edit"><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i>&nbsp; Restaurant</a>
+    <div class="col-xs-4">
+      <a href="/"><i class="fa fa-home fa-3x" aria-hidden="true"></i>&nbsp;</a>
     </div>
-    <div class="col-xs-3">
-      <a href="/"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Home</a>
-    </div>
-    <div class="col-xs-3">
-      <a href="<%= destroy_user_session_path %>" , method = "delete"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>&nbsp; <%= link_to 'Logout', destroy_user_session_path, :method => :delete %></a>
+    <div class="col-xs-4">
+      <a href="/restaurant/edit"><i class="fa fa-cutlery fa-3x" aria-hidden="true"></i>&nbsp;</a>
     </div>
   </div>
-  <h4><i class="fa fa-user fa-fw" aria-hidden="true"></i> &nbsp; ユーザ情報</h4>
 </center>
 
 <hr>
 
 <!-- ユーザ情報 -->
 <div class="container">
+<center><h4><i class="fa fa-user fa-3x" aria-hidden="true"></i> &nbsp;</h4></center>
   <div class="main">
     <div class="fem-profile">
       <div class="fem-profile-part-1">
@@ -30,7 +27,7 @@
       </div>
       <div class="fem-profile-part-2">
         <h4>
-          UserID <%= current_user.id %>:<strong><%= current_user.name %></strong>.<%= @facebook_birthday %> <i class="fa fa-users" aria-hidden="true"></i>
+          <%= current_user.id %>：<strong><%= current_user.name %></strong>.年齢<%= @facebook_birthday %> <i class="fa fa-users" aria-hidden="true"></i>
         </h4>
         <p>
           <%= @users.find(current_user.id).job %>

@@ -1,6 +1,8 @@
 <!-- 選択したユーザの詳細情報 -->
+<br>
+
 <div class="container">
-<a href="/"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Home</a>
+<center><a href="/"><i class="fa fa-home fa-3x" aria-hidden="true"></i>&nbsp;</a></center>
 </div>
 <hr>
 <% @select_user_candidate.each do |candidate| %>
@@ -16,11 +18,8 @@
             </div>
             <div class="fem-profile-part-2">
               <h4>
-                <strong><%= user.name %></strong>.<%= @facebook_birthday %> <i class="fa fa-users" aria-hidden="true"></i>
+                <strong><%= user.id %>：<%= user.name %></strong>.<%= @facebook_birthday %> <%= user.gender %> <i class="fa fa-users" aria-hidden="true"></i>
               </h4>
-              <p>
-                <%= user.gender %> , UserID <%= user.id %>
-              </p>
               <p>
                 <% if @users.find(candidate.user.id).introduction == nil %>
                   nil
