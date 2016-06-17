@@ -34,6 +34,8 @@ class User < ActiveRecord::Base
       user.gender = auth.extra.raw_info.gender
       user.thumb = "https://graph.facebook.com/"+auth.uid.to_s+"/picture?type=large"
       user.age_range = auth.extra.raw_info.age_range.min.last
+      # user.friends = auth.extra.raw_info.user_friends
+      user.birthday = auth.info.user_birthday
       # user.image = auth.info.image # assuming the user model has an image
     end
   end

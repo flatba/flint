@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'privacy-policy' => 'flint#privacyPolicy'
 
-  # resources :restaurants
+  resources :restaurants
   get 'restaurant/edit' => 'restaurants#edit'
 
   ###!!! このルートは本来はオカシイ。production版では修正が必要 !!!!###
@@ -15,14 +15,10 @@ Rails.application.routes.draw do
   # メソッドの呼び出し
   get 'addLike' => 'flint#addLike'
   get 'updateMatch' => 'flint#updateMatch'
-
   get 'match' => 'flint#match'
-
   get 'user' => 'flint#user'
   get 'show/:id' => 'flint#show'
-
   get 'notification' => 'notifications#index'
-
   get 'create/:url' => "restaurant#create"
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -46,7 +46,7 @@ class FlintController < ApplicationController
         else
         @facebook_uid_thumb = "https://graph.facebook.com/"+ facebook_uid +"/picture?type=large"
         end
-        @facebook_birthday = "https://graph.facebook.com/oauth/authorize?client_id=477433369118312&amp;scope=user_birthday&amp;redirect_uri=" + facebook_uid
+        # @facebook_birthday = user.birthday
         # @facebook_friends =
 
     end
@@ -58,8 +58,8 @@ class FlintController < ApplicationController
 
 
         @facebook_uid_thumb = "https://graph.facebook.com/"+ facebook_uid +"/picture?type=large"
-        @facebook_birthday = "https://graph.facebook.com/oauth/authorize?client_id=477433369118312&amp;scope=user_birthday&amp;redirect_uri=" + facebook_uid
-        # @facebook_friends
+        # @facebook_birthday = user.user_birthday
+        # @facebook_friends = user.user_friends
     end
 
     def addLike # like側のuser_idとlikeされる側のuser_idをデータベース（user_like）に入れる
