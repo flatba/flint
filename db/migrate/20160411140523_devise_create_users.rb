@@ -34,7 +34,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :name
       t.string :gender
       t.integer :age_range
-      
+
       t.string :thumb
 
       ## Facebook認証
@@ -42,6 +42,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :password
       t.string :uid
       t.string :provider
+
+      t.string :birthday
 
       t.timestamps null: false
     end
@@ -52,7 +54,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
     # add_column :users, :sex,:boolean, null: false, default: "" # カラムに追加したい場合
 
     # 一意キーなどの指定
-    # add_index :users, :name,                unique: true # name をユニーク（一意）にしたい場合    
+    # add_index :users, :name,                unique: true # name をユニーク（一意）にしたい場合
     # add_index :users, :age,                unique: true
     add_index :users, :email,                unique: true
     add_index :users, :reset_password_token, unique: true

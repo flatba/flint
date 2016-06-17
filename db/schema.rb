@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 20160527165632) do
     t.string   "password"
     t.string   "uid"
     t.string   "provider"
+    t.string   "birthday"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "job"
