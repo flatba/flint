@@ -257,8 +257,9 @@ input[type="text"] {
 /* woman_pick_1
 =================================*/
 .roll-fixing{
+    background-color: #ffffff;
 	position: absolute;
-
+    bottom: -230px;
 }
 .woman-pick {
 	padding-top: 10px;
@@ -482,11 +483,11 @@ input[type="text"] {
 /*Tinder_ui*/
 
 #container {
+  position: relative;
   width: 500px;
   margin: auto !important;
   display: block;
   height: 500px;
-  position: relative;
   list-style-type: none;
   -webkit-touch-callout: none;
   -webkit-user-select: none;

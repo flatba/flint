@@ -17,8 +17,8 @@
   <br>
 
   <% @candidates.each do |candidate| %>
-  <div class="main roll-fixing">
-    <div class="woman-pick">
+  <div class="main">
+    <div class="woman-pick roll-fixing">
       <div class="woman-pick-inner">
 
         <!-- レストランの画像 -->
@@ -86,7 +86,7 @@
 
 
         </div>
-      </div>
+
       <!-- 男性だった場合のボタン -->
       <% if current_user.gender == "male" %>
       <div class="cir-btn-table" style="padding-top: 20px">
@@ -129,9 +129,12 @@
           <p>Like</p>
         </div>
       </div>
+      </div>
       <% end %>
+
 
     </div>
   </div>
 <% end %>
 </div>
+
