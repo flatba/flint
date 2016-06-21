@@ -138,38 +138,27 @@ class RestaurantsController < ApplicationController
   # PATCH/PUT /restaurants/1
   # PATCH/PUT /restaurants/1.json
   def update
-
-    # パラメータから取得したURLにアクセスしようとしてもレストラン情報の上書きができない（通常ではできる）
-    # 問題は、URLにアクセスしたときに起こっている。
-
     url = restaurant_params[:url]
     comment = restaurant_params[:comment]
     user_id = restaurant_params[:user_id]
     payment = restaurant_params[:payment]
-
-    logger.debug(url)
 
     # スマホURLの対応
     if (url.index("m") == 8)
       url = url.gsub("m", "www")
     end
 
-    logger.debug"1"
-
-    # ここでアクセスできなくて止まる。
+    opt = {}
+    opt['User-Agent'] = 'Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 '
 
     charset = nil
-    html = open(restaurant_url,opt) do |f|
+    html = open(url,opt) do |f|
       charset = f.charset # 文字種別を取得
       f.read # htmlを読み込んで変数htmlに渡す
     end
 
-    logger.debug"2"
-
     # htmlをパース(解析)してオブジェクトを生成
     doc = Nokogiri::HTML.parse(html, nil, charset)
-
-    logger.debug"3"
 
     # 店舗名
     title =  doc.title
@@ -200,17 +189,13 @@ class RestaurantsController < ApplicationController
       price = price[price_head+1..price_tail-1].delete(",").to_i
     end
 
-    puts price
-
     # 評価
     star = doc.xpath('//i[@class="star-img stars_4"]').attribute("title").value
     star_num = star.index("星")
     star = star[0..star_num-2]
-    puts star
     # エリア
     area = doc.xpath('//span[@class="neighborhood-str-list"]/text()')
-    area.index("n")
-    puts area
+    area = area.index("n") # ここはあとで修正が必要。areaのxpathの取得ができていない。
     # イメージ
     image = doc.xpath('//meta[@property="og:image"]').attribute("content").value
     image_url = doc.xpath('//a[@class="see-more show-all-overlay"]').attribute("href").value
@@ -236,7 +221,7 @@ class RestaurantsController < ApplicationController
       :payment => payment,
       :url => url,
     )
-    redirect_to root_path
+    redirect_to user_path
   end
 
   # DELETE /restaurants/1
