@@ -259,7 +259,7 @@ input[type="text"] {
 .roll-fixing{
     background-color: #ffffff;
 	position: absolute;
-    bottom: -230px;
+    /*bottom: -230px;*/
 }
 .woman-pick {
 	padding-top: 10px;
