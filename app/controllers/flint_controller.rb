@@ -55,8 +55,6 @@ class FlintController < ApplicationController
         @select_user_candidate = Restaurant.where(:user_id => params[:id])
         @users = User.where(:id => params[:id])
         facebook_uid = User.find(params[:id]).uid
-        # facebook_birthday = User.find(params[:id]).user.birthday
-
         @facebook_uid_thumb = "https://graph.facebook.com/"+ facebook_uid +"/picture?type=large"
         # @facebook_birthday = user.user_birthday
         # @facebook_friends = user.user_friends
