@@ -46,8 +46,8 @@ class FlintController < ApplicationController
         else
         @facebook_uid_thumb = "https://graph.facebook.com/"+ facebook_uid +"/picture?type=large"
         end
-        facebook_birthday = User.find(params[:id]).birthday
-        facebook_friends = User.find(params[:id]).friends
+        facebook_birthday = User.find(current_user.id).birthday
+        facebook_friends = User.find(current_user.id).friends
         # facebook_education = User.find(params[:id]).education
         # facebook_work = User.find(params[:id]).work
 
