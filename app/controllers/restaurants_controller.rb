@@ -139,7 +139,7 @@ class RestaurantsController < ApplicationController
   # PATCH/PUT /restaurants/1.json
   def update
 
-    # パラメータから取得したURLにアクセスしようとしてもレストラン情報の上書きができない
+    # パラメータから取得したURLにアクセスしようとしてもレストラン情報の上書きができない（通常ではできる）
     # 問題は、URLにアクセスしたときに起こっている。
 
     url = restaurant_params[:url]
@@ -156,8 +156,7 @@ class RestaurantsController < ApplicationController
 
     logger.debug"1"
 
-    opt = {}
-    opt['User-Agent'] = 'Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 '
+    # ここでアクセスできなくて止まる。
 
     charset = nil
     html = open(restaurant_url,opt) do |f|
