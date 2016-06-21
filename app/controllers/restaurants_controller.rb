@@ -47,7 +47,7 @@ class RestaurantsController < ApplicationController
     url = Restaurant.last.url
 
     # スマホURLの対応
-    if (url.index("m") == 8)
+    if (restaurant_url.index("m") == 8)
       url = url.gsub("m", "www")
     end
 
