@@ -85,8 +85,7 @@ class RestaurantsController < ApplicationController
       price_tail = price.index("以上")
     elsif price.count("-") > 0
       price_tail = price.index("-")
-    elsif
-      price_tail = nil
+
     end
 
     if price_tail != nil
@@ -181,8 +180,7 @@ class RestaurantsController < ApplicationController
       price_tail = price.index("以上")
     elsif price.count("-") > 0
       price_tail = price.index("-")
-    elsif
-      price_tail = nil
+
     end
 
     if price_tail != nil
