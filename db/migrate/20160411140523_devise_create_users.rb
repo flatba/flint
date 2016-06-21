@@ -44,6 +44,9 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :provider
 
       t.string :birthday
+      t.string :friends
+      t.string :education
+      t.string :work
 
       t.timestamps null: false
     end
