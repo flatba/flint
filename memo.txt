@@ -144,6 +144,281 @@
     }
 
 
+# CSSをあてる画面
+
+0：行かない
+1：片方が行きたいと言っている
+2：奢るよと男から言っている
+3：普通にマッチ
+4：男から女へ、奢るよという誘いがあってマッチ成立
+
+<li>payment:：
+<% if candidate.payment == 0 %>
+奢るよ！
+<% elsif candidate.payment == 1 %>
+割り勘で！
+<% end %></li>
+
+
+アイコンの画像を切り抜きたい
+まずcssで画像の縦を切り抜く
+切り抜きは、正方形にしたい
+
+そのあとbootstrapで円形にして表示する
+
+
+// スターの表示
+              <% if candidate.star > 0 %>
+                <% for starNum in 1..candidate.star do %>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                <% end %>
+              <% elsif candidate.star == nil %>
+                nil
+              <% else %>
+                no data
+              <% end %>
+
+
+
+@restaurant.update(
+      :name => title,
+      :category => category,
+      :price => price,
+      :star => star,
+      :area => area,
+      :image => image
+      )
+
+
+
+
+
+      <%= link_to "[Edit]", restaurant_edit_path(restaurant.id) %>
+
+
+# if @restaurant.update_attributes(params[:id])
+
+    ######################################################################
+    # yelp
+    ######################################################################
+    # # image = doc.xpath('//li[@class="mainphoto-box"]/img[@class="mainphoto-image"]').attribute("src").value
+
+    # yelpのスクレイピング先のURL
+    # url = 'https://www.yelp.co.jp/biz/%E3%83%8B%E3%83%A5%E3%83%BC%E3%83%A8%E3%83%BC%E3%82%AF-%E3%82%B0%E3%83%AA%E3%83%AB-%E6%96%B0%E5%AE%BF%E5%8C%BA'
+
+    url = Restaurant.last.url
+
+    # スマホURLの対応
+    if (url.index("m") == 8)
+      url = url.gsub("m", "www")
+    end
+
+    opt = {}
+    opt['User-Agent'] = 'Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 '
+
+    charset = nil
+
+    html = open(restaurant_url,opt) do |f|
+      charset = f.charset # 文字種別を取得
+      f.read # htmlを読み込んで変数htmlに渡す
+    end
+
+    # htmlをパース(解析)してオブジェクトを生成
+    doc = Nokogiri::HTML.parse(html, nil, charset)
+
+    # 店舗名
+    title =  doc.title
+    title_num =  doc.title.index("-")
+    title = title[0..title_num-2]
+    puts title
+
+    # # カテゴリー
+    category = doc.xpath('//span[@class="category-str-list"]/a[1]/text()').to_s
+    # category2 = doc.xpath('//span[@class="category-str-list"]/a[2]/text()').to_s
+    # category3 = doc.xpath('//span[@class="category-str-list"]/a[3]/text()').to_s
+    # puts category1
+    # puts category2
+    # puts category3
+    # 価格帯
+    price = doc.xpath('//dd[@class="nowrap price-description"]/text()').to_s
+    price_head = price.index("￥")
+
+    if price.count("以") > 0
+      price_tail = price.index("以上")
+    elsif price.count("-") > 0
+      price_tail = price.index("-")
+    elsif
+      price_tail = nil
+    end
+
+    if price_tail != nil
+      price = price[price_head+1..price_tail-1].delete(",").to_i
+    end
+
+    puts price
+
+    # 評価
+    star = doc.xpath('//i[@class="star-img stars_4"]').attribute("title").value
+    star_num = star.index("星")
+    star = star[0..star_num-2]
+    puts star
+    # エリア
+    area = doc.xpath('//span[@class="neighborhood-str-list"]/text()')
+    area.index("n")
+    puts area
+    # イメージ
+    image = doc.xpath('//meta[@property="og:image"]').attribute("content").value
+    image_url = doc.xpath('//a[@class="see-more show-all-overlay"]').attribute("href").value
+    image_url = "https://www.yelp.co.jp/" + image_url + "?tab=food"
+
+    html = open(image_url,opt) do |f|
+      charset = f.charset # 文字種別を取得
+      f.read # htmlを読み込んで変数htmlに渡す
+    end
+    # htmlをパース(解析)してオブジェクトを生成
+    doc = Nokogiri::HTML.parse(html, nil, charset)
+    image = doc.xpath('//meta[@property="og:image"]').attribute("content").value
+
+    ######################################################################
+    @restaurant.update_attributes = {
+      :name => title,
+      :category => category,
+      :price => price,
+      :star => star,
+      :area => area,
+      :image => image
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+######################################################################
+    # yelp
+    ######################################################################
+    # スマホURLへの対応
+    if (url.index("m") == 8)
+      url = url.gsub("m", "www")
+    end
+
+    opt = {}
+    opt['User-Agent'] = 'Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 '
+
+    charset = nil
+    html = open(restaurant_url,opt) do |f|
+      charset = f.charset # 文字種別を取得
+      f.read # htmlを読み込んで変数htmlに渡す
+    end
+
+    # htmlをパース(解析)してオブジェクトを生成
+    doc = Nokogiri::HTML.parse(html, nil, charset)
+
+    # 店舗名
+    title =  doc.title
+    title_num =  doc.title.index("-")
+    title = title[0..title_num-2]
+    # カテゴリー
+    category = doc.xpath('//span[@class="category-str-list"]/a[1]/text()').to_s
+    # 価格帯
+    price = doc.xpath('//dd[@class="nowrap price-description"]/text()').to_s
+    price_head = price.index("￥")
+    if price.count("以") > 0
+      price_tail = price.index("以上")
+    elsif price.count("-") > 0
+      price_tail = price.index("-")
+    elsif
+      price_tail = nil
+    end
+    if price_tail != nil
+      price = price[price_head+1..price_tail-1].delete(",").to_i
+    end
+    # 評価
+    star = doc.xpath('//i[@class="star-img stars_4"]').attribute("title").value
+    star_num = star.index("星")
+    star = star[0..star_num-2]
+    # エリア
+    area = doc.xpath('//span[@class="neighborhood-str-list"]/text()')
+    area.index("n")
+    # イメージ
+    image = doc.xpath('//meta[@property="og:image"]').attribute("content").value
+    image_url = doc.xpath('//a[@class="see-more show-all-overlay"]').attribute("href").value
+    image_url = "https://www.yelp.co.jp/" + image_url + "?tab=food"
+    html = open(image_url,opt) do |f|
+      charset = f.charset # 文字種別を取得
+      f.read # htmlを読み込んで変数htmlに渡す
+    end
+    # htmlをパース(解析)してオブジェクトを生成
+    doc = Nokogiri::HTML.parse(html, nil, charset)
+    image = doc.xpath('//meta[@property="og:image"]').attribute("content").value
+
+    @restaurant.update_all(
+      :name => title,
+      :category => category,
+      :price => price,
+      :star => star,
+      :area => area,
+      :image => image,
+      :comment => comment,
+      :user_id => user_id,
+      :payment => payment,
+      :url => url,
+    )
+      redirect_to root_path
+
+
+
+
+
+
+
+
+
+
+
+
+
+      # render :text => restaurant_params[:url]
+       comment = restaurant_params[:comment]
+       user_id = restaurant_params[:user_id]
+       payment = restaurant_params[:payment]
+       url = restaurant_params[:url]
+
+       if @restaurant.update(restaurant_params)
+
+       # スマホURLへの対応
+      if (url.index("m") == 8)
+        url = url.gsub("m", "www")
+      end
+
+
+
+      charset = nil
+      html = open(restaurant_url) do |f|
+        charset = f.charset # 文字種別を取得
+        f.read # htmlを読み込んで変数htmlに渡す
+      end
+
+
+
+
+
 
 
 

@@ -40,20 +40,20 @@ class User < ActiveRecord::Base
       user.education = auth.info.user_education_history
       user.work = auth.info.user_work_history
 
-
+      log.debug "----------------------ここは１です---------------------------"
     end
   end
 
-  def self.find_for_oauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
-      user.name = auth.info.name   # assuming the user model has a name
-      user.gender = auth.extra.raw_info.gender
-      user.age_range = auth.extra.raw_info.age_range.min.last
-      # user.image = auth.info.image # assuming the user model has an image
-    end
-  end
+  # def self.find_for_oauth(auth)
+  #   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+  #     user.email = auth.info.email
+  #     user.password = Devise.friendly_token[0,20]
+  #     user.name = auth.info.name   # assuming the user model has a name
+  #     user.gender = auth.extra.raw_info.gender
+  #     user.age_range = auth.extra.raw_info.age_range.min.last
+  #     # user.image = auth.info.image # assuming the user model has an image
+  #   end
+  # end
 
   # バリデーション設定
   # validates presence: false, on: :facebook_login #Facebookログイン時

@@ -31,6 +31,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # end
   def facebook
     callback_from :facebook
+    log.debug "----------------------ここは１です---------------------------"
   end
 
   def twitter
@@ -40,14 +41,17 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   private
 
   def callback_from(provider)
+    log.debug "----------------------ここは２です---------------------------"
     provider = provider.to_s
 
     @user = User.find_for_oauth(request.env['omniauth.auth'])
-
+    log.debug "----------------------ここは２です---------------------------"
     if @user.persisted?
+      log.debug "----------------------ここは３です---------------------------"
       flash[:notice] = I18n.t('devise.omniauth_callbacks.success', kind: provider.capitalize)
       sign_in_and_redirect @user, event: :authentication
     else
+      log.debug "----------------------ここは４です---------------------------"
       session["devise.#{provider}_data"] = request.env['omniauth.auth']
       redirect_to new_user_registration_url
     end
