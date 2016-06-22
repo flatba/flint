@@ -29,16 +29,17 @@ class User < ActiveRecord::Base
   # callback後のユーザー登録で、取得した情報を参照する。
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
-
+ logger.debug "ここまでで６"
     unless user
       user = User.create(
+                         logger.debug "ここまでで７"
         uid:      auth.uid,
         provider: auth.provider,
         email:    User.dummy_email(auth),
         password: Devise.friendly_token[0, 20]
       )
     end
-
+logger.debug "ここまでで8"
     user
   end
 
