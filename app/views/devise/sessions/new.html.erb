@@ -8,6 +8,8 @@
             <div class="center-content">
               <p class="lead iphone-text">
                 Welcome to Flint.
+                <br>
+                <%= link_to "Sign in with Facebook", "/auth/facebook" %>
               </p>
               <center>
 
@@ -16,10 +18,6 @@
                 </p>
 
                 <button style="background-color: #305097; font-size: 1.2em; border-style: none; padding: 10px 30px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;"><%= render "devise/shared/fblinks" %></button>
-
-                <br><br>
-                    <br><%= link_to "Sign in with Facebook", "/auth/facebook" %>
-
 
                 <!-- <div
                   class="fb-like"
