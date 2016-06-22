@@ -264,5 +264,5 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
 
-  config.omniauth :facebook, ENV['FACEBOOK_APP_ID'],ENV['FACEBOOK_APP_SECRET'], {:scope => 'email', :info_fields => 'email,name,first_name,last_name,gender,age_range,user_birthday', :client_options => { :ssl => { :ca_file => "#{Rails.root}/config/ca-bundle.crt" }}}
+  config.omniauth :facebook, ENV['FACEBOOK_APP_ID'],ENV['FACEBOOK_APP_SECRET'], {:scope => 'email', :info_fields => 'email,name,gender,age_range,user_birthday', :client_options => { :ssl => { :ca_file => "#{Rails.root}/config/ca-bundle.crt" }}}
 end
