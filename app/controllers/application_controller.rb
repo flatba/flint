@@ -21,14 +21,14 @@ class ApplicationController < ActionController::Base
 	    devise_parameter_sanitizer.for(:sign_up) << :gender
     end
 
-  # ログイン後のリダイレクト先の設定
-  def after_sign_in_path_for(resource)
-    if Restaurant.where(:user_id => current_user.id).count > 0
-      root_path
-    else
-      new_restaurant_path
-    end
-  end
+  # # ログイン後のリダイレクト先の設定
+  # def after_sign_in_path_for(resource)
+  #   if Restaurant.where(:user_id => current_user.id).count > 0
+  #     root_path
+  #   else
+  #     new_restaurant_path
+  #   end
+  # end
 
 # url_text = Net::HTTP.get(URI.parse "http://www.w3schools.com/xml/note.xml")
 # doc = Nokogiri::XML(url_text)

@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
       user.education = auth.info.user_education_history
       user.work = auth.info.user_work_history
 
-      log.debug "----------------------ここは１です---------------------------"
+
     end
   end
 
