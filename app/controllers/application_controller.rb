@@ -4,11 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   # ログインしていなければログインページヘリダイレクトする
-  private
-  def sign_in_required
-    redirect_to new_user_session_url unless user_signed_in?
-    log.debug "----------------------ここはリダイレクトです---------------------------"
-  end
+  # private
+  # def sign_in_required
+  #   redirect_to new_user_session_url unless user_signed_in?
+  #   log.debug "----------------------ここはリダイレクトです---------------------------"
+  # end
 
   # name フィールドを許可する strong parameters の設定
   before_filter :configure_permitted_parameters, if: :devise_controller?
