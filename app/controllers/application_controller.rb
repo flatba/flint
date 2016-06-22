@@ -4,11 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   # ログインしていなければログインページヘリダイレクトする
-  # private
-  # def sign_in_required
-  #   redirect_to new_user_session_url unless user_signed_in?
-  #   log.debug "----------------------ここはリダイレクトです---------------------------"
-  # end
+  private
+  def sign_in_required
+    redirect_to new_user_session_url unless user_signed_in?
+    log.debug "----------------------ここはリダイレクトです---------------------------"
+  end
 
   # name フィールドを許可する strong parameters の設定
   before_filter :configure_permitted_parameters, if: :devise_controller?
@@ -21,14 +21,14 @@ class ApplicationController < ActionController::Base
 	    devise_parameter_sanitizer.for(:sign_up) << :gender
     end
 
-  # # ログイン後のリダイレクト先の設定
-  # def after_sign_in_path_for(resource)
-  #   if Restaurant.where(:user_id => current_user.id).count > 0
-  #     root_path
-  #   else
-  #     new_restaurant_path
-  #   end
-  # end
+  # ログイン後のリダイレクト先の設定
+  def after_sign_in_path_for(resource)
+    if Restaurant.where(:user_id => current_user.id).count > 0
+      root_path
+    else
+      new_restaurant_path
+    end
+  end
 
 # url_text = Net::HTTP.get(URI.parse "http://www.w3schools.com/xml/note.xml")
 # doc = Nokogiri::XML(url_text)
