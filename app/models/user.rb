@@ -44,36 +44,15 @@ class User < ActiveRecord::Base
     end
   end
 
-# def self.find_for_oauth(auth)
-#     user = User.where(uid: auth.uid, provider: auth.provider).first
-
-#     unless user
-#       user = User.create(
-#         uid:      auth.uid,
-#         provider: auth.provider,
-#         email:    User.dummy_email(auth),
-#         password: Devise.friendly_token[0, 20]
-#       )
-#     end
-
-#     user
-#   end
-
-
-  #...
-
-  # allow users to update their accounts without passwords
-  def update_without_current_password(params, *options)
-    params.delete(:current_password)
-
-    if params[:password].blank? && params[:password_confirmation].blank?
-      params.delete(:password)
-      params.delete(:password_confirmation)
+  def self.find_for_oauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+      user.name = auth.info.name   # assuming the user model has a name
+      user.gender = auth.extra.raw_info.gender
+      user.age_range = auth.extra.raw_info.age_range.min.last
+      # user.image = auth.info.image # assuming the user model has an image
     end
-
-    result = update_attributes(params, *options)
-    clean_up_passwords
-    result
   end
 
   # バリデーション設定

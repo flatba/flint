@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   #   :registrations => 'users/registrations'
   # }
 
-  devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callback"}
+  # deviseの設定
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
 
   # メソッドの呼び出し
