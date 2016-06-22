@@ -7,6 +7,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+gem 'omniauth-openid'
 
 # 環境情報
 gem 'dotenv-rails'
