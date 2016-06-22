@@ -30,7 +30,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   #   # raise request.env['omniauth.auth'].to_yaml
   # end
   def facebook
-    render :text => "ここまできてる"
+    redirect_to => "http://google.com"
     callback_from :facebook
   end
 
