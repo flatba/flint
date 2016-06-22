@@ -15,16 +15,15 @@
 	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
 	<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="../../favicon.ico">
 
-    <!-- ピンチズームの無効化 -->
-    <!-- <meta name="viewport" content="user-scalable=no"> -->
-
+  <!-- ピンチズームの無効化 -->
+  <!-- <meta name="viewport" content="user-scalable=no"> -->
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -59,39 +58,7 @@
      js.src = "//connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
-
-
-// Tinder_UI
-$(document).ready(function(){
-
-    $(".buddy").on("swiperight",function(){
-      $(this).addClass('rotate-left').delay(700).fadeOut(1);
-      $('.buddy').find('.status').remove();
-
-      $(this).append('<div class="status like">Like!</div>');
-      if ( $(this).is(':last-child') ) {
-        $('.buddy:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
-       } else {
-          $(this).next().removeClass('rotate-left rotate-right').fadeIn(400);
-       }
-    });
-
-   $(".buddy").on("swipeleft",function(){
-    $(this).addClass('rotate-right').delay(700).fadeOut(1);
-    $('.buddy').find('.status').remove();
-    $(this).append('<div class="status dislike">Dislike!</div>');
-
-    if ( $(this).is(':last-child') ) {
-     $('.buddy:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
-      alert('Na-na!');
-     } else {
-        $(this).next().removeClass('rotate-left rotate-right').fadeIn(400);
-    }
-  });
-
-});
-
-</script>
+  </script>
 
 	<%= yield %>
 

@@ -82,6 +82,11 @@ before_action :configure_permitted_parameters, only: [:update]
     end
   end
 
+  def build_resource(hash=nil)
+    hash[:uid] = User.create_unique_string
+    super
+  end
+
   private
 
   def configure_permitted_parameters

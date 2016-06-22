@@ -10,7 +10,10 @@ Rails.application.routes.draw do
   resources :messages
 
   # deviseの設定
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' , registrations: 'users/registrations'}
+  devise_for :users, :controllers => {
+    :omniauth_callbacks => 'users/omniauth_callbacks',
+    :registrations => 'users/registrations'
+  }
 
   # メソッドの呼び出し
   get 'addLike' => 'flint#addLike'

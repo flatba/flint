@@ -25,23 +25,36 @@ class User < ActiveRecord::Base
 
   has_many :restaurants
 
-  # Facebookから情報を取得する
-  def self.find_for_oauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
-      user.name = auth.info.name   # assuming the user model has a name
-      user.gender = auth.extra.raw_info.gender
-      user.thumb = "https://graph.facebook.com/"+auth.uid.to_s+"/picture?type=large"
-      user.age_range = auth.extra.raw_info.age_range.min.last
-      user.friends = auth.info.user_friends
-      user.birthday = auth.info.user_birthday
-      # user.image = auth.info.image # assuming the user model has an image
-      user.education = auth.info.user_education_history
-      user.work = auth.info.user_work_history
+  # # Facebookから情報を取得する
+  # def self.find_for_oauth(auth)
+  #   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+  #     user.email = auth.info.email
+  #     user.password = Devise.friendly_token[0,20]
+  #     user.name = auth.info.name   # assuming the user model has a name
+  #     user.gender = auth.extra.raw_info.gender
+  #     user.thumb = "https://graph.facebook.com/"+auth.uid.to_s+"/picture?type=large"
+  #     user.age_range = auth.extra.raw_info.age_range.min.last
+  #     user.friends = auth.info.user_friends
+  #     user.birthday = auth.info.user_birthday
+  #     # user.image = auth.info.image # assuming the user model has an image
+  #     user.education = auth.info.user_education_history
+  #     user.work = auth.info.user_work_history
 
 
+  #   end
+  # end
+
+  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
+    user = User.where(:provider => auth.provider, :uid => auth.uid).first
+    unless user
+      user = User.create(name:     auth.extra.raw_info.name,
+                         provider: auth.provider,
+                         uid:      auth.uid,
+                         email:    auth.info.email,
+                         password: Devise.friendly_token[0,20]
+                        )
     end
+    user
   end
 
   #...
@@ -59,6 +72,12 @@ class User < ActiveRecord::Base
     clean_up_passwords
     result
   end
+
+  # 通常サインアップ時のuid用、Twitter OAuth認証時のemail用にuuidな文字列を生成
+  def self.create_unique_string
+    SecureRandom.uuid
+  end
+
 
   # バリデーション設定
   # validates presence: false, on: :facebook_login #Facebookログイン時
