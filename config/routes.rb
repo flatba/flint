@@ -14,7 +14,14 @@ Rails.application.routes.draw do
   #   :omniauth_callbacks => 'users/omniauth_callbacks',
   #   :registrations => 'users/registrations'
   # }
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
+  devise_for :users, :controllers => {
+    :sessions      => "users/sessions",
+    :registrations => "users/registrations",
+    :passwords     => "users/passwords",
+    :omniauth_callbacks => "users/omniauth_callbacks"
+  }
+
 
   # メソッドの呼び出し
   get 'addLike' => 'flint#addLike'
