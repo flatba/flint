@@ -44,18 +44,21 @@ class User < ActiveRecord::Base
   #   end
   # end
 
-  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
-    user = User.where(:provider => auth.provider, :uid => auth.uid).first
+  def self.find_for_oauth(auth)
+    user = User.where(uid: auth.uid, provider: auth.provider).first
+
     unless user
-      user = User.create(name:     auth.extra.raw_info.name,
-                         provider: auth.provider,
-                         uid:      auth.uid,
-                         email:    auth.info.email,
-                         password: Devise.friendly_token[0,20]
-                        )
+      user = User.create(
+        uid:      auth.uid,
+        provider: auth.provider,
+        email:    User.dummy_email(auth),
+        password: Devise.friendly_token[0, 20]
+      )
     end
+
     user
   end
+
 
   #...
 
@@ -73,19 +76,11 @@ class User < ActiveRecord::Base
     result
   end
 
-  # 通常サインアップ時のuid用、Twitter OAuth認証時のemail用にuuidな文字列を生成
-  def self.create_unique_string
-    SecureRandom.uuid
-  end
-
-
   # バリデーション設定
   # validates presence: false, on: :facebook_login #Facebookログイン時
   validates :name, :age_range , presence: true, length: { maximum: 50 } # Userテーブルのnameカラム
 
-
   private
-  # まだuserでない場合はダミーメール作成しユーザー情報を保存
   def self.dummy_email(auth)
     "#{auth.uid}-#{auth.provider}@example.com"
   end

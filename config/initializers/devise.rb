@@ -265,11 +265,10 @@ Devise.setup do |config|
 
 # API key
   if Rails.env.production?
-    config.omniauth :facebook, "FACEBOOK_APP_ID", "FACEBOOK_APP_SECRET"
+    config.omniauth :facebook, ENV['FACEBOOK_APP_ID'],ENV['FACEBOOK_APP_SECRET'], {:scope => 'email', :info_fields => 'email,name,gender,age_range,user_birthday', :client_options => { :ssl => { :ca_file => "#{Rails.root}/config/ca-bundle.crt" }}}
   else
-    config.omniauth :facebook, "FACEBOOK_APP_ID", "FACEBOOK_APP_SECRET"
+    config.omniauth :facebook, ENV['FACEBOOK_APP_ID'],ENV['FACEBOOK_APP_SECRET'], {:scope => 'email', :info_fields => 'email,name,gender,age_range,user_birthday', :client_options => { :ssl => { :ca_file => "#{Rails.root}/config/ca-bundle.crt" }}}
   end
 
-
-  config.omniauth :facebook, ENV['FACEBOOK_APP_ID'],ENV['FACEBOOK_APP_SECRET'], {:scope => 'email', :info_fields => 'email,name,gender,age_range,user_birthday', :client_options => { :ssl => { :ca_file => "#{Rails.root}/config/ca-bundle.crt" }}}
+  config.omniauth :facebook, ENV['FACEBOOK_APP_ID_develop'],ENV['FACEBOOK_APP_SECRET_develop'], {:scope => 'email', :info_fields => 'email,name,gender,age_range', :client_options => { :ssl => { :ca_file => "#{Rails.root}/config/ca-bundle.crt" }}}
 end
