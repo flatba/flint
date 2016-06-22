@@ -18,7 +18,6 @@ class ApplicationController < ActionController::Base
 	    devise_parameter_sanitizer.for(:sign_up) << :name
 	    devise_parameter_sanitizer.for(:sign_up) << :age_range
 	    devise_parameter_sanitizer.for(:sign_up) << :gender
-      devise_parameter_sanitizer.for(:sign_up) << :user_birthday
     end
 
   # ログイン後のリダイレクト先の設定
