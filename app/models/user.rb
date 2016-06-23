@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
       user.age_range = auth.extra.raw_info.age_range.min.last
 
       user.friends = auth.extra.raw_info.friends.data # 中に入るのは"name"と"id"
-      user.birthday = auth.extra.raw_info.birthday
+      # user.birthday = auth.extra.raw_info.birthday
       # user.image = auth.info.image # assuming the user model has an image
       # user.education = auth.user_education_history.name
       # user.work = auth.user_work_history.name
