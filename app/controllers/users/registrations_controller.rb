@@ -1,6 +1,8 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 # before_filter :configure_sign_up_params, only: [:create]
 # before_filter :configure_account_update_params, only: [:update]
+## ログインに関する根幹となる重要なコントローラ
+## ここがおかしくなるとHerokuではAppricationErrorを吐いてしまう。
 
 before_action :configure_permitted_parameters, only: [:update]
 

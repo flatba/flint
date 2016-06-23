@@ -27,7 +27,7 @@
       </div>
       <div class="fem-profile-part-2">
         <h4>
-          <%= current_user.id %>：<strong><%= current_user.name %></strong>.年齢<%= @facebook_birthday %> <i class="fa fa-users" aria-hidden="true"></i>
+          <%= current_user.id %>：<strong><%= current_user.name %></strong>.<%= current_user.age_range %> <i class="fa fa-users" aria-hidden="true"></i>
         </h4>
         <p>
           <%= @users.find(current_user.id).job %>
