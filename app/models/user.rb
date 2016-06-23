@@ -39,8 +39,6 @@ class User < ActiveRecord::Base
       # user.image = auth.info.image # assuming the user model has an image
       user.education = auth.info.user_education_history
       user.work = auth.info.user_work_history
-
-
     end
   end
 
