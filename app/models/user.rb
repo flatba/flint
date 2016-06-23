@@ -37,15 +37,17 @@ class User < ActiveRecord::Base
 
       logger.debug "１"
 
-      user.friends = auth.info.user_friends # 中に入るのは"name"と"id"
+      user.friends = auth.extra.raw_info.friends.data # 中に入るのは"name"と"id"
 
       logger.debug "user.friendsの出力"
       logger.debug (user.friends)
 
-      user.birthday = auth.info.user_birthday
+      user.birthday = auth.extra.raw_info.birthday
+      logger.debug "user.birthdayの出力"
+      logger.debug (user.friends)
       # user.image = auth.info.image # assuming the user model has an image
-      user.education = auth.info.user_education_history
-      user.work = auth.info.user_work_history
+      # user.education = auth.user_education_history.name
+      # user.work = auth.user_work_history.name
     end
   end
 
