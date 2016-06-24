@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160527165632) do
+ActiveRecord::Schema.define(version: 20160624024705) do
 
   create_table "messages", force: :cascade do |t|
     t.integer  "user_like_id"
@@ -40,6 +40,16 @@ ActiveRecord::Schema.define(version: 20160527165632) do
   end
 
   add_index "restaurants", ["user_id"], name: "index_restaurants_on_user_id"
+
+  create_table "user_friends", force: :cascade do |t|
+    t.integer  "uid"
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "user_friends", ["user_id"], name: "index_user_friends_on_user_id"
 
   create_table "user_likes", force: :cascade do |t|
     t.integer  "user_id"
