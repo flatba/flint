@@ -263,5 +263,14 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
-  config.omniauth :facebook, ENV['FACEBOOK_APP_ID'],ENV['FACEBOOK_APP_SECRET'], {:scope => 'email,public_profile,user_birthday', :info_fields => 'email,name,first_name,last_name,gender,age_range', :client_options => { :ssl => { :ca_file => "#{Rails.root}/config/ca-bundle.crt" }}}
+  # config.omniauth :facebook, ENV['FACEBOOK_APP_ID'],ENV['FACEBOOK_APP_SECRET'], {:scope => 'email,public_profile,user_birthday', :info_fields => 'email,name,first_name,last_name,gender,age_range', :client_options => { :ssl => { :ca_file => "#{Rails.root}/config/ca-bundle.crt" }}}
+
+
+config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'],
+  #public_profile, email, publish_stream, offline_access, manage_pages, user_friends, user_birthday, publish_actions, user_photos, friends_photos, read_mailbox
+
+   {:scope => 'email, publish_actions, user_birthday, user_friends, user_groups, user_location ',
+    :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
+
+
 end
