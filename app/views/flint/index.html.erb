@@ -6,7 +6,7 @@
         <a href="<%= user_path %>"><i class="fa fa-user fa-3x" aria-hidden="true"></i> &nbsp;</a>
       </div>
       <div class="col-xs-4">
-        <strong ><%= current_user.name %>.<%= current_user.age_range %></strong>
+        <strong ><%= current_user.name %>.<%= current_user.age_range %> <%= current_user.birthday %></strong>
       </div>
       <div class="col-xs-4">
         <a href="<%= notification_path %>"><i class="fa fa-bell-o fa-3x" aria-hidden="true"></i>&nbsp;</a>
