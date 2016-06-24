@@ -35,17 +35,16 @@ class User < ActiveRecord::Base
       user.gender = auth.extra.raw_info.gender
       user.thumb = "https://graph.facebook.com/"+auth.uid.to_s+"/picture?type=large"
       user.age_range = auth.extra.raw_info.age_range.min.last
-
-      user_friend.uid = auth.extra.raw_info.friends.data.id
-      user_friend.name = auth.extra.raw_info.friends.data.name
-      user_friend.user = auth.uid
       user.birthday = auth.extra.raw_info.birthday
-
       # @friends = auth.extra.raw_info.friends.data # 中に入るのは"name"と"id"
-
       # user.image = auth.info.image # assuming the user model has an image
       # user.education = auth.user_education_history.name
       # user.work = auth.user_work_history.name
+    end
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user_friend|
+      user_friend.uid = auth.extra.raw_info.friends.data.id
+      user_friend.name = auth.extra.raw_info.friends.data.name
+      user_friend.user = auth.uid
     end
   end
 
