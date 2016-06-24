@@ -36,9 +36,7 @@ class User < ActiveRecord::Base
       user.thumb = "https://graph.facebook.com/"+auth.uid.to_s+"/picture?type=large"
       user.age_range = auth.extra.raw_info.age_range.min.last
 
-      user_friends.id = auth.extra.raw_info.friends.data.id
-      user_friends.name = auth.extra.raw_info.friends.data.name
-      user_friends.user = auth.uid
+
 
       # @friends = auth.extra.raw_info.friends.data # 中に入るのは"name"と"id"
       # user.birthday = auth.extra.raw_info.birthday
