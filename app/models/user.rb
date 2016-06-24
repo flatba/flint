@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   has_many :receivers, through: "massages"
 
   has_many :restaurants
+  has_many :user_friends
 
   # Facebookから情報を取得する
   def self.find_for_oauth(auth)
