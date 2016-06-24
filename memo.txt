@@ -415,9 +415,11 @@
         f.read # htmlを読み込んで変数htmlに渡す
       end
 
+------------
 
-
-
+   # user_friends.id = auth.extra.raw_info.friends.data.id
+      # user_friends.name = auth.extra.raw_info.friends.data.name
+      # user_friends.user = auth.uid
 
 
 
