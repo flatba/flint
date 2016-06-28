@@ -269,7 +269,7 @@ Devise.setup do |config|
 config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'],
   #public_profile, email, publish_stream, offline_access, manage_pages, user_friends, user_birthday, publish_actions, user_photos, friends_photos, read_mailbox
 
-   {:scope => 'email, user_birthday, user_friends',:info_fields => 'email,name,first_name,last_name,gender,age_range',
+   {:scope => 'email, user_birthday, user_friends,user_hometown',:info_fields => 'email,name,first_name,last_name,gender,age_range',
     :client_options => { :ssl => { :ca_file => "#{Rails.root}/config/ca-bundle.crt" }}}
 
 

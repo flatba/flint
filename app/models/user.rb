@@ -35,7 +35,8 @@ class User < ActiveRecord::Base
       user.gender = auth.extra.raw_info.gender
       user.thumb = "https://graph.facebook.com/"+auth.uid.to_s+"/picture?type=large"
       user.age_range = auth.extra.raw_info.age_range.min.last
-      user.birthday = auth.info.birthday
+      # user.birthday = auth.info.birthday
+      user.birthday = auth.info.user_hometown
 
 
 
