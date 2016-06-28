@@ -272,5 +272,8 @@ config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'],
    {:scope => 'email, user_birthday, user_friends',:info_fields => 'email,name,first_name,last_name,gender,age_range',
     :client_options => { :ssl => { :ca_file => "#{Rails.root}/config/ca-bundle.crt" }}}
 
+if auth.extra.raw_info.birthday
+        omniuser.birthday = Date.strptime(auth.extra.raw_info.birthday, '%m/%d/%Y')
+end
 
 end
