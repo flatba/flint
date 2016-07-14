@@ -1,46 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Flint</title>
-	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-	<%= csrf_meta_tags %>
+    <title>Flint</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
 
-	<!-- CSS -->
-	<%= stylesheet_link_tag "bootflat", media: "all","data-turbolinks-track" => true %>
-	<%= stylesheet_link_tag "style", media: "all","data-turbolinks-track" => true %>
-	<%= stylesheet_link_tag "cootflat", media: "all","data-turbolinks-track" => true %>
+    <!-- CSS -->
+    <%= stylesheet_link_tag "bootflat", media: "all","data-turbolinks-track" => true %>
+    <%= stylesheet_link_tag "style", media: "all","data-turbolinks-track" => true %>
+    <%= stylesheet_link_tag "cootflat", media: "all","data-turbolinks-track" => true %>
 
-	<!-- Font-awsome の 直接参照 -->
-	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Font-awsome の 直接参照 -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-	<meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="icon" href="../../favicon.ico">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
 
-  <!-- ピンチズームの無効化 -->
-  <!-- <meta name="viewport" content="user-scalable=no"> -->
+    <!-- ピンチズームの無効化 -->
+    <!-- <meta name="viewport" content="user-scalable=no"> -->
 
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </head>
 <body>
-	<% if notice %>
-	　　<p class="alert alert-notice"><%= notice %></p>
-	<% end %>
-	<% if alert %>
-	<p class="alert alert-error"><%= alert %></p>
-	<% end %>
+    <% if notice %>
+    　　<p class="alert alert-notice"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+    <p class="alert alert-error"><%= alert %></p>
+    <% end %>
 
   <script>
   window.fbAsyncInit = function() {
@@ -60,9 +60,9 @@
    }(document, 'script', 'facebook-jssdk'));
   </script>
 
-	<%= yield %>
+    <%= yield %>
 
-	<!-- JavaScript
+    <!-- JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
 	<script src="js/jquery-1.11.3.min.js"></script>

@@ -1,8 +1,8 @@
 class FlintController < ApplicationController
-	before_action :sign_in_required
-	# helper_method :addLike
+    before_action :sign_in_required
+    # helper_method :addLike
 
-	def index
+    def index
         if current_user.gender == "male"
             #異性のid一覧を取得
             gender_like_id = User.select(:id).where(:gender => "female")
@@ -27,7 +27,7 @@ class FlintController < ApplicationController
     end
 
     def new
-    	@user_like = UserLike.new
+        @user_like = UserLike.new
     end
 
 
@@ -92,13 +92,12 @@ class FlintController < ApplicationController
             @match.first.save
             redirect_to root_path
         else
-    		@user_like = UserLike.new(:user_id => current_user.id, :like_id => params[:l_id], :restaurant_id => params[:restaurant_id], :matching => params[:matching])
-    		if @user_like.save
-
-      		else
-            	render 'new'
-        	end
-            redirect_to root_path # TOPページに戻る(POSTで送る場合変える必要ない？）
+            @user_like = UserLike.new(:user_id => current_user.id, :like_id => params[:l_id], :restaurant_id => params[:restaurant_id], :matching => params[:matching])
+            if @user_like.save
+                else
+                render 'new'
+            end
+            redirect_to root_path
         end
     end
 
